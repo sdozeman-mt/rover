@@ -63,8 +63,10 @@
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
+  <main role="main" class="site-main" id="MainContent">
+    <div class="container">
+      {{ content_for_layout }}
+    </div>
   </main>
 
   {% section 'footer' %}

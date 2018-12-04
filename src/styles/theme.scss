@@ -54,6 +54,11 @@ Repository:
 @import './sections/featured-collection';
 @import './sections/image-with-text';
 
+// Global
+@import './global/header';
+@import './global/footer';
+@import './global/global';
+
 // Templates
 @import './templates/gift_card';
 @import './templates/product';
