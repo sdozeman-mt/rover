@@ -25,9 +25,11 @@
 .site-header--logo-image { display: block; }
 
 .site-header--utility {
-    display: flex;
     position: absolute;
-    top: $base-spacing-unit;
+    top: ($base-spacing-unit / 2);
     right: $base-spacing-unit;
-    width: calc(100% - ($base-spacing-unit * 2) - (250px));
+    width: calc(100% - (#{$base-spacing-unit} * 2) - (250px));
+
+    display: flex;
+    justify-content: flex-end;
 }

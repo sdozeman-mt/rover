@@ -77,17 +77,17 @@
       </div>
 
       <nav role="navigation" class="site-navigation--main">
-        <ul>
+        <ul class="site-navigation--main-menu main-menu">
           {% for link in linklists[section.settings.menu].links %}
             {% if link.links != blank %}
-              <li>
+              <li class="main-menu--list-item list-item--primary">
                 <a href="{{ link.url }}">
                   {{ link.title }}
                   {% include 'icon-arrow-down' %}
                 </a>
-                <ul>
+                <ul class="main-menu--menu-child">
                   {% for childlink in link.links %}
-                    <li>
+                    <li class="main-menu--list-item list-item--secondary">
                       <a href="{{ childlink.url }}">
                         {{ childlink.title }}
                       </a>
@@ -96,7 +96,7 @@
                 </ul>
               </li>
             {% else %}
-              <li>
+              <li class="main-menu--list-item">
                 <a href="{{ link.url }}">
                   {{ link.title }}
                 </a>
