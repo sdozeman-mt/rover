@@ -31,7 +31,7 @@
     z-index: $z-index-base * 4;
     padding: $base-spacing-unit;
     box-shadow: $box-shadow-default;
-    border-radius: $border-radius-base;
+    border-radius: $border-radius-bottom;
     transform: translateY(-$base-spacing-unit);
 }
 

@@ -1,7 +1,7 @@
 .featured-collection {
   display: flex;
   flex-wrap: wrap;
-  max-width: $grid-max-width;
+  // max-width: $grid-max-width;
 }
 
 .featured-collection-item {
@@ -11,7 +11,10 @@
 }
 
 .featured-collection__image {
+  max-width: 100%;
   min-width: 320px;
+  background: white;
+  padding: $base-spacing-unit * 2;
 }
 
 .featured-collection__title {
