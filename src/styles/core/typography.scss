@@ -5,8 +5,9 @@ html {
 body {
   font-family: $font-body;
   font-weight: $font-body-weight;
-  font-style: $font-body-style;
-  font-size: 1.6rem;
+  font-style:  $font-body-style;
+  font-size:   $font-size-base;
+  line-height: $line-height-base;
 }
 
 h1,

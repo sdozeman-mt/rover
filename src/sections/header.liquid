@@ -28,18 +28,18 @@
   <header role="banner" class="site-header">
     <div class="container">
       {% if template.name == 'index' %}
-        <h1>
+        <h1 class="site-header--logo">
       {% else %}
-        <div class="h1">
+        <div class="h1 site-header--logo">
       {% endif %}
-          <a href="/" class="logo-image">
+          <a href="/" class="site-header--logo-link">
             {% if section.settings.logo != blank %}
               {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-              <img src="{{ section.settings.logo | img_url: image_size }}"
+              <img class="site-header--logo-image" src="{{ section.settings.logo | img_url: image_size }}"
                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
                   alt="{{ section.settings.logo.alt | default: shop.name }}">
             {% else %}
-              {{ shop.name }}
+              {% comment %} {{ shop.name }} {% endcomment %} Rover
             {% endif %}
           </a>
       {% if template.name == 'index' %}
@@ -47,13 +47,67 @@
       {% else %}
         </div>
       {% endif %}
+      
+      <div class="site-header--utility">
+        <div class="site-header--search">
+          <form action="/search" method="get" role="search">
+            <label for="Search-{{ section.id }}" class="label-hidden">
+              {{ 'general.search.placeholder' | t }}
+            </label>
 
-      <a href="/cart">
-        {% include 'icon-cart' %}
-        {{ 'layout.cart.title' | t }}
-        ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
-      </a>
+            <input type="search"
+              name="q"
+              id="Search-{{ section.id }}"
+              value="{{ search.terms | escape }}"
+              placeholder="{{ 'general.search.placeholder' | t }}">
 
+            <button type="submit" class="button">
+              {% include 'icon-search' %}
+              <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+            </button>
+          </form>
+        </div>
+        <div class="site-header--cart">
+          <a href="/cart">
+            {% include 'icon-cart' %}
+            {{ 'layout.cart.title' | t }}
+            ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+          </a>
+        </div>
+      </div>
+
+      <nav role="navigation" class="site-navigation--main">
+        <ul>
+          {% for link in linklists[section.settings.menu].links %}
+            {% if link.links != blank %}
+              <li>
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                  {% include 'icon-arrow-down' %}
+                </a>
+                <ul>
+                  {% for childlink in link.links %}
+                    <li>
+                      <a href="{{ childlink.url }}">
+                        {{ childlink.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+
+
+      <!-- TODO? Style this? Enable this? Do something with this. -->
       {% if shop.customer_accounts_enabled %}
         <ul>
           {% if customer %}
@@ -78,57 +132,10 @@
           {% endif %}
         </ul>
       {% endif %}
+      <!-- END TODO? -->
 
-      <form action="/search" method="get" role="search">
-        <label for="Search-{{ section.id }}" class="label-hidden">
-          {{ 'general.search.placeholder' | t }}
-        </label>
-
-        <input type="search"
-          name="q"
-          id="Search-{{ section.id }}"
-          value="{{ search.terms | escape }}"
-          placeholder="{{ 'general.search.placeholder' | t }}">
-
-        <button type="submit" class="button">
-          {% include 'icon-search' %}
-          <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-        </button>
-      </form>
     </div>
   </header>
-
-  <nav role="navigation" class="site-navigation--main">
-    <div class="container">
-      <ul>
-        {% for link in linklists[section.settings.menu].links %}
-          {% if link.links != blank %}
-            <li>
-              <a href="{{ link.url }}">
-                {{ link.title }}
-                {% include 'icon-arrow-down' %}
-              </a>
-              <ul>
-                {% for childlink in link.links %}
-                  <li>
-                    <a href="{{ childlink.url }}">
-                      {{ childlink.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% else %}
-            <li>
-              <a href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>
 </section>
 
 {% if section.settings.logo != blank %}

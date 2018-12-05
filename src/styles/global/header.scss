@@ -1,2 +1,33 @@
 // Global Header Styles
-.site-header {}
+.site-header {
+    top: ($base-spacing-unit / 2);
+    left: ($base-spacing-unit / 2);
+    right: ($base-spacing-unit / 2);
+
+    position: fixed;
+    background: white;
+    padding: $base-spacing-unit;
+    z-index: ($z-index-base * 2);
+    box-shadow: $box-shadow-default;
+    border-radius: $border-radius-base;
+
+    @include clearfix();
+
+    .container {
+        position: relative;
+    }
+}
+.site-header--logo {
+    margin: 0;
+    max-width: ($base-spacing-unit * 10);
+}
+.site-header--logo-link,
+.site-header--logo-image { display: block; }
+
+.site-header--utility {
+    display: flex;
+    position: absolute;
+    top: $base-spacing-unit;
+    right: $base-spacing-unit;
+    width: calc(100% - ($base-spacing-unit * 2) - (250px));
+}

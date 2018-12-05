@@ -1,0 +1,20 @@
+// Global Styles
+
+a {
+    color: $link-default;
+    text-decoration: none;
+  
+    &:hover { 
+        color: $link-hovered;
+        text-decoration: underline; 
+    }
+
+    &:focus, &:active {
+        color: $link-active;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}

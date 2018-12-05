@@ -66,9 +66,26 @@ $breakpoints: (
 
 /* -------------------------------------- */
 
-// COLORS
-// social media colours
+// TYPOGRAPHY
+// Base typography overrides
+$line-height-base:  1.4;
+$font-size-base:    1.6rem;
 
+// COLORS
+// Primary Colors
+$color-primary:     #252525;
+$color-secondary:   #a8d3c6;
+$color-tertiary:    #e5dc68;
+$color-tetranary:   #d62598;
+$color-quinary:     #000000; //5 colors too many?
+$color-senary:      #000000; //6 colors too many?
+
+// Link Colors
+$link-default:  $color-primary;
+$link-hovered:  $color-tetranary;
+$link-active:   darken($color-primary, 10%);
+
+// Social Media Colors
 $color-twitter: #00aced;
 $color-facebook: #3b5998;
 $color-googleplus: #dd4b39;
@@ -105,7 +122,6 @@ $btn-large-padding        : .8em;
 /* -------------------------------------- */
 
 // ANIMATION
-
 $transition-time-fast      : .15s;
 $transition-time-default   : .3s ;
 $transition-time-slow      : .6s;
@@ -113,5 +129,16 @@ $transition-timing-default : ease-out;
 $transition-slow           : $transition-time-slow $transition-timing-default;
 $transition-default        : $transition-time-default $transition-timing-default;
 $transition-fast           : $transition-time-fast $transition-timing-default;
+$transition-custom         : cubic-bezier(0.19, 1, 0.22, 1);
+
 
 /* -------------------------------------- */
+
+// SHADOWS
+$box-shadow-default        : 0 2px 4px -2px rgba(0,0,0,0.5), 0 16px 16px -16px rgba(0,0,0,0.25);
+
+// BORDERS
+$border-radius-base        : ($base-spacing-unit * .4);
+
+// Z-INDEXES
+$z-index-base              : 100;
