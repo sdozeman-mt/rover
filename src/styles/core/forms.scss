@@ -17,10 +17,10 @@ textarea {
 input,
 textarea,
 select {
-  font-size: 1.6rem;
   max-width: 100%;
+  font-size: $font-size-base;
   border: 1px solid $color-border;
-  border-radius: 0;
+  padding: ($base-spacing-unit / 2);
 
   &[disabled] {
     border-color: $color-disabled-border;

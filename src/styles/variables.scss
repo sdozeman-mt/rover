@@ -71,6 +71,10 @@ $breakpoints: (
 $line-height-base:  1.4;
 $font-size-base:    1.6rem;
 
+$font-weight:       400;
+$font-weight-thick: 700;
+$font-weight-thin:  100;
+
 // COLORS
 // Primary Colors
 $color-primary:     #252525;
@@ -107,8 +111,6 @@ $color-yahoo: #7B0099;
 // $base-spacing-unit        : $base-line-height/$base-font-size * 1rem;
 $base-spacing-unit        : 20px;
 
-$base-border-radius       : 5px;
-
 $container-pad            : $base-spacing-unit;
 $container-max            : 1440px;
 $container-large-max      : 1600px;
@@ -139,6 +141,8 @@ $box-shadow-default        : 0 2px 4px -2px rgba(0,0,0,0.5), 0 16px 16px -16px r
 
 // BORDERS
 $border-radius-base        : ($base-spacing-unit * .5);
+$border-radius-bottom      : 0 0 $border-radius-base $border-radius-base;
+$border-radius-top         : $border-radius-base $border-radius-base 0 0;
 
 // Z-INDEXES
 $z-index-base              : 100;

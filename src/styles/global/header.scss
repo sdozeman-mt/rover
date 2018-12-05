@@ -1,6 +1,7 @@
 // Global Header Styles
+
 .site-header {
-    top: ($base-spacing-unit / 2);
+    top: 0;
     left: ($base-spacing-unit / 2);
     right: ($base-spacing-unit / 2);
 
@@ -9,7 +10,7 @@
     padding: $base-spacing-unit;
     z-index: ($z-index-base * 2);
     box-shadow: $box-shadow-default;
-    border-radius: $border-radius-base;
+    border-radius: $border-radius-bottom;
 
     @include clearfix();
 
@@ -17,19 +18,43 @@
         position: relative;
     }
 }
+
+h1, .h1, .site-header--logo {
+    font-family: $font-heading;
+    font-size: $font-size-base * 2;
+}
+
 .site-header--logo {
+    top: 50%;
     margin: 0;
-    max-width: ($base-spacing-unit * 10);
+    position: absolute;
+    transform: translateY(-50%);
+    max-width: ($base-spacing-unit * 12);
 }
 .site-header--logo-link,
 .site-header--logo-image { display: block; }
 
-.site-header--utility {
-    position: absolute;
-    top: ($base-spacing-unit / 2);
-    right: $base-spacing-unit;
-    width: calc(100% - (#{$base-spacing-unit} * 2) - (250px));
+.site-header--logo-link {
+    @include beautify-link($link-hovered);
+}
 
+.site-header--utility {
+    float: right;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
+
+    // Ensure element never over/underlaps the logo
+    width: calc(100% - (#{$base-spacing-unit} * 13));
+}
+
+.site-header--cart,
+.site-header--search {
+    margin-left: ($base-spacing-unit / 2);
+}
+
+.site-header--cart-link {
+    padding: $base-spacing-unit;
+    font-weight: $font-weight-thick;
+    @include beautify-link($link-hovered);
 }

@@ -21,6 +21,7 @@
     @if $media-query == $name and $declaration {
       $breakpoint-found: true;
 
+      // @ts-ignore
       @media only screen and #{$declaration} {
         @content;
       }
@@ -108,4 +109,16 @@
   clip: auto;
 }
 
+@mixin plain-list() {
+  padding: 0;
+  list-style: none;
+}
 
+@mixin beautify-link($color) {
+  transition: color $transition-duration $transition-timing;
+
+    &:hover {
+      color: $color;
+      text-decoration: none;
+    }
+}

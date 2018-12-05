@@ -1,3 +1,6 @@
 // Global Layout Styles
 
-.site-main {}
+.site-main {
+    // Ensure content isn't covered by fixed position header
+    padding-top: ($base-spacing-unit * 11);
+}

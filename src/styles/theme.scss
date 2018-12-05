@@ -34,7 +34,6 @@ Repository:
 // Core
 @import './core/forms';
 @import './core/helpers';
-@import './core/layout';
 @import './core/media';
 @import './core/responsive-tables';
 @import './core/rte';
@@ -59,6 +58,7 @@ Repository:
 @import './global/header';
 @import './global/footer';
 @import './global/global';
+@import './global/navigation';
 
 // Templates
 @import './templates/gift_card';

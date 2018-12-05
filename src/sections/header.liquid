@@ -68,7 +68,7 @@
           </form>
         </div>
         <div class="site-header--cart">
-          <a href="/cart">
+          <a class="site-header--cart-link" href="/cart">
             {% include 'icon-cart' %}
             {{ 'layout.cart.title' | t }}
             ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
@@ -81,14 +81,14 @@
           {% for link in linklists[section.settings.menu].links %}
             {% if link.links != blank %}
               <li class="main-menu--list-item list-item--primary">
-                <a href="{{ link.url }}">
+                <a class="main-menu--list-link" href="{{ link.url }}">
                   {{ link.title }}
                   {% include 'icon-arrow-down' %}
                 </a>
                 <ul class="main-menu--menu-child">
                   {% for childlink in link.links %}
                     <li class="main-menu--list-item list-item--secondary">
-                      <a href="{{ childlink.url }}">
+                      <a class="main-menu--list-link" href="{{ childlink.url }}">
                         {{ childlink.title }}
                       </a>
                     </li>
@@ -97,7 +97,7 @@
               </li>
             {% else %}
               <li class="main-menu--list-item">
-                <a href="{{ link.url }}">
+                <a class="main-menu--list-link" href="{{ link.url }}">
                   {{ link.title }}
                 </a>
               </li>
