@@ -1,4 +1,14 @@
 // Global Navigation styles
+
+/* TODO? 
+ * 1. Add responsive styles to same menu,
+ * 2. Add conditional styles for last-item dropdown
+ * 3. Add active class styles to elements in menu 
+ * 4. Add drop-down functionality to mobile menu
+ * 5. ...
+ */
+
+
 .site-navigation--main {
     float: right;
     clear: right;
@@ -54,7 +64,7 @@
     padding: $base-spacing-unit;
     font-weight: $font-weight-thick;
     
-    @include beautify-link($link-hovered);
+    @include beautify-link($link-default, $link-hovered);
 
     svg { margin-left: $base-spacing-unit / 2; }
 
@@ -64,8 +74,46 @@
     }
 }
 
-/* TODO? 
- * 1. Add responsive styles to same menu,
- * 2. Add conditional styles for last-item dropdown
- * 3. ...
- */
+ @include breakpoint($main-breakpoint) {
+    .site-navigation--main {
+        top: 0;
+        left: auto;
+        width: auto;
+        bottom: auto;
+        text-align: right;
+        padding-top: 20px;
+        position: absolute;
+        width: $off-canvas-width;
+        right: -($off-canvas-width);
+        padding: $base-spacing-unit;
+    }
+
+    .site-navigation--main-menu {
+        flex-direction: column;
+    }
+
+    .main-menu--menu-child {
+        position: static;
+        background: none;
+
+        opacity: 1;
+        padding: 0;
+        width: auto;
+        transform: none;
+        box-shadow: none;
+        border-radius: none;
+        visibility: visible;
+    }
+
+    .main-menu--list-link {
+        color: white;
+        font-size: $font-size-base;
+        @include beautify-link($link-reversed, $link-hovered);
+
+
+        // TODO? 
+        &.current-menu-item {
+            color: $link-hovered;
+        }
+    }
+ }

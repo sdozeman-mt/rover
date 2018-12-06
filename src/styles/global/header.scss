@@ -35,7 +35,7 @@ h1, .h1, .site-header--logo {
 .site-header--logo-image { display: block; }
 
 .site-header--logo-link {
-    @include beautify-link($link-hovered);
+    @include beautify-link($link-default, $link-hovered);
 }
 
 .site-header--utility {
@@ -57,7 +57,7 @@ h1, .h1, .site-header--logo {
 .site-header--cart-link {
     padding: $base-spacing-unit;
     font-weight: $font-weight-thick;
-    @include beautify-link($link-hovered);
+    @include beautify-link($link-default, $link-hovered);
 }
 
 .search-form {}
@@ -67,4 +67,23 @@ h1, .h1, .site-header--logo {
 }
 .search-form--submit {
     background: none;
+}
+
+@include breakpoint($main-breakpoint) {
+    .site-header--utility {
+        display: none;
+    }
+    //     flex-direction: column;
+    //     align-items: flex-end;
+    //     justify-content: space-evenly;
+    // }
+
+    // .site-header--cart {
+    //     order: 1;
+    //     margin-bottom: ($base-spacing-unit * .75);
+
+    // }
+    // .site-header--search {
+    //     order: 2;
+    // }
 }

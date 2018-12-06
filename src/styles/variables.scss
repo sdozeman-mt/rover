@@ -85,9 +85,10 @@ $color-quinary:     #000000; //5 colors too many?
 $color-senary:      #000000; //6 colors too many?
 
 // Link Colors
-$link-default:  $color-primary;
-$link-hovered:  $color-tetranary;
-$link-active:   darken($color-primary, 10%);
+$link-default:      $color-primary;
+$link-hovered:      $color-tetranary;
+$link-reversed:    invert($link-default);
+$link-active:       darken($color-primary, 10%);
 
 // Social Media Colors
 $color-twitter: #00aced;
@@ -184,3 +185,6 @@ $large-breakpoint   : $bp-xl;
 // Main breakpoint, usually the point where we change from 'mobile' to 'desktop'
 // (ie. change from collapsible menu to normal menu)
 $main-breakpoint    : $bp-lg;
+
+// OFF CANVAS
+$off-canvas-width   : 250px;

@@ -20,7 +20,7 @@ html {
 
 a {
     color: $link-default;
-    @include beautify-link($link-hovered);
+    @include beautify-link($link-default, $link-hovered);
 
     &:focus, &:active {
         color: $link-active;

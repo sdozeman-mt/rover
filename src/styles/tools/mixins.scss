@@ -139,10 +139,14 @@
   list-style: none;
 }
 
-@mixin beautify-link($color: inherit) {
+@mixin beautify-link($default: inherit, $color: inherit) {
+  color: $default;
   text-decoration: none;
   transition: color $transition-duration $transition-timing;
-    svg path { transition: fill $transition-duration $transition-timing; }
+    svg path { 
+      fill: $default;
+      transition: fill $transition-duration $transition-timing; 
+    }
 
     &:hover {
       color: $color;

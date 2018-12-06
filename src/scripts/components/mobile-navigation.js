@@ -12,24 +12,21 @@ $.fn.responsiveNav = function( options ) {
 	options = $.extend({}, {
 		    wrapperSelector:        '.site-wrapper',
 		    menuButtonSelector:     '.site--menu-btn',
-		    menuOpenClass:          'menu-open',
-        menuButtonActiveClass:  'active'
-
+		    menuOpenClass:          'menu-open'
 	}, options);
 
 	let   $this = $(this),
 		    menuOpen = false,
 		    $wrapper = $( options.wrapperSelector ),
-		    $menuButton = $( options.menuButtonSelector );
+		    $menuButton = $( options.menuButtonSelector);
 
 	const closeNav = () => {
 			  $wrapper.removeClass( options.menuOpenClass );
-		    $menuButton.removeClass( options.menuButtonActiveClass );
+		    $menuButton.removeClass( options.menuOpenClass );
 		    menuOpen = false;
 	};
 
 	const bodyClickFn = (event) => {
-        // If not nav container or decendant
         if( !$this.is(event.target) && $this.has(event.target).length === 0 ) {
             closeNav();
             $wrapper.unbind( 'touchstart, click', bodyClickFn );
@@ -45,8 +42,8 @@ $.fn.responsiveNav = function( options ) {
         if ( menuOpen ) {
             closeNav();
         } else {
-            $this.addClass( options.menuButtonActiveClass );
             $wrapper.addClass( options.menuOpenClass );
+            $menuButton.addClass( options.menuOpenClass );
             $wrapper.bind( 'touchstart, click', bodyClickFn );
             menuOpen = true;
           }

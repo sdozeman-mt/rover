@@ -2,15 +2,26 @@
 // Typically '.site-wrapper' is the outer most element and '.site-pusher' is the inner most.
 // Used to handle off canvas better in mobile environemnt, reduces need to have duplicate elements.
 
-.site-wraper {
+.site-wrapper {
     margin: 0 auto;
     overflow: hidden;
+    min-height: 100vh;
     position: relative;
-    background: $color-body;
+    background: $color-primary;
 }
 
 .site-pusher {
+    min-height: 100vh;
+    background: white;
+
     @include breakpoint($main-breakpoint) {
-        display: none;
+        left: 0;
+		height: 100%;
+		position: relative;
+		transition: transform $transition-time-default $transition-timing-default;
+
+		.menu-open & {
+			transform: translate3d(-($off-canvas-width), 0, 0);
+		}
     }
 }
