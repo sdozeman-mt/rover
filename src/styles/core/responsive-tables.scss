@@ -1,4 +1,4 @@
-@include media-query($small) {
+@include breakpoint($main-breakpoint) {
   .responsive-table {
     width: 100%;
 

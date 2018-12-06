@@ -58,18 +58,21 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+  <div class="site-wrapper">
+    <div class="site-pusher">
 
-  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+      <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-  {% section 'header' %}
+      {% section 'header' %}
 
-  <main role="main" class="site-main" id="MainContent">
-    <div class="container">
-      {{ content_for_layout }}
+      <main role="main" class="site-main" id="MainContent">
+        <div class="container">
+          {{ content_for_layout }}
+        </div>
+      </main>
+
+      {% section 'footer' %}
     </div>
-  </main>
-
-  {% section 'footer' %}
-
+  </div>
 </body>
 </html>

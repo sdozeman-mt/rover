@@ -1,0 +1,27 @@
+// Announcement Bar styles
+.announcement-bar {
+  position: relative;
+  text-align: center;
+  background: $color-secondary;
+  margin-top: -$base-spacing-unit;
+  margin-bottom: $base-spacing-unit;
+  padding: ($base-spacing-unit * .75) $base-spacing-unit;
+
+  &:before, &:after {
+      content: "";
+      top: 0;
+      right: auto;
+      height: 100%;
+      display: block;
+      position: absolute;
+      width: $base-spacing-unit;
+      left: -$base-spacing-unit;
+      background: $color-secondary; 
+  }
+  &:after {
+      left: auto;
+      right: -$base-spacing-unit;
+  }
+  
+  p { margin: 0; }
+}

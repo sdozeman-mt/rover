@@ -2,48 +2,21 @@
 
 .site-header {
     top: 0;
-    left: ($base-spacing-unit / 2);
-    right: ($base-spacing-unit / 2);
+    left: 0;
+    right: 0;
 
     position: fixed;
     background: white;
-    padding: $base-spacing-unit;
+    padding: $base-spacing-unit 0;
     z-index: ($z-index-base * 2);
     box-shadow: $box-shadow-default;
-    border-radius: $border-radius-bottom;
+    // border-radius: $border-radius-bottom;
 
     @include clearfix();
 
     .container {
         position: relative;
     }
-}
-
-.announcement-bar {
-    position: relative;
-    text-align: center;
-    padding: $base-spacing-unit;
-    background: $color-secondary;
-    margin-top: -$base-spacing-unit;
-    margin-bottom: $base-spacing-unit * 2;
-
-    &:before, &:after {
-        content: "";
-        top: 0;
-        right: auto;
-        height: 100%;
-        display: block;
-        position: absolute;
-        width: $base-spacing-unit;
-        left: -$base-spacing-unit;
-        background: $color-secondary; 
-    }
-    &:after {
-        left: auto;
-        right: -$base-spacing-unit;
-    }
-    
-    p { margin: 0; }
 }
 
 h1, .h1, .site-header--logo {
@@ -70,6 +43,7 @@ h1, .h1, .site-header--logo {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: ($base-spacing-unit / 2);
 
     // Ensure element never over/underlaps the logo
     width: calc(100% - (#{$base-spacing-unit} * 13));
@@ -84,4 +58,13 @@ h1, .h1, .site-header--logo {
     padding: $base-spacing-unit;
     font-weight: $font-weight-thick;
     @include beautify-link($link-hovered);
+}
+
+.search-form {}
+.search-form--label {}
+.search-form--input {
+    font-size: ($font-size-base * .875)
+}
+.search-form--submit {
+    background: none;
 }

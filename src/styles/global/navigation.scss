@@ -2,12 +2,14 @@
 .site-navigation--main {
     float: right;
     clear: right;
+    margin-bottom: -($base-spacing-unit / 2);
     // Ensure element never over/underlaps the logo
     width: calc(100% - (#{$base-spacing-unit} * 13));
 }
 
 .site-navigation--main-menu,
 .main-menu--menu-child  {
+    margin: 0;
     list-style: none;
 }
 
@@ -29,10 +31,10 @@
     background: white;
     left: -$base-spacing-unit;
     z-index: $z-index-base * 4;
-    padding: $base-spacing-unit;
     box-shadow: $box-shadow-default;
     border-radius: $border-radius-bottom;
     transform: translateY(-$base-spacing-unit);
+    padding: ($base-spacing-unit / 2) $base-spacing-unit;
 }
 
 .main-menu--list-item {

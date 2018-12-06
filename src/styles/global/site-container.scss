@@ -1,0 +1,16 @@
+// Styles for the outer container elements of the website or webapp:
+// Typically '.site-wrapper' is the outer most element and '.site-pusher' is the inner most.
+// Used to handle off canvas better in mobile environemnt, reduces need to have duplicate elements.
+
+.site-wraper {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background: $color-body;
+}
+
+.site-pusher {
+    @include breakpoint($main-breakpoint) {
+        display: none;
+    }
+}

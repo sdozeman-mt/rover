@@ -46,6 +46,7 @@ Repository:
 @import './components/icons';
 @import './components/placeholders';
 @import './components/responsive-images';
+@import './components/announcement-bar';
 
 // Sections
 @import './sections/blog-posts';
@@ -60,6 +61,7 @@ Repository:
 @import './global/footer';
 @import './global/global';
 @import './global/navigation';
+@import './global/site-container';
 
 // Templates
 @import './templates/gift_card';

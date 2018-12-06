@@ -11,23 +11,23 @@
  *   }
  * }
  */
-@mixin media-query($media-query) {
-  $breakpoint-found: false;
+// @mixin media-query($media-query) {
+//   $breakpoint-found: false;
 
-  @each $breakpoint in $breakpoints {
-    $name: nth($breakpoint, 1);
-    $declaration: nth($breakpoint, 2);
+//   @each $breakpoint in $breakpoints {
+//     $name: nth($breakpoint, 1);
+//     $declaration: nth($breakpoint, 2);
 
-    @if $media-query == $name and $declaration {
-      $breakpoint-found: true;
+//     @if $media-query == $name and $declaration {
+//       $breakpoint-found: true;
 
-      // @ts-ignore
-      @media only screen and #{$declaration} {
-        @content;
-      }
-    }
-  }
-}
+//       // @ts-ignore
+//       @media only screen and #{$declaration} {
+//         @content;
+//       }
+//     }
+//   }
+// }
 
 /**
  * Outputs list of transition properties
@@ -109,6 +109,31 @@
   clip: auto;
 }
 
+
+// Media Query Mixin
+// Use to create a breakpoint, ideally using predefined breakpoint variables
+// For each project, you can create additional breakpoints if required
+
+@mixin breakpoint($media-query) {
+  @media only screen and (max-width: $media-query) {
+      @content;
+  }
+}
+
+// Make sure you are using a variable for this breakpoint
+
+@mixin breakpoint-min($media-query) {
+  @media only screen and (min-width: $media-query + 1px) {
+      @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media only screen and (min-width: $min + 1px) and (max-width: $max) {
+      @content;
+  }
+}
+
 @mixin plain-list() {
   padding: 0;
   list-style: none;
@@ -117,10 +142,15 @@
 @mixin beautify-link($color: inherit) {
   text-decoration: none;
   transition: color $transition-duration $transition-timing;
+    svg path { transition: fill $transition-duration $transition-timing; }
 
     &:hover {
       color: $color;
       text-decoration: none;
+
+      svg { 
+        path { fill: $color; }
+      }
     }
 }
 

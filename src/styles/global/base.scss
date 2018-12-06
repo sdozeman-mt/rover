@@ -1,4 +1,6 @@
 // Global Styles
+// The goal here is to target ambiguous elements 
+// that do not have classes associated with them
 
 html {
     background-color: $color-body;
@@ -23,8 +25,6 @@ a {
     &:focus, &:active {
         color: $link-active;
     }
-
-
 }
 
 img {
