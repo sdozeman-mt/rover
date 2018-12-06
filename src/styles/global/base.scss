@@ -18,16 +18,13 @@ html {
 
 a {
     color: $link-default;
-    text-decoration: none;
-  
-    &:hover { 
-        color: $link-hovered;
-        text-decoration: underline; 
-    }
+    @include beautify-link($link-hovered);
 
     &:focus, &:active {
         color: $link-active;
     }
+
+
 }
 
 img {

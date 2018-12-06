@@ -108,7 +108,7 @@ $color-yahoo: #7B0099;
 // Global spacing and measurement variables
 
 // Set consistent vertical and horizontal spacing units.
-// $base-spacing-unit        : $base-line-height/$base-font-size * 1rem;
+// $base-spacing-unit        : $base-line-height/$font-size-base * 1rem;
 $base-spacing-unit        : 20px;
 
 $container-pad            : $base-spacing-unit;

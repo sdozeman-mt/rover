@@ -19,6 +19,33 @@
     }
 }
 
+.announcement-bar {
+    position: relative;
+    text-align: center;
+    padding: $base-spacing-unit;
+    background: $color-secondary;
+    margin-top: -$base-spacing-unit;
+    margin-bottom: $base-spacing-unit * 2;
+
+    &:before, &:after {
+        content: "";
+        top: 0;
+        right: auto;
+        height: 100%;
+        display: block;
+        position: absolute;
+        width: $base-spacing-unit;
+        left: -$base-spacing-unit;
+        background: $color-secondary; 
+    }
+    &:after {
+        left: auto;
+        right: -$base-spacing-unit;
+    }
+    
+    p { margin: 0; }
+}
+
 h1, .h1, .site-header--logo {
     font-family: $font-heading;
     font-size: $font-size-base * 2;

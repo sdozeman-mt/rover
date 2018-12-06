@@ -17,3 +17,11 @@
 .collection-list__title {
   flex-basis: 100%;
 }
+
+
+.collection--item {}
+.collection-item--title {
+  font-size: $font-size-base * 1.25;
+  font-weight: $font-weight-thick;
+}
+.collection-item--price {}

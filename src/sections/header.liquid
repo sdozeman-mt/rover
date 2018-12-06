@@ -11,21 +11,24 @@
   - Home page only: only shows on the home page
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header">
-  {%- if section.settings.announcement_bar_enabled -%}
-    <div>
-      {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
-        {%- if section.settings.announcement_bar_link != blank -%}
-          <a href="{{ section.settings.announcement_bar_link }}">
-            {{ section.settings.announcement_bar_text | escape }}
-          </a>
-        {%- else -%}
-          <p>{{ section.settings.announcement_bar_text | escape }}</p>
+  <header role="banner" class="site-header">
+  
+    {%- if section.settings.announcement_bar_enabled -%}
+    <div class="announcement-bar">
+      <div class="container">
+        {%- if section.settings.announcement_bar_home_page_only == false or template.name == 'index' -%}
+          {%- if section.settings.announcement_bar_link != blank -%}
+            <a href="{{ section.settings.announcement_bar_link }}">
+              {{ section.settings.announcement_bar_text | escape }}
+            </a>
+          {%- else -%}
+            <p>{{ section.settings.announcement_bar_text | escape }}</p>
+          {%- endif -%}
         {%- endif -%}
-      {%- endif -%}
+      </div>
     </div>
   {%- endif -%}
 
-  <header role="banner" class="site-header">
     <div class="container">
       {% if template.name == 'index' %}
         <h1 class="site-header--logo">

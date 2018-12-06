@@ -81,11 +81,11 @@
             {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
           </a>
 
-          <p>
+          <p class="collection-item--title">
             <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
           </p>
 
-          <p>
+          <p class="collection-item--price">
             {{ 1999 | money }}
           </p>
         {% endfor %}

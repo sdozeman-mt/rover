@@ -114,11 +114,21 @@
   list-style: none;
 }
 
-@mixin beautify-link($color) {
+@mixin beautify-link($color: inherit) {
+  text-decoration: none;
   transition: color $transition-duration $transition-timing;
 
     &:hover {
       color: $color;
       text-decoration: none;
+    }
+}
+
+@mixin uglify-link($color: inherit) {
+  transition: none;
+
+    &:hover {
+      color: $color;
+      text-decoration: underline;
     }
 }

@@ -7,9 +7,7 @@
   {%- assign onboarding_title = 'homepage.onboarding.product_title' | t -%}
 {% endif %}
 
-<div data-section-id="{{ section.id }}" data-section-type="product">
-
-
+<div data-section-id="{{ section.id }}" data-section-type="product" class="{{ section.id }}">
 
   {% for image in product.images %}
     {% capture wrapper_class %}
