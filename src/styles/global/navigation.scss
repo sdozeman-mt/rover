@@ -76,7 +76,7 @@
 
  @include breakpoint($main-breakpoint) {
     .site-navigation--main {
-        top: 0;
+        top: -$base-spacing-unit;
         left: auto;
         width: auto;
         bottom: auto;
