@@ -172,10 +172,10 @@ $small-font-size     : 14px;
 
 // MEDIA QUERIES
 // Breakpoints
-$bp-xs              : 479px;
-$bp-sm              : 639px;
-$bp-md              : 799px;
-$bp-lg              : 1067px;
+$bp-xs              : 529px;
+$bp-sm              : 767px;
+$bp-md              : 819px;
+$bp-lg              : 1023px;
 $bp-xl              : 1199px;
 
 $bp-array           : '{"xs": "#{$bp-xs}", "sm": "#{$bp-sm}", "md": "#{$bp-md}", "lg": "#{$bp-lg}" ,"xl": "#{$bp-xl}"}';
