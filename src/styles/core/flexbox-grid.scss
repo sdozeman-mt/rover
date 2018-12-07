@@ -131,8 +131,8 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
     }
     //skinny gutter
     &.gutter-xm-skinny {
-      margin-left: -(@skinny-gutter);
-      margin-right: -(@skinny-gutter);
+      margin-left: -($skinny-gutter);
+      margin-right: -($skinny-gutter);
 
       .col-xm, [class*='col-xm-']{
         padding-left: $skinny-gutter;
