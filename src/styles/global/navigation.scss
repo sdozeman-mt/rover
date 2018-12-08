@@ -1,15 +1,15 @@
 // Global Navigation styles
 
-/* TODO? 
+/* TODO?
  * 1. Add responsive styles to same menu,
  * 2. Add conditional styles for last-item dropdown
- * 3. Add active class styles to elements in menu 
+ * 3. Add active class styles to elements in menu
  * 4. Add drop-down functionality to mobile menu
  * 5. ...
  */
 
 
-.site-navigation--main {
+.site-navigation {
     float: right;
     clear: right;
     margin-bottom: -($base-spacing-unit / 2);
@@ -17,23 +17,23 @@
     width: calc(100% - (#{$base-spacing-unit} * 13));
 }
 
-.site-navigation--main-menu,
-.main-menu--menu-child  {
+.site-navigation__menu,
+.site-navigation__menu-child  {
     margin: 0;
     list-style: none;
 }
 
-.site-navigation--main-menu {
+.site-navigation__menu {
     padding: 0;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
 }
 
-.main-menu--menu-child {
+.site-navigation__menu-child {
     opacity: 0;
     visibility: hidden;
-    transition: opacity $transition-duration $transition-timing, 
+    transition: opacity $transition-duration $transition-timing,
                 visibility $transition-duration $transition-timing;
 
     width: 250px;
@@ -47,11 +47,11 @@
     padding: ($base-spacing-unit / 2) $base-spacing-unit;
 }
 
-.main-menu--list-item {
+.site-navigation__list-item {
     position: relative;
-    
+
     &:hover {
-       > .main-menu--menu-child {
+       > .site-navigation__menu-child {
            opacity: 1;
            visibility: visible;
         //    transition-delay: $transition-duration * 2;
@@ -59,11 +59,11 @@
     }
 }
 
-.main-menu--list-link {
+.site-navigation__list-link {
     display: block;
     padding: $base-spacing-unit;
     font-weight: $font-weight-thick;
-    
+
     @include beautify-link($link-default, $link-hovered);
 
     svg { margin-left: $base-spacing-unit / 2; }
@@ -75,7 +75,7 @@
 }
 
  @include breakpoint($main-breakpoint) {
-    .site-navigation--main {
+    .site-navigation {
         top: -$base-spacing-unit;
         left: auto;
         width: auto;
@@ -88,11 +88,11 @@
         padding: $base-spacing-unit;
     }
 
-    .site-navigation--main-menu {
+    .site-navigation__menu {
         flex-direction: column;
     }
 
-    .main-menu--menu-child {
+    .site-navigation__menu-child {
         position: static;
         background: none;
 
@@ -105,13 +105,13 @@
         visibility: visible;
     }
 
-    .main-menu--list-link {
+    .site-navigation__list-link {
         color: white;
         font-size: $font-size-base;
         @include beautify-link($link-reversed, $link-hovered);
 
 
-        // TODO? 
+        // TODO?
         &.current-menu-item {
             color: $link-hovered;
         }

@@ -16,11 +16,11 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
 /*
   Grid based on http://flexboxgrid.com/ with customized edits
    - optional default, skinny and fat gutter options for each breakpoint size
-   - use gutter-lg-skinny or gutter-lg-fat on .flex-row container for default/desktop
-   - use gutter-md-default or gutter-md-skinny or gutter-md-fat on .flex-row to change for medium etc.
+   - use gutter-lg-skinny or gutter-lg-fat on .flex-grid for default/desktop
+   - use gutter-md-default or gutter-md-skinny or gutter-md-fat on .flex-grid to change for medium etc.
 */
 
-.flex-row {
+.flex-grid {
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
@@ -29,7 +29,7 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
   margin-right: -($default-gutter);
   margin-left: -($default-gutter);
 
-  [class*='col-'] {
+  .grid__item {
     padding-right: $default-gutter;
     padding-left: $default-gutter;
   }
@@ -40,7 +40,7 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
     margin-right: -($skinny-gutter);
 
     .col-lg,
-    [class*='col-'] {
+    .grid__item {
       padding-left: $skinny-gutter;
       padding-right: $skinny-gutter;
     }
@@ -52,21 +52,20 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
     margin-right: -($fat-gutter);
 
     .col-lg,
-    [class*='col-'] {
+    .grid__item {
       padding-left: $fat-gutter;
       padding-right: $fat-gutter;
     }
 
   }
+  &.reverse { flex-direction: row-reverse; }
 
 }
-
-.flex-row.reverse { flex-direction: row-reverse; }
 
 
 /* DEFAULT COLUMNS */
   .col-lg,
-  [class*='col-'] {
+  .grid__item {
     flex: 0 0 auto;
   }
   .col-lg {
@@ -117,13 +116,13 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
 /* TABLET SMALL/MEDIUM COLUMNS */
 @include breakpoint($bp-md) {
 
-  .flex-row{
+  .flex-grid {
     //default gutter
     &.gutter-xm-default {
       margin-left: -($default-gutter);
       margin-right: -($default-gutter);
 
-      .col-xm, [class*='col-']{
+      .col-xm, .grid__item{
         padding-left: $default-gutter;
         padding-right: $default-gutter;
       }
@@ -150,7 +149,7 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
         padding-right: $fat-gutter;
       }
     }
-  }//end .flex-row
+  }//end .flex-grid
 
   .col-xm {
     flex-grow: 1;
@@ -201,13 +200,13 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
 /* TABLET MEDIUM COLUMNS */
 @include breakpoint($bp-lg) {
 
-  .flex-row {
+  .flex-grid {
     //default gutter
     &.gutter-md-default {
       margin-left: -($default-gutter);
       margin-right: -($default-gutter);
 
-      .col-md, [class*='col-'] {
+      .col-md, .grid__item {
         padding-left: $default-gutter;
         padding-right: $default-gutter;
       }
@@ -234,7 +233,7 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
         padding-right: $fat-gutter;
       }
     }
-  }//end .flex-row
+  }//end .flex-grid
 
   .col-md {
     flex-grow: 1;
@@ -282,16 +281,16 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
   .last-md { order: 1; }
 }
 
-/* MOBILE LARGE COLUMNS */
+/* MOBILE COLUMNS */
 @include  breakpoint($bp-sm) {
 
-  .flex-row {
+  .flex-grid {
     //default gutter
     &.gutter-sm-default{
       margin-left: -($default-gutter);
       margin-right: -($default-gutter);
 
-      .col-sm, [class*='col-'] {
+      .col-sm, .grid__item {
         padding-left: $default-gutter;
         padding-right: $default-gutter;
       }
@@ -313,14 +312,14 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
       margin-left: -($fat-gutter);
       margin-right: -($fat-gutter);
 
-      .col-sm, [class*='col-']{
+      .col-sm, .grid__item{
         padding-left: $fat-gutter;
         padding-right: $fat-gutter;
       }
 
     }
 
-  }//end .flex-row
+  }//end .flex-grid
 
   .col-sm {
     flex-grow: 1;
@@ -369,16 +368,16 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
 }
 
 
-/* MOBILE COLUMNS */
+/* MOBILE SMALL COLUMNS */
 @include breakpoint($bp-xs) {
 
-  .flex-row {
+  .flex-grid {
     //default gutter
     &.gutter-xs-default {
       margin-left: -($default-gutter);
       margin-right: -($default-gutter);
 
-      .col-xs, [class*='col-'] {
+      .col-xs, .grid__item {
         padding-left: $default-gutter;
         padding-right: $default-gutter;
       }
@@ -390,7 +389,7 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
       margin-left: -($skinny-gutter);
       margin-right: -($skinny-gutter);
 
-      .col-xs, [class*='col-']{
+      .col-xs, .grid__item{
         padding-left: $skinny-gutter;
         padding-right: $skinny-gutter;
       }
@@ -401,12 +400,12 @@ $fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
       margin-left: -($fat-gutter);
       margin-right: -($fat-gutter);
 
-      .col-xs, [class*='col-'] {
+      .col-xs, .grid__item {
         padding-left: $fat-gutter;
         padding-right: $fat-gutter;
       }
     }
-  }//end .flex-row
+  }//end .flex-grid
 
   .col-xs {
     flex-grow: 1;

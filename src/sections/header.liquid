@@ -12,7 +12,7 @@
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header">
   <header role="banner" class="site-header">
-  
+
     {%- if section.settings.announcement_bar_enabled -%}
     <div class="announcement-bar">
       <div class="container">
@@ -32,14 +32,14 @@
 
     <div class="container">
       {% if template.name == 'index' %}
-        <h1 class="site-header--logo">
+        <h1 class="site-header__logo">
       {% else %}
-        <div class="h1 site-header--logo">
+        <div class="h1 site-header__logo">
       {% endif %}
-          <a href="/" class="site-header--logo-link">
+          <a href="/" class="site-header__logo-link">
             {% if section.settings.logo != blank %}
               {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-              <img class="site-header--logo-image" src="{{ section.settings.logo | img_url: image_size }}"
+              <img class="site-header__logo-image" src="{{ section.settings.logo | img_url: image_size }}"
                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
                   alt="{{ section.settings.logo.alt | default: shop.name }}">
             {% else %}
@@ -52,37 +52,37 @@
         </div>
       {% endif %}
 
-      <a class="site--menu-btn">
-        <div class="menu-btn--toggle">
+      <a class="site-header__menu-btn">
+        <div class="site-header__menu-btn--toggle">
           <span class="p1"></span>
           <span class="p2"></span>
           <span class="p3"></span>
         </div>
-        <span class="menu-btn--text">Menu</span>
+        <span class="site-header__menu-btn--text">Menu</span>
       </a>
-      
-      <div class="site-header--utility">
-        <div class="site-header--search">
+
+      <div class="site-header__utility">
+        <div class="site-header__search">
           <form action="/search" method="get" role="search" class="search-form">
-            <label for="Search-{{ section.id }}" class="label-hidden search-form--label">
+            <label for="Search-{{ section.id }}" class="label-hidden site-header__search--label">
               {{ 'general.search.placeholder' | t }}
             </label>
 
             <input type="search"
               name="q"
               id="Search-{{ section.id }}"
-              class="search-form--input"
+              class="site-header__search--input"
               value="{{ search.terms | escape }}"
               placeholder="{{ 'general.search.placeholder' | t }}">
 
-            <button type="submit" class="button search-form--submit">
+            <button type="submit" class="button site-header__search--submit">
               {% include 'icon-search' %}
               <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
             </button>
           </form>
         </div>
-        <div class="site-header--cart">
-          <a class="site-header--cart-link" href="/cart">
+        <div class="site-header__cart">
+          <a class="site-header__cart-link" href="/cart">
             {% include 'icon-cart' %}
             {{ 'layout.cart.title' | t }}
             ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
@@ -90,19 +90,19 @@
         </div>
       </div>
 
-      <nav role="navigation" class="site-navigation--main">
-        <ul class="site-navigation--main-menu main-menu">
+      <nav role="navigation" class="site-navigation">
+        <ul class="site-navigation__menu">
           {% for link in linklists[section.settings.menu].links %}
             {% if link.links != blank %}
-              <li class="main-menu--list-item list-item--primary">
-                <a class="main-menu--list-link" href="{{ link.url }}">
+              <li class="site-navigation__list-item list-item--primary">
+                <a class="site-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                   {% include 'icon-arrow-down' %}
                 </a>
-                <ul class="main-menu--menu-child">
+                <ul class="site-navigation__menu-child">
                   {% for childlink in link.links %}
-                    <li class="main-menu--list-item list-item--secondary">
-                      <a class="main-menu--list-link" href="{{ childlink.url }}">
+                    <li class="site-navigation__list-item list-item--secondary">
+                      <a class="site-navigation__list-link" href="{{ childlink.url }}">
                         {{ childlink.title }}
                       </a>
                     </li>
@@ -110,8 +110,8 @@
                 </ul>
               </li>
             {% else %}
-              <li class="main-menu--list-item">
-                <a class="main-menu--list-link" href="{{ link.url }}">
+              <li class="site-navigation__list-item">
+                <a class="site-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                 </a>
               </li>

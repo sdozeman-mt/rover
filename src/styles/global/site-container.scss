@@ -1,8 +1,8 @@
 // Styles for the outer container elements of the website or webapp:
-// Typically '.site-wrapper' is the outer most element and '.site-pusher' is the inner most.
+// Typically '.site-container--outer' is the outer most element and '.site-container--inner' is the inner most.
 // Used to handle off canvas better in mobile environemnt, reduces need to have duplicate elements.
 
-.site-wrapper {
+.site-container--outer {
     margin: 0 auto;
     overflow: hidden;
     min-height: 100vh;
@@ -10,18 +10,18 @@
     background: $color-primary;
 }
 
-.site-pusher {
+.site-container--inner {
     min-height: 100vh;
     background: white;
 
     @include breakpoint($main-breakpoint) {
         left: 0;
-		height: 100%;
-		position: relative;
-		transition: transform $transition-time-default $transition-timing-default;
+    		height: 100%;
+    		position: relative;
+    		transition: transform $transition-time-default $transition-timing-default;
 
-		.menu-open & {
-			transform: translate3d(-($off-canvas-width), 0, 0);
-		}
+    		.menu-open & {
+    			transform: translate3d(-($off-canvas-width), 0, 0);
+    		}
     }
 }

@@ -10,8 +10,8 @@ import $ from 'jquery';
 $.fn.responsiveNav = function( options ) {
 
 	options = $.extend({}, {
-		    wrapperSelector:        '.site-wrapper',
-		    menuButtonSelector:     '.site--menu-btn',
+		    wrapperSelector:        '.site-container--outer',
+		    menuButtonSelector:     '.site-header__menu-btn',
 		    menuOpenClass:          'menu-open'
 	}, options);
 
@@ -47,7 +47,7 @@ $.fn.responsiveNav = function( options ) {
             $wrapper.bind( 'touchstart, click', bodyClickFn );
             menuOpen = true;
           }
-		}); 
+		});
 	};
 
   menuBtnFn();
@@ -57,4 +57,4 @@ $.fn.responsiveNav = function( options ) {
 
 
 // Make navigation responsive
-$('.site-navigation--main').responsiveNav();
+$('.site-navigation').responsiveNav();
