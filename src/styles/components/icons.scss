@@ -45,8 +45,34 @@ symbol {
   }
 }
 
-// Payment icons
-.payment-icons {
+// Shared Styles
+.payment-icons__list,
+.social-media__list {
+  @include plain-list(none, inline-block, 0);
+}
+
+
+// Payment Icons
+.payment-icons {}
+.payment-icons__list {
   user-select: none;
   cursor: default;
+}
+.payment-icons__item {}
+.payment-icons__icon {
+  width: $base-spacing-unit * 2.5;
+  height: $base-spacing-unit * 1.5;
+}
+
+
+// Social Media Icons
+.social-media {}
+.social-media__item {
+  display: inline-block;
+}
+.social-media__link {}
+.social-media__text {}
+.social-media__icon {
+  width: $base-spacing-unit * 1.5;
+  height:$base-spacing-unit * 1.5;
 }

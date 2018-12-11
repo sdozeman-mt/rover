@@ -1,36 +1,43 @@
 <footer class="site-footer">
   <div class="container">
+    <div class="social-media">
+      {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, YouTube, Vimeo,' | split: ', ' -%}
+      <ul class="social-media__list">
+        {% for social in social_accounts %}
+          {%- assign social_handle = social | handleize -%}
+          {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+          {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
 
-    {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-    <ul>
-      {% for social in social_accounts %}
-        {%- assign social_handle = social | handleize -%}
-        {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-        {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+          {% if settings[social_link] != blank %}
+            <li class="social-media__item">
+              <a class="social-media__link" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                {% include social_icon %}
+                <span class="social-media__text icon-fallback-text">{{ social }}</span>
+              </a>
+            </li>
+          {% endif %}
 
-        {% if settings[social_link] != blank %}
-          <li>
-            <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-              {% include social_icon %}
-              <span class="icon-fallback-text">{{ social }}</span>
-            </a>
-          </li>
-        {% endif %}
-
-      {% endfor %}
-    </ul>
+        {% endfor %}
+      </ul>
+    </div>
 
     {% if section.settings.show_payment_icons %}
-      {% unless shop.enabled_payment_types == empty %}
-        <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-        <ul class="payment-icons">
-          {% for type in shop.enabled_payment_types %}
-            <li>
-              {{ type | payment_type_svg_tag: class: 'icon' }}
-            </li>
-          {% endfor %}
-        </ul>
-      {% endunless %}
+      <div class="payment-icons">
+        {% unless shop.enabled_payment_types == empty %}
+          <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+          <ul class="payment-icons__list">
+          {% comment %} Custom Payment Icons {% endcomment %}
+          {% comment %} Enable providers in your store - [store].myshopify.com/admin/settings/payments {% endcomment %}
+          {% comment %} https://help.shopify.com/en/themes/customization/store/add-credit-card-icons {% endcomment %}
+            {% assign enabled_payment_types = 'visa,master,american_express,paypal' | remove: ' ' | split: ',' %}
+            {% for type in enabled_payment_types %}
+              <li class="payment-icons__item">
+                {{ type | payment_type_svg_tag: class: 'icon payment-icons__icon' }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endunless %}
+      </div>
     {% endif %}
 
     {%- assign footer_linklist = section.settings.footer_linklist -%}

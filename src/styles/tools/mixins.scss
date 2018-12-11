@@ -134,10 +134,14 @@
   }
 }
 
-@mixin plain-list() {
-  padding: 0;
-  list-style: none;
+@mixin plain-list( $style: inherit, $display: inherit, $padding: inherit, $margin: inherit) {
+  margin: $margin;
+  padding: $padding;
+  list-style: $style;
+
+    li { display: $display; }
 }
+
 
 @mixin beautify-link($default: inherit, $color: inherit) {
   color: $default;
