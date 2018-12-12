@@ -1,22 +1,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="social-media">
-      {%- assign social_icons = false -%}
-
-      {% if
-        settings.social_twitter_link != blank
-        or settings.social_facebook_link != blank
-        or settings.social_pinterest_link != blank
-        or settings.social_instagram_link != blank
-        or settings.social_tumblr_link != blank
-        or settings.social_snapchat_link != blank
-        or settings.social_youtube_link != blank
-        or settings.social_vimeo_link != blank
-        or template contains 'article'
-        or template contains 'blog'
-      %}
-        {%- assign social_icons = true -%}
-      {% endif %}      
+      {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, YouTube, Vimeo,' | split: ', ' -%}
       <ul class="social-media__list">
         {% for social in social_accounts %}
           {%- assign social_handle = social | handleize -%}
