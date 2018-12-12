@@ -1,7 +1,14 @@
 // Global Footer Styles
 
-.site-footer {}
+.site-footer {
+    padding: $base-spacing-unit 0;
+    box-shadow: $box-shadow-reverse;
+}
 
+.site-footer__content { text-align: center; }
+
+.site-footer__headline {}
+.site-footer__copy {}
 
 .footer-menu {}
 .footer-menu__list {

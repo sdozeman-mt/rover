@@ -52,8 +52,8 @@
         "settings": {
           "footer_linklist": "footer",
           "show_payment_icons": true,
-          "footer_title": "Title",
-          "footer_text": "Add your text here"
+          "footer_title": "",
+          "footer_text": ""
         }
       }
     },

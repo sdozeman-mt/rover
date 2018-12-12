@@ -1,5 +1,10 @@
 <footer class="site-footer">
   <div class="container">
+    <div class="site-footer__content">
+      <h2 class="site-footer__headline">{{ section.settings.footer_title }}</h2>
+      <p class="site-footer__copy">{{ section.settings.footer_text }}</p>
+    </div>
+
     <div class="social-media">
       {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, YouTube, Vimeo,' | split: ', ' -%}
       <ul class="social-media__list">
@@ -53,13 +58,6 @@
       </div>
     {% endif %}
 
-    <div id="textsection">
-      <div class="simpletext">
-        <h1> {{ section.settings.footer_title }} </h1>
-        <h3> {{ section.settings.footer_text }} </h3>
-      </div>
-    </div>
-
     <div>
       <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ 'Rover' | link_to: '/' }}. {{ powered_by_link }}</small>
       {% comment %} shop.name {% endcomment %}
@@ -86,14 +84,14 @@
       {
         "type": "text",
         "id": "footer_title",
-        "label": "Heading",
+        "label": "Footer Heading",
         "default": "Title"
       },
       {
         "type": "richtext",
         "id": "footer_text",
-        "label": "Add custom text below",
-        "default": "Add your text here"
+        "label": "Footer Content",
+        "default": "<p>Content</p>"
       }
     ]
   }

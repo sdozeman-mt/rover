@@ -1,25 +1,25 @@
-<div id="textsection">
+{% comment %} <div id="textsection">
   <div class="simpletext">
-    <h1> {{ section.settings.text-box }} </h1>
-    <h3> {{ section.settings.text }} </h3>
+    <h1> {{ section.settings.footer_title }} </h1>
+    <h3> {{ section.settings.footer_text }} </h3>
   </div>
 </div>
 {% schema %}
   {
-    "name": "Text Box",
-    "settings": [
+    ...
+
       {
-        "id": "footer_text_box",
         "type": "text",
-        "label": "Heading",
-        "default": "footer"
+        "id": "footer_title",
+        "label": "Footer Heading",
+        "default": "Title"
       },
       {
-        "id": "text",
         "type": "richtext",
-        "label": "Add custom text below",
-        "default": "<p>Add your text here</p>"
+        "id": "footer_text",
+        "label": "Footer Content",
+        "default": "<p>Content</p>"
       }
-    ]
+    
   }
-{% endschema %}
+{% endschema %} {% endcomment %}

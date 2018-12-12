@@ -3,8 +3,9 @@
 .site-main {
     // Ensure content isn't covered by fixed position header
     padding-top: ($base-spacing-unit * 9);
+    min-height: 58vh; // remove this line, it's for testing only
+}
 
-    .shopify-section {
-        margin: ($base-spacing-unit * 4) 0;
-    }
+.shopify-section {
+    margin: ($base-spacing-unit * 4) 0;
 }
