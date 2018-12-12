@@ -1,7 +1,22 @@
 <footer class="site-footer">
   <div class="container">
     <div class="social-media">
-      {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, YouTube, Vimeo,' | split: ', ' -%}
+      {%- assign social_icons = false -%}
+
+      {% if
+        settings.social_twitter_link != blank
+        or settings.social_facebook_link != blank
+        or settings.social_pinterest_link != blank
+        or settings.social_instagram_link != blank
+        or settings.social_tumblr_link != blank
+        or settings.social_snapchat_link != blank
+        or settings.social_youtube_link != blank
+        or settings.social_vimeo_link != blank
+        or template contains 'article'
+        or template contains 'blog'
+      %}
+        {%- assign social_icons = true -%}
+      {% endif %}      
       <ul class="social-media__list">
         {% for social in social_accounts %}
           {%- assign social_handle = social | handleize -%}
@@ -42,15 +57,27 @@
 
     {%- assign footer_linklist = section.settings.footer_linklist -%}
     {% if linklists[footer_linklist].links.size > 0 %}
-      <ul>
-        {% for link in linklists[footer_linklist].links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
+      <div class="footer-menu">
+        <ul class="footer-menu__list">
+          {% for link in linklists[footer_linklist].links %}
+            <li class="footer-menu__item">
+              <a class="footer-menu__link" href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
 
+    <div id="textsection">
+      <div class="simpletext">
+        <h1> {{ section.settings.footer_title }} </h1>
+        <h3> {{ section.settings.footer_text }} </h3>
+      </div>
+    </div>
+
     <div>
-      <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+      <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ 'Rover' | link_to: '/' }}. {{ powered_by_link }}</small>
+      {% comment %} shop.name {% endcomment %}
     </div>
   </div>
 </footer>
@@ -70,6 +97,18 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
+      },
+      {
+        "type": "text",
+        "id": "footer_title",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "footer_text",
+        "label": "Add custom text below",
+        "default": "Add your text here"
       }
     ]
   }

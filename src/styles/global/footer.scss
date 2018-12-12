@@ -1,3 +1,13 @@
 // Global Footer Styles
 
 .site-footer {}
+
+
+.footer-menu {}
+.footer-menu__list {
+    @include plain-list(none, block, 0, $base-spacing-unit 0);
+}
+.footer-menu__item {
+    margin-bottom: $base-spacing-unit * .5;
+}
+.footer-menu__link {}

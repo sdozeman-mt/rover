@@ -48,7 +48,7 @@ symbol {
 // Shared Styles
 .payment-icons__list,
 .social-media__list {
-  @include plain-list(none, inline-block, 0);
+  @include plain-list(none, inline-block, 0, $base-spacing-unit 0);
 }
 
 
