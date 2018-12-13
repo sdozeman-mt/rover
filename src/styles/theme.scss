@@ -30,6 +30,7 @@ Repository:
 // Tools
 @import './tools/mixins';
 @import './tools/functions';
+@import './tools/helpers';
 
 // Core
 @import './core/forms';
@@ -48,7 +49,7 @@ Repository:
 @import './components/placeholders';
 @import './components/responsive-images';
 @import './components/announcement-bar';
-@import './components/menu-button.scss';
+@import './components/menu-button';
 
 // Sections
 @import './sections/blog-posts';
@@ -56,6 +57,11 @@ Repository:
 @import './sections/featured-collection';
 @import './sections/featured-product';
 @import './sections/image-with-text';
+@import './sections/newsletter';
+
+// Static Sections
+@import './sections/static/hero';
+@import './sections/static/intro';
 
 // Global
 @import './global/base';

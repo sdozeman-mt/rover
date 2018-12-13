@@ -6,16 +6,24 @@
     box-shadow: $box-shadow-reverse;
 }
 
-.site-footer__content { margin-bottom: $base-spacing-unit * 2; }
+.site-footer__content { 
+    @include limit-width(580px, auto);
+    @include margin-trailer(2);
+}
 
 .site-footer__headline {}
 .site-footer__copy {}
 
-.footer-menu { margin-bottom: $base-spacing-unit * 2; }
+.footer-menu {    
+    @include margin-trailer(2);
+}
+
 .footer-menu__list {
     @include plain-list(none, block, 0, $base-spacing-unit 0);
 }
+
 .footer-menu__item {
-    margin-bottom: $base-spacing-unit * .5;
+    @include margin-trailer(.5);
 }
+
 .footer-menu__link {}

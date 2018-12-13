@@ -1,0 +1,9 @@
+.section.intro {
+  background: white;
+}
+
+.intro-content {
+  @include limit-width(580px, auto);
+  @include margin-trailer(2);
+  @include fancy-block($color-tetranary, center);
+}

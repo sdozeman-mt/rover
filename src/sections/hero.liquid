@@ -1,0 +1,54 @@
+<section class="section hero">
+  <div class="hero-content__background" style="background: url({{ hero_image | img_url: '1024x800' }}) center center no-repeat; background-size: cover;">
+    <span class="hero-content__overlay" style="opacity: {{ section.settings.overlay_range | times: 0.01 }};"></span>
+  </div>
+  
+  <div class="hero-content__foreground">
+    <div class="container container--small">
+      <div class="hero-content">
+        <h1 class="hero-content__heading alpha">{{ section.settings.hero_headline }}</h1>
+        <p class="hero-content__paragraph">{{ section.settings.hero_text }}</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name":           "Section Hero",
+    "settings": [
+      {
+        "type":       "image_picker",
+        "id":         "hero_image",
+        "label":      "Hero Image"
+      },
+      {
+        "type":       "range",
+        "id":         "overlay_range",
+        "min":        0,
+        "max":        100,
+        "step":       1,
+        "label":      "Opacity",
+        "default":    20
+      },
+      {
+        "type":       "text",
+        "id":         "hero_headline",
+        "label":      "Hero Heading",
+        "default":    "Lorem Ipsum"
+      },
+      {
+        "type":       "richtext",
+        "id":         "hero_text",
+        "label":      "Hero Paragraph",
+        "default":    "<p>Lorem Ipsum</p>"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

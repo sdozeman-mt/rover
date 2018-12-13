@@ -51,6 +51,11 @@ symbol {
   @include plain-list(none, inline-block, 0, $base-spacing-unit 0);
 }
 
+.payment-icons__item,
+.social-media__item {
+  margin: 0 ($base-spacing-unit / 4);
+}
+
 
 // Payment Icons
 .payment-icons {}

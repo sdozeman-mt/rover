@@ -1,0 +1,18 @@
+.section.newsletter {
+  background: $color-quinary;
+}
+
+.newsletter-content {
+  @include limit-width(580px, auto);
+  @include margin-trailer(2);
+  @include fancy-block($color-tetranary, center);
+}
+
+.newsletter-form {}
+
+.newsletter-form__message {}
+.newsletter-form__message--success {}
+
+.newsletter-form__input {}
+.newsletter-form__submit {}
+.newsletter-form__submit-text {}

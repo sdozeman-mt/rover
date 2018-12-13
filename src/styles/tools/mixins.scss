@@ -110,10 +110,10 @@
 }
 
 
+
 // Media Query Mixin
 // Use to create a breakpoint, ideally using predefined breakpoint variables
 // For each project, you can create additional breakpoints if required
-
 @mixin breakpoint($media-query) {
   @media only screen and (max-width: $media-query) {
       @content;
@@ -121,7 +121,6 @@
 }
 
 // Make sure you are using a variable for this breakpoint
-
 @mixin breakpoint-min($media-query) {
   @media only screen and (min-width: $media-query + 1px) {
       @content;
@@ -134,6 +133,10 @@
   }
 }
 
+
+
+
+// Removing default list styling
 @mixin plain-list( $style: inherit, $display: inherit, $padding: inherit, $margin: inherit) {
   margin: $margin;
   padding: $padding;
@@ -143,6 +146,20 @@
 }
 
 
+
+
+// Limits the text width of an element, good for
+// wrapping text before it reaches the container edges.
+// Use auto for $margin to center blocks.
+@mixin limit-width($width, $margin) {
+  width: 100%;
+  max-width: $width;
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+
+// Fancy or Plain links
 @mixin beautify-link($default: inherit, $color: inherit) {
   color: $default;
   text-decoration: none;
@@ -161,7 +178,6 @@
       }
     }
 }
-
 @mixin uglify-link($color: inherit) {
   transition: none;
 
@@ -169,4 +185,41 @@
       color: $color;
       text-decoration: underline;
     }
+}
+
+
+
+// Spacing and Margins
+@mixin margin-above($proportion: 1) {
+  margin-top: $base-spacing-unit * $proportion;
+}
+
+// Add a uniform bottom spacing to an element, same as spacing under paragraphs, list elements, etc
+@mixin margin-trailer($proportion: 1) {
+  margin-bottom: $base-spacing-unit * $proportion;
+}
+
+@mixin padding-trailer($proportion: 1) {
+  padding-bottom: $base-spacing-unit * $proportion;
+}
+
+// Creating a fancy block we can re-use for consistently
+// styled elements, arguments are:
+// color (trailer line) and position (text alignment)
+@mixin fancy-block($color, $position) {
+  position: relative;
+  text-align: $position;
+  padding-bottom: ($base-spacing-unit) + ($base-spacing-unit * .1);
+
+  &:after {
+    content: "";
+    left: 50%;
+    bottom: 0;
+    width: 55px;
+    display: block;
+    background: $color;
+    position: absolute;
+    transform: translateX(-50%);
+    height: $base-spacing-unit * .1;
+  }
 }

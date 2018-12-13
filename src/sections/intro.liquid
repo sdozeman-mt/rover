@@ -1,0 +1,34 @@
+<section class="section intro">
+  <div class="container container--small">
+    <div class="intro-content">
+      <h2 class="intro-content__heading beta">{{ section.settings.intro_title }}</h2>
+      <p class="intro-content__paragraph">{{ section.settings.intro_text }}</p>
+      </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name":         "Section Intro",
+    "settings": [
+      {
+        "type":     "text",
+        "id":       "intro_title",
+        "label":    "Intro Heading",
+        "default":  "Lorem Ipsum"
+      },
+      {
+        "type":     "richtext",
+        "id":       "intro_text",
+        "label":    "Intro Paragraph",
+        "default":  "<p>Lorem Ipsum</p>"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

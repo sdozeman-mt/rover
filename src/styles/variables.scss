@@ -81,8 +81,8 @@ $color-primary:     #252525;
 $color-secondary:   #a8d3c6;
 $color-tertiary:    #e5dc68;
 $color-tetranary:   #d62598;
-$color-quinary:     #000000; //5 colors too many?
-$color-senary:      #000000; //6 colors too many?
+$color-quinary:     #f6f6f6;
+$color-senary:      #eeeeee;
 
 // Link Colors
 $link-default:      $color-primary;
@@ -111,12 +111,13 @@ $color-yahoo: #7B0099;
 // Set consistent vertical and horizontal spacing units.
 // $base-spacing-unit        : $base-line-height/$font-size-base * 1rem;
 $base-spacing-unit        : 20px;
+$section-spacing-unit     : ($base-spacing-unit * 4) 0;
 
 $container-pad            : $base-spacing-unit;
 $container-max            : 1440px;
 $container-large-max      : 1600px;
-$container-small-max      : 940px;
-$container-xs-max         : 555px;
+$container-small-max      : 990px;
+$container-xs-max         : 540px;
 
 $btn-small-padding        : .2em;
 $btn-default-padding      : .7em;

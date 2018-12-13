@@ -1,0 +1,16 @@
+// Helper classes 
+
+.trailer--single {
+  @include margin-trailer(1);
+}
+.trailer--double {
+  @include margin-trailer(2);
+}
+
+.trailer--half {
+  @include margin-trailer(.5);
+}
+
+.trailer--none {
+  @include margin-trailer(0);
+}

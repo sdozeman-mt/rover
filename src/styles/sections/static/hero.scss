@@ -1,0 +1,32 @@
+.section.hero {
+  position: relative;
+  padding-top: ($section-spacing-unit + 140px);
+}
+
+.hero-content__background,
+.hero-content__overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  position: absolute;
+  background-color: black;
+}
+
+.hero-content__background { z-index: 0; }
+.hero-content__overlay { z-index: 10; }
+
+
+.hero-content__foreground {
+  z-index: 20;
+  position: relative;
+}
+
+.hero-content {
+  @include limit-width(580px, auto);
+  @include margin-trailer(2);
+  @include fancy-block(white, center);
+
+  color: white;
+}
