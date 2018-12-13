@@ -1,5 +1,5 @@
 <section class="section hero">
-  <div class="hero-content__background" style="background: url({{ hero_image | img_url: '1024x800' }}) center center no-repeat; background-size: cover;">
+  <div class="hero-content__background" style="background: url({{ section.settings.hero_image | img_url: '1024x800' }}) center center no-repeat; background-size: cover;">
     <span class="hero-content__overlay" style="opacity: {{ section.settings.overlay_range | times: 0.01 }};"></span>
   </div>
   

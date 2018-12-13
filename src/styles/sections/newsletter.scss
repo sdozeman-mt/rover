@@ -5,7 +5,8 @@
 .newsletter-content {
   @include limit-width(580px, auto);
   @include margin-trailer(2);
-  @include fancy-block($color-tetranary, center);
+  // @include fancy-block($color-tetranary, center);
+  text-align: center;
 }
 
 .newsletter-form {}

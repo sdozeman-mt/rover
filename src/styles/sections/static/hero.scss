@@ -1,6 +1,11 @@
 .section.hero {
+  min-height: 65vh;
   position: relative;
   padding-top: ($section-spacing-unit + 140px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-content__background,
