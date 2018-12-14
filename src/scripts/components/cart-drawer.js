@@ -1,7 +1,7 @@
 /**
- * Mobile Navigation Scripts
+ * Cart Drawer Scripts
  * ------------------------------------------------------------------------------
- * A file that contains scripts for the mobile navigation.
+ * A file that contains scripts for the off-canvas cart drawer feature.
  *
  */
 

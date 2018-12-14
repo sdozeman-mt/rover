@@ -13,12 +13,12 @@ $color-accent: var(--color-accent);
 $color-border: var(--color-border);
 
 // Helper colors for form error states
-$color-disabled: #000000;
+$color-disabled:        #000000;
 $color-disabled-border: #000000;
-$color-error: #ff6d6d;
-$color-error-bg: #ffffff;
-$color-success: #000000;
-$color-success-bg: #000000;
+$color-error:           #ff6d6d;
+$color-error-bg:        #ffffff;
+$color-success:         #000000;
+$color-success-bg:      #000000;
 
 // Typography
 $font-heading: var(--font-heading);
@@ -28,15 +28,15 @@ $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
 
 // Transitions
-$transition-duration: 250ms;
-$transition-timing: ease-in-out;
+$transition-duration:   250ms;
+$transition-timing:     ease-in-out;
 
 // // Grid
 // $grid-medium: 46.85em;
 // $grid-large: 61.85em;
 // $grid-widescreen: 87.5em;
 // $grid-max-width: 73.75em;
-$grid-gutter: 20px;
+$grid-gutter:           20px;
 
 // // Breakpoints used with the media-query mixin
 // $small: 'small';
@@ -87,20 +87,20 @@ $color-senary:      #eeeeee;
 // Link Colors
 $link-default:      $color-primary;
 $link-hovered:      $color-tetranary;
-$link-reversed:    invert($link-default);
+$link-reversed:     invert($link-default);
 $link-active:       darken($color-primary, 10%);
 
 // Social Media Colors
-$color-twitter: #00aced;
-$color-facebook: #3b5998;
-$color-googleplus: #dd4b39;
-$color-pinterest: #cb2027;
-$color-linkedin: #007bb6;
-$color-youtube: #bb0000;
-$color-vimeo: #1ab7ea;
-$color-instagram: #bc2a8d;
-$color-flickr: #ff0084;
-$color-yahoo: #7B0099;
+$color-twitter:     #00aced;
+$color-facebook:    #3b5998;
+$color-googleplus:  #dd4b39;
+$color-pinterest:   #cb2027;
+$color-linkedin:    #007bb6;
+$color-youtube:     #bb0000;
+$color-vimeo:       #1ab7ea;
+$color-instagram:   #bc2a8d;
+$color-flickr:      #ff0084;
+$color-yahoo:       #7B0099;
 
 
 /* -------------------------------------- */
@@ -122,6 +122,8 @@ $container-xs-max         : 540px;
 $btn-small-padding        : .2em;
 $btn-default-padding      : .7em;
 $btn-large-padding        : .8em;
+
+$header-height            : 90px;
 
 /* -------------------------------------- */
 

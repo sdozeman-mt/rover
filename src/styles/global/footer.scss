@@ -1,14 +1,25 @@
 // Global Footer Styles
 
 .site-footer {
-    text-align: center;
-    padding: $base-spacing-unit 0;
+    padding: $section-spacing-unit 0;    
     box-shadow: $box-shadow-reverse;
+
+    .grid__item {
+        text-align: center;
+
+        @include breakpoint-min($bp-sm) {
+            &:first-of-type { text-align: left; }
+            &:last-of-type { text-align: right; }
+        }
+    }
 }
 
 .site-footer__content { 
     @include limit-width(580px, auto);
     @include margin-trailer(2);
+    @include breakpoint-min($main-breakpoint) {
+        margin-right: 0;
+    }
 }
 
 .site-footer__headline {}
@@ -27,3 +38,9 @@
 }
 
 .footer-menu__link {}
+
+
+// Legal Stuffs
+.site-legal {
+    text-align: center;
+}

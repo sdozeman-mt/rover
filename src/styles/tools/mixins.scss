@@ -223,3 +223,12 @@
     height: $base-spacing-unit * .1;
   }
 }
+
+@mixin hide-text(){
+  width: 0;
+  height: 0;
+  display: block;
+  overflow: hidden;
+  text-indent: 101%;
+  white-space: nowrap;
+}

@@ -1,36 +1,41 @@
 // Global Navigation styles
 
 /* TODO?
- * 1. Add conditional styles for last-item dropdown
- * 2. Add active class styles to elements in menu
- * 3. Add drop-down functionality to mobile menu
- * 4. ...
+ * 1. Add responsive styles to same menu,
+ * 2. Add conditional styles for last-item dropdown
+ * 3. Add active class styles to elements in menu
+ * 4. Add drop-down functionality to mobile menu
+ * 5. ...
  */
 
 
-.main-navigation {
+.site-navigation {
     float: right;
-    margin-top: $base-spacing-unit * .1;
-    // // Ensure element never over/underlaps the logo
-    max-width: calc(100% - (#{$base-spacing-unit} * 15));
+    clear: right;
+    margin-bottom: -($base-spacing-unit / 2);
+    // Ensure element never over/underlaps the logo
+    width: calc(100% - (#{$base-spacing-unit} * 13));
 }
 
-.main-navigation__menu,
-.main-navigation__menu-child  {
+.site-navigation__menu,
+.site-navigation__menu-child  {
     margin: 0;
     list-style: none;
 }
 
-.main-navigation__menu {
+.site-navigation__menu {
     padding: 0;
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
 }
 
-.main-navigation__menu-child {
+.site-navigation__menu-child {
     opacity: 0;
     visibility: hidden;
+    transition: opacity $transition-duration $transition-timing,
+                visibility $transition-duration $transition-timing;
+
     width: 250px;
     position: absolute;
     background: white;
@@ -38,20 +43,15 @@
     z-index: $z-index-base * 4;
     box-shadow: $box-shadow-default;
     border-radius: $border-radius-bottom;
-    transform: translateY(-($base-spacing-unit * .1));
+    transform: translateY(-$base-spacing-unit);
     padding: ($base-spacing-unit / 2) $base-spacing-unit;
-
-    // @include breakpoint($main-breakpoint) {
-    //     transition: opacity $transition-duration $transition-timing,
-    //                 visibility $transition-duration $transition-timing;
-    // }
 }
 
-.main-navigation__list-item {
+.site-navigation__list-item {
     position: relative;
 
     &:hover {
-       > .main-navigation__menu-child {
+       > .site-navigation__menu-child {
            opacity: 1;
            visibility: visible;
         //    transition-delay: $transition-duration * 2;
@@ -59,9 +59,9 @@
     }
 }
 
-.main-navigation__list-link {
+.site-navigation__list-link {
     display: block;
-    padding: ($base-spacing-unit / 2) $base-spacing-unit;
+    padding: $base-spacing-unit;
     font-weight: $font-weight-thick;
 
     @include beautify-link($link-default, $link-hovered);
@@ -75,14 +75,11 @@
 }
 
  @include breakpoint($main-breakpoint) {
-    //  $link-hovered: $color-secondary;
-     
-    .main-navigation {
+    .site-navigation {
         top: -$base-spacing-unit;
         left: auto;
         width: auto;
         bottom: auto;
-        max-width: 100%;
         text-align: right;
         padding-top: 20px;
         position: absolute;
@@ -91,11 +88,11 @@
         padding: $base-spacing-unit;
     }
 
-    .main-navigation__menu {
+    .site-navigation__menu {
         flex-direction: column;
     }
 
-    .main-navigation__menu-child {
+    .site-navigation__menu-child {
         position: static;
         background: none;
 
@@ -104,27 +101,11 @@
         width: auto;
         transform: none;
         box-shadow: none;
-        border-radius: 0;
+        border-radius: none;
         visibility: visible;
     }
 
-    .list-item--secondary {
-        position: relative;
-
-        &:before {
-            top: ($base-spacing-unit / 1.1);
-            left: ($base-spacing-unit / 1.1);
-            content: "";
-            display: block;
-            position: absolute;
-            background: $link-hovered;
-            width: ($base-spacing-unit / 4);
-            height: ($base-spacing-unit / 4);
-            border-radius: ($base-spacing-unit / 4);
-        }
-    }
-
-    .main-navigation__list-link {
+    .site-navigation__list-link {
         color: white;
         font-size: $font-size-base;
         @include beautify-link($link-reversed, $link-hovered);

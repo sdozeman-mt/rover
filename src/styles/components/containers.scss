@@ -19,7 +19,7 @@
     |---------------------- window  ---------------------|
     |                                                    |
     |           | |                       | |            |
-    |           | |-------container-------| |            |
+    |           | |------ container ------| |            |
     |           | |                       | |            |
     |                                                    |
 
@@ -32,6 +32,11 @@
   margin: 0 auto;
   padding-left: $container-pad;
   padding-right: $container-pad;
+
+  @include breakpoint-min($bp-md) {
+    padding-left: $container-pad * 2;
+    padding-right: $container-pad * 2;
+  }
 }
 
 .container--small, %container--small {

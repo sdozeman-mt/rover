@@ -1,0 +1,16 @@
+// Global Cart Drawer styles
+
+/* TODO?
+ * 1. Add off canvas drawer
+ * 2. ...
+ */
+
+
+.site-header__cart {}
+.site-header__cart-link {
+    display: block;
+    padding: ($base-spacing-unit / 4);
+}
+.site-header__cart-text {
+    @include hide-text();
+}

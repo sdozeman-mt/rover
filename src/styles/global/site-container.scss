@@ -1,8 +1,8 @@
 // Styles for the outer container elements of the website or webapp:
-// Typically '.site-container--outer' is the outer most element and '.site-container--inner' is the inner most.
+// Typically '.site-container__outer' is the outer most element and '.site-container__inner' is the inner most.
 // Used to handle off canvas better in mobile environemnt, reduces need to have duplicate elements.
 
-.site-container--outer {
+.site-container__outer {
     margin: 0 auto;
     overflow: hidden;
     min-height: 100vh;
@@ -10,18 +10,19 @@
     background: $color-primary;
 }
 
-.site-container--inner {
+.site-container__inner {
     min-height: 100vh;
+    position: relative;
     background: white;
 
     @include breakpoint($main-breakpoint) {
         left: 0;
-    		height: 100%;
-    		position: relative;
-    		transition: transform $transition-time-default $transition-timing-default;
+        height: 100%;
+        position: relative;
+        transition: left $transition-time-default $transition-timing-default;
 
-    		.menu-open & {
-    			transform: translate3d(-($off-canvas-width), 0, 0);
-    		}
+        .js-menu__toggle--menu-open & {
+            left: -($off-canvas-width);
+        }
     }
 }

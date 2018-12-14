@@ -1,11 +1,12 @@
 .section.hero {
-  min-height: 65vh;
+  min-height: 75vh;
   position: relative;
-  padding-top: ($section-spacing-unit + 140px);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  margin-top: $header-height;
 }
 
 .hero-content__background,
@@ -31,7 +32,7 @@
 .hero-content {
   @include limit-width(580px, auto);
   @include margin-trailer(2);
-  @include fancy-block(white, center);
-
+  
   color: white;
+  text-align: center;
 }

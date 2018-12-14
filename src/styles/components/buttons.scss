@@ -1,11 +1,19 @@
-.button {
+.button, .btn {
   display: inline-block;
   vertical-align: middle;
-  width: auto;
+
   border: 0;
+  width: auto;
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
+
   user-select: none;
   appearance: none;
+
+  background: white;
+  margin: $base-spacing-unit 0;
+  font-weight: $font-weight-thick;
+  border-radius: $border-radius-base / 2;
+  padding: $btn-default-padding ($btn-default-padding * 2);
 }

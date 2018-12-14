@@ -52,57 +52,47 @@
         </div>
       {% endif %}
 
-      <a class="site-header__menu-btn">
-        <div class="site-header__menu-btn--toggle">
+      <a class="main-menu__btn js-menu__toggle">
+        <div class="main-menu__btn--toggle">
           <span class="p1"></span>
           <span class="p2"></span>
           <span class="p3"></span>
         </div>
-        <span class="site-header__menu-btn--text">Menu</span>
+        <span class="main-menu__btn--text">Menu</span>
       </a>
 
-      <div class="site-header__utility">
-        <div class="site-header__search">
-          <form action="/search" method="get" role="search" class="search-form">
-            <label for="Search-{{ section.id }}" class="label-hidden site-header__search--label">
-              {{ 'general.search.placeholder' | t }}
-            </label>
-
-            <input type="search"
-              name="q"
-              id="Search-{{ section.id }}"
-              class="site-header__search--input"
-              value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.placeholder' | t }}">
-
-            <button type="submit" class="button site-header__search--submit">
-              {% include 'icon-search' %}
-              <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-            </button>
-          </form>
+      <div class="utility">
+        <div class="utility__search">
+          {% comment %} {% include 'search-form' %} {% endcomment %}
+          <a class="utility__search-link js-search__toggle" href="#">
+            <span class="utility__search-icon">{% include 'icon-search' %}</span>
+          </a>
         </div>
-        <div class="site-header__cart">
-          <a class="site-header__cart-link" href="/cart">
-            {% include 'icon-cart' %}
-            {{ 'layout.cart.title' | t }}
-            ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+        <div class="utility__cart">
+          {% comment %} <a class="utility__cart-link" href="/cart"> {% endcomment %}
+          <a class="utility__cart-link js-cart__toggle" href="#">
+            <span class="utility__cart-icon">{% include 'icon-cart' %}</span>
+            <span class="utility__cart-text">
+              {{ 'layout.cart.title' | t }}
+              ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+            </span>
           </a>
         </div>
       </div>
 
-      <nav role="navigation" class="site-navigation">
-        <ul class="site-navigation__menu">
+      <nav role="navigation" class="main-navigation js-navigation">
+        <ul class="main-navigation__menu">
           {% for link in linklists[section.settings.menu].links %}
             {% if link.links != blank %}
-              <li class="site-navigation__list-item list-item--primary">
-                <a class="site-navigation__list-link" href="{{ link.url }}">
+              <li class="main-navigation__list-item list-item--primary">
+                <a class="main-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                   {% include 'icon-arrow-down' %}
                 </a>
-                <ul class="site-navigation__menu-child">
+                <ul class="main-navigation__menu-child">
                   {% for childlink in link.links %}
-                    <li class="site-navigation__list-item list-item--secondary">
-                      <a class="site-navigation__list-link" href="{{ childlink.url }}">
+                    <li class="main-navigation__list-item list-item--secondary">
+                      <a class="main-navigation__list-link" href="{{ childlink.url }}">
                         {{ childlink.title }}
                       </a>
                     </li>
@@ -110,8 +100,8 @@
                 </ul>
               </li>
             {% else %}
-              <li class="site-navigation__list-item">
-                <a class="site-navigation__list-link" href="{{ link.url }}">
+              <li class="main-navigation__list-item">
+                <a class="main-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                 </a>
               </li>
@@ -154,7 +144,7 @@
 
 {% if section.settings.logo != blank %}
   <style>
-    .logo-image {
+    .site-header__logo-image {
       display: block;
       max-width: {{ section.settings.logo_max_width }}px;
     }

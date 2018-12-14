@@ -19,7 +19,7 @@ h4, .delta,
 h5, .epsilon,
 h6, .zeta,
 .heading {
-  font-weight: bold;
+  font-weight: $font-weight-thick;
   font-family: $font-heading;
   margin: $base-spacing-unit 0;
 }

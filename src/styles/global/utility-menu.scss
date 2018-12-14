@@ -1,0 +1,48 @@
+// Global Utility-Menu Styles
+.utility {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // margin-bottom: ($base-spacing-unit / 2);
+
+    // Ensure element never over/underlaps the logo
+    max-width: calc(100% - (#{$base-spacing-unit} * 15));
+}
+
+// Cart Link Styles
+.utility__cart {}
+.utility__cart-link {
+    display: block;
+    padding: ($base-spacing-unit / 2);
+    font-weight: $font-weight-thick;
+    @include beautify-link($link-default, $link-hovered);
+}
+.utility__cart-text {
+    @include hide-text();
+}
+
+// Search Link Styles
+.utility__search {
+    padding: ($base-spacing-unit / 2);
+}
+
+@include breakpoint($main-breakpoint) {
+    .utility {
+        margin: ($base-spacing-unit / 5) $base-spacing-unit;
+        // display: none;
+    }
+    //     flex-direction: column;
+    //     align-items: flex-end;
+    //     justify-content: space-evenly;
+    // }
+
+    // .site-header__cart {
+    //     order: 1;
+    //     margin-bottom: ($base-spacing-unit * .75);
+
+    // }
+    // .site-header__search {
+    //     order: 2;
+    // }
+}

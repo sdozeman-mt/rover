@@ -69,7 +69,12 @@ Repository:
 @import './global/footer';
 @import './global/global';
 @import './global/navigation';
+@import './global/utility-menu';
 @import './global/site-container';
+
+@import './global/cart-drawer.scss';
+@import './global/search-form.scss';
+@import './global/search-results.scss';
 
 // Templates
 @import './templates/gift_card';

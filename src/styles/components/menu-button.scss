@@ -1,13 +1,13 @@
 // Menu Button specific styling
 
-.site-header__menu-btn {
+.main-menu__btn {
   float: right;
   display: none;
   cursor: pointer;
   margin-top: ($base-spacing-unit / 5);
 }
 
-.site-header__menu-btn--toggle {
+.main-menu__btn--toggle {
   width: 100%;
   position: relative;
   height: $base-spacing-unit;
@@ -29,20 +29,20 @@
       &:nth-of-type(3) { top: ($base-spacing-unit * .8); }
     }
 }
-.site-header__menu-btn--text {
+.main-menu__btn--text {
   font-weight: $font-weight-thick;
   font-size: ($font-size-base * .75);
 }
 
-.site-header__menu-btn {
+.main-menu__btn {
   float: right;
   display: none;
   cursor: pointer;
 
-    .menu-open & {
+    .js-menu__toggle--menu-open & {
       color: $link-hovered;
       
-      .site-header__menu-btn--toggle {
+      .main-menu__btn--toggle {
         span {
           background: $link-hovered;
 
@@ -59,7 +59,7 @@
 }
 
 @include breakpoint($main-breakpoint) {
-  .site-header__menu-btn {
+  .main-menu__btn {
     display: block;
   }
 }

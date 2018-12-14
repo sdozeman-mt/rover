@@ -1,7 +1,7 @@
 /**
- * Mobile Navigation Scripts
+ * Search Popup Scripts
  * ------------------------------------------------------------------------------
- * A file that contains scripts for the mobile navigation.
+ * A file that contains scripts for the search window.
  *
  */
 

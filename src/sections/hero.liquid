@@ -8,6 +8,9 @@
       <div class="hero-content">
         <h1 class="hero-content__heading alpha">{{ section.settings.hero_headline }}</h1>
         <p class="hero-content__paragraph">{{ section.settings.hero_text }}</p>
+        {% if section.settings.hero_link != blank %}
+          <a href="{{ section.settings.hero_link }}" class="button hero-content__button">{{ section.settings.hero_linktext }}</a>
+        {% endif %}
         </div>
     </div>
   </div>
@@ -42,6 +45,17 @@
         "id":         "hero_text",
         "label":      "Hero Paragraph",
         "default":    "<p>Lorem Ipsum</p>"
+      },
+      {
+        "type":       "url",
+        "id":         "hero_link",
+        "label":      "Button link"
+      },
+      {        
+        "type":       "text",
+        "id":         "hero_linktext",
+        "label":      "Button Text",
+        "default":    "Click Here"
       }
     ]
   }
