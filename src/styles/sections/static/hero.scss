@@ -1,5 +1,5 @@
 .section.hero {
-  min-height: 75vh;
+  min-height: 50vh;
   position: relative;
 
   display: flex;
@@ -7,6 +7,12 @@
   justify-content: center;
 
   margin-top: $header-height;
+
+  .template-index & {
+    @include breakpoint-min($main-breakpoint){
+      min-height: calc(100vh - #{$header-height});
+    }
+  }
 }
 
 .hero-content__background,

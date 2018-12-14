@@ -31,7 +31,9 @@
 .main-navigation__menu-child {
     opacity: 0;
     visibility: hidden;
+
     width: 250px;
+    display: none;
     position: absolute;
     background: white;
     left: -$base-spacing-unit;
@@ -41,10 +43,11 @@
     transform: translateY(-($base-spacing-unit * .1));
     padding: ($base-spacing-unit / 2) $base-spacing-unit;
 
-    // @include breakpoint($main-breakpoint) {
-    //     transition: opacity $transition-duration $transition-timing,
-    //                 visibility $transition-duration $transition-timing;
-    // }
+    @include breakpoint-min($main-breakpoint) {
+        display: block;
+        transition: opacity $transition-duration $transition-timing,
+                    visibility $transition-duration $transition-timing;
+    }
 }
 
 .main-navigation__list-item {

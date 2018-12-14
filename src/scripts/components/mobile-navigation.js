@@ -12,7 +12,8 @@ $.fn.responsiveNav = function( options ) {
 	options = $.extend({}, {
 		    wrapperSelector:        '.js-page__outer',
 		    menuButtonSelector:     '.js-menu__toggle',
-		    menuOpenClass:          ' js-menu__toggle--menu-open'
+			menuOpenClass:          ' js-menu__toggle--open',
+			offCanvasOpenClass:		' js-off-canvas__toggle--open'
 	}, 		options);
 
 	let $this = $(this),
@@ -21,7 +22,7 @@ $.fn.responsiveNav = function( options ) {
 		    $menuButton = $( options.menuButtonSelector);
 
 	const closeNav = () => {
-			$wrapper.removeClass( options.menuOpenClass );
+			$wrapper.removeClass( options.offCanvasOpenClass );
 		    $menuButton.removeClass( options.menuOpenClass );
 		    menuOpen = false;
 	};
@@ -42,7 +43,7 @@ $.fn.responsiveNav = function( options ) {
 			if ( menuOpen ) {
 				closeNav();
 			} else {
-				$wrapper.addClass( options.menuOpenClass );
+				$wrapper.addClass( options.offCanvasOpenClass );
 				$menuButton.addClass( options.menuOpenClass );
 				$wrapper.bind( 'touchstart, click', bodyClickFn );
 				menuOpen = true;

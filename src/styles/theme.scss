@@ -23,6 +23,7 @@ Repository:
  * [replace with theme name] | Built with Slate
  */
 @import '~normalize.css/normalize';
+@import '~magnific-popup/dist/magnific-popup';
 
 // Settings
 @import './variables';
@@ -71,6 +72,7 @@ Repository:
 @import './global/navigation';
 @import './global/utility-menu';
 @import './global/site-container';
+@import './global/magnific.scss';
 
 @import './global/cart-drawer.scss';
 @import './global/search-form.scss';

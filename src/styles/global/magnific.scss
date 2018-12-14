@@ -1,0 +1,60 @@
+/* Custom Magnific Popup CSS edits, includes:
+ * Base Popup styling
+ * Zoom Effects
+ * Close Button
+ * More to come...
+ */
+
+
+// Base Styling to match Theme
+.mfp-close-btn-in .mfp-close,
+.mfp-close {
+  color: white;
+  font-size: $h2-font-size;
+  top: ($base-spacing-unit * 2);
+  right: ($base-spacing-unit * 2);
+}
+
+.mfp-title {
+  padding: 0;
+  text-align: center;
+  line-height: inherit;
+}
+
+// Fade-In-Out Styling
+// Custom Class based
+.mfp-fade {
+  &.mfp-bg, .mfp-container {
+    opacity: 0;
+    transition: opacity $transition-default;
+    -webkit-backface-visibility: hidden;
+  }
+
+  &.mfp-ready .mfp-container {
+    opacity: 1;
+  }
+  &.mfp-ready.mfp-bg {
+    opacity: 0.95;
+
+  }
+  &.mfp-removing .mfp-container, 
+  &.mfp-removing.mfp-bg {
+    opacity: 0;
+  }
+}
+
+
+// Flex-Centering Content
+// Custom Class based
+.mfp-centered {
+  .mfp-container:before { display: none; }
+
+  .mfp-content {
+    height: 100%;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -39,7 +39,7 @@
   display: none;
   cursor: pointer;
 
-    .js-menu__toggle--menu-open & {
+    &.js-menu__toggle--open {
       color: $link-hovered;
       
       .main-menu__btn--toggle {

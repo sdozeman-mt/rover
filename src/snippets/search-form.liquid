@@ -1,17 +1,17 @@
-<form action="/search" method="get" role="search" class="search-form">
-  <label for="Search-{{ section.id }}" class="label-hidden site-header__search--label">
+<form action="/search" method="get" role="search" class="search-form input-group">
+  <label for="Search-{{ section.id }}" class="label-hidden search-form__label input-group__label">
     {{ 'general.search.placeholder' | t }}
   </label>
 
   <input type="search"
     name="q"
     id="Search-{{ section.id }}"
-    class="site-header__search--input"
+    class="search-form__input input-group__input"
     value="{{ search.terms | escape }}"
     placeholder="{{ 'general.search.placeholder' | t }}">
 
-  <button type="submit" class="button site-header__search--submit">
-    {% include 'icon-search' %}
-    <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+  <button type="submit" class="search-form__submit input-group__btn">
+    <span class="search-form__submit-icon">{% include 'icon-search' %}</span>
+    <span class="icon-fallback-text search-form__submit-text">{{ 'general.search.submit' | t }}</span>
   </button>
 </form>

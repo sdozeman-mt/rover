@@ -8,5 +8,21 @@
  * 5. ...
  */
 
+ #search-modal {
+    width: 100%;
+    outline: none;
+    appearance: none;
+ }
 
- .search-form {}
+ .search-form {
+    @include margin-trailer(1);
+    @include limit-width(500px, auto);
+ }
+
+ .search-form__label {}
+ .search-form__input {}
+ .search-form__submit {
+     background: darken($color-quinary, 5%);
+ }
+ .search-form__submit-text {}
+ .search-form__submit-icon {}

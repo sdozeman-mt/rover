@@ -54,3 +54,28 @@ option {
   background-color: $color-error-bg;
   color: $color-body-text;
 }
+
+
+
+.input-group {
+  max-width: 100%;
+  position: relative;
+  padding-right: $submit-width;
+}
+
+.input-group__input, 
+.input-group__btn {
+  border: 0;
+  width: 100%;
+  height: $input-height;
+  vertical-align: middle;
+  padding: ($base-spacing-unit / 2) $base-spacing-unit;
+}
+
+.input-group__btn {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: $submit-width;
+    padding: $base-spacing-unit / 2;
+}

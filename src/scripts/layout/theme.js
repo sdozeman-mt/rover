@@ -11,6 +11,7 @@ import '../../styles/theme.scss.liquid';
 import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
 import {cookiesEnabled} from '@shopify/theme-cart';
 
+import '../components/magnific-popup.js';
 import '../components/mobile-navigation';
 
 // Common a11y fixes

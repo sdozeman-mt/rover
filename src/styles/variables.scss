@@ -84,6 +84,9 @@ $color-tetranary:   #d62598;
 $color-quinary:     #f6f6f6;
 $color-senary:      #eeeeee;
 
+// Grays?
+$color-gray:        #e9e9e9; // darken($color-quinary, 5%);
+
 // Link Colors
 $link-default:      $color-primary;
 $link-hovered:      $color-tetranary;
@@ -192,3 +195,9 @@ $main-breakpoint    : $bp-lg;
 
 // OFF CANVAS
 $off-canvas-width   : 250px;
+
+/* --------------------------------------- */
+
+// FORMS
+$input-height       : $base-spacing-unit * 2.55;
+$submit-width       : $input-height;
