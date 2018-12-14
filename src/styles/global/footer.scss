@@ -20,6 +20,8 @@
     @include breakpoint-min($main-breakpoint) {
         margin-right: 0;
     }
+
+    p { margin: ($base-spacing-unit / 2); }
 }
 
 .site-footer__headline {}

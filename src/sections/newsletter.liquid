@@ -13,10 +13,10 @@
         <label class="newsletter-content__heading gamma" for="Email">{{ section.settings.section_title | escape }}</label>
       {% endif %}
       {% if section.settings.subheading != blank %}
-        <p class="newsletter-content__subheading">{{ section.settings.subheading | escape }}</p>
+        <p class="newsletter-content__subheading trailer--double">{{ section.settings.subheading | escape }}</p>
       {% endif %}
 
-      <div class="newsletter-form trailer--single">
+      <div class="newsletter-form input-group trailer--single">
         {% form 'customer' %}
           {{ form.errors | default_errors }}
           {% if form.posted_successfully? %}
@@ -24,14 +24,14 @@
           {% else %}
             <input type="hidden" name="contact[tags]" value="newsletter">
             <input type="email"
-              class="newsletter-form__input"
+              class="newsletter-form__input input-group__input"
               name="contact[email]"
               id="Email"
               value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
               placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
               autocorrect="off"
               autocapitalize="off">
-            <button class="newsletter-form__submit" type="submit" name="commit" id="Subscribe">
+            <button class="newsletter-form__submit input-group__btn input-group__btn--text" type="submit" name="commit" id="Subscribe">
               <span class="newsletter-form__submit-text">{{ 'general.newsletter_form.submit' | t }}</span>
             </button>
           {% endif %}

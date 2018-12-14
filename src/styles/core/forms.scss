@@ -61,12 +61,16 @@ option {
   max-width: 100%;
   position: relative;
   padding-right: $submit-width;
+  box-shadow: $box-shadow-default;
+
+  // border: $border-width $border-style $border-color;
 }
 
 .input-group__input, 
 .input-group__btn {
   border: 0;
   width: 100%;
+  outline: none;
   height: $input-height;
   vertical-align: middle;
   padding: ($base-spacing-unit / 2) $base-spacing-unit;
@@ -78,4 +82,7 @@ option {
     position: absolute;
     width: $submit-width;
     padding: $base-spacing-unit / 2;
+    background: darken($color-quinary, 5%);
 }
+
+.input-group__btn--text { width: auto; }

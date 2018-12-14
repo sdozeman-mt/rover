@@ -9,17 +9,29 @@
 // Base Styling to match Theme
 .mfp-close-btn-in .mfp-close,
 .mfp-close {
-  color: white;
+  opacity: 1;
   font-size: $h2-font-size;
-  top: ($base-spacing-unit * 2);
+  top: $base-spacing-unit;
   right: ($base-spacing-unit * 2);
+  @include beautify-link($link-default, $link-hovered);
+  @include breakpoint($main-breakpoint) {
+    right: $base-spacing-unit;
+  }
 }
+
+.mfp-container { padding: 0; }
 
 .mfp-title {
   padding: 0;
+  color: black;
   text-align: center;
   line-height: inherit;
 }
+
+.mfp-bg {
+  background: white;
+}
+
 
 // Fade-In-Out Styling
 // Custom Class based
@@ -30,13 +42,11 @@
     -webkit-backface-visibility: hidden;
   }
 
+  &.mfp-ready.mfp-bg,
   &.mfp-ready .mfp-container {
     opacity: 1;
   }
-  &.mfp-ready.mfp-bg {
-    opacity: 0.95;
 
-  }
   &.mfp-removing .mfp-container, 
   &.mfp-removing.mfp-bg {
     opacity: 0;
