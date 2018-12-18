@@ -68,6 +68,7 @@
   *zoom: 1;
 }
 
+
 /**
  * Hide element but make it accessible to screen readers
  *
@@ -87,6 +88,7 @@
   border: 0;
   clip: rect(0 0 0 0);
 }
+
 
 /**
  * Reverse the properties applied by @mixin visually-hidden
@@ -133,6 +135,22 @@
   }
 }
 
+// Hides text in an element by squishing the text into oblivion. 
+// Use this if you need to hide text contained in an inline element but still have it read by a screen reader.
+@mixin squish-text {
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+
+// Hide elements from all users.//
+// Used for elements which should not be immediately displayed to any user. An
+// example would be a collapsible fieldset that will be expanded with a click
+// from a user. The effect of this class can be toggled with the jQuery show()
+// and hide() functions.
+@mixin element-hidden {
+  display: none;
+}
 
 
 
@@ -144,7 +162,6 @@
 
     li { display: $display; }
 }
-
 
 
 
@@ -224,6 +241,25 @@
   }
 }
 
+// Creating a fancy hover link used for block elements
+// Example: <a><img class="image" /> Click me</a>
+// Also works with background-image if the 
+// Div containing the background has the class '.image'
+@mixin fancy-hover($bg, $opacity) {
+  background: $bg;
+
+    .image {
+      opacity: 1;
+      transition: $transition-default;
+    }
+
+    &:hover {
+      .image { opacity: $opacity; }
+    }
+}
+
+// Mixing to hide text from screen but still
+// allow screen readers to see it
 @mixin hide-text(){
   width: 0;
   height: 0;
@@ -231,4 +267,31 @@
   overflow: hidden;
   text-indent: 101%;
   white-space: nowrap;
+}
+
+// Mixin to handle background images
+// Acepts: size (cover), align-x (top), align-y (left)
+@mixin background-img($size: cover, $alignx: center, $aligny: center, $repeat: no-repeat) {
+  background-size: $size;
+  background-repeat: $repeat;
+  background-position: $alignx $aligny;
+}
+
+// Preserve / Set aspect ratios on images
+// https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+    &:before {
+      content: "";
+      width: 100%;
+      display: block;
+      padding-top: ($height / $width) * 100%;
+    }
+    > image {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+    }
 }

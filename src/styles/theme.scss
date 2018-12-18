@@ -15,7 +15,7 @@ Theme:      Rover (v1.0.0)
 Author:     Sean Dozeman
 Company:    Major Tom
 Website:    www.majortom.com
-Repository: 
+Repository: https://github.com/sdozeman-mt/rover
 */
 
 
@@ -32,6 +32,7 @@ Repository:
 @import './tools/mixins';
 @import './tools/functions';
 @import './tools/helpers';
+@import './tools/island';
 
 // Core
 @import './core/forms';
@@ -49,6 +50,7 @@ Repository:
 @import './components/icons';
 @import './components/placeholders';
 @import './components/responsive-images';
+@import './components/responsive-bg-images';
 @import './components/announcement-bar';
 @import './components/menu-button';
 
@@ -76,8 +78,8 @@ Repository:
 
 @import './global/cart-drawer.scss';
 @import './global/search-form.scss';
-@import './global/search-results.scss';
 
 // Templates
 @import './templates/gift_card';
 @import './templates/product';
+@import './templates/search-results.scss';
