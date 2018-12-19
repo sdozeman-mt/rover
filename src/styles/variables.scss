@@ -28,8 +28,8 @@ $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
 
 // Transitions
-$transition-duration:   250ms;
-$transition-timing:     ease-in-out;
+$transition-duration:   $transition-time-default;
+$transition-timing:     $transition-timing-default;
 
 // // Grid
 // $grid-medium: 46.85em;
@@ -164,49 +164,49 @@ $z-index-base              : 100;
 /* --------------------------------------- */
 
 // TYPOGRAPHY
-// $base-font-family    : 'Source Sans Pro', Helvetica, Arial, sans-serif;
-// $heading-font-family : 'Roboto Condensed', Helvetica, Arial, sans-serif;
-// $body-font-family    :  $base-font-family;
+// $base-font-family       : 'Source Sans Pro', Helvetica, Arial, sans-serif;
+// $heading-font-family    : 'Roboto Condensed', Helvetica, Arial, sans-serif;
+// $body-font-family       :  $base-font-family;
 
-$base-font-size     : 16px;
-$base-line-height   : 1.4;
+$base-font-size            : 16px;
+$base-line-height          : 1.4;
 
-$h1-font-size        : 60px;
-$h2-font-size        : 40px;
-$h3-font-size        : 32px;
-$h4-font-size        : 26px;
-$h5-font-size        : 22px;
-$h6-font-size        : 20px;
+$h1-font-size              : 60px;
+$h2-font-size              : 40px;
+$h3-font-size              : 32px;
+$h4-font-size              : 26px;
+$h5-font-size              : 22px;
+$h6-font-size              : 20px;
 
-$hero-font-size      : $h1-font-size;
-$small-font-size     : 14px;
+$hero-font-size            : $h1-font-size;
+$small-font-size           : 14px;
 
 /* --------------------------------------- */
 
 // MEDIA QUERIES
 // Breakpoints
-$bp-xs              : 529px;
-$bp-sm              : 767px;
-$bp-md              : 819px;
-$bp-lg              : 1023px;
-$bp-xl              : 1199px;
+$bp-xs                     : 529px;
+$bp-sm                     : 767px;
+$bp-md                     : 819px;
+$bp-lg                     : 1023px;
+$bp-xl                     : 1199px;
 
-$bp-array           : '{"xs": "#{$bp-xs}", "sm": "#{$bp-sm}", "md": "#{$bp-md}", "lg": "#{$bp-lg}" ,"xl": "#{$bp-xl}"}';
+$bp-array                  : '{"xs": "#{$bp-xs}", "sm": "#{$bp-sm}", "md": "#{$bp-md}", "lg": "#{$bp-lg}" ,"xl": "#{$bp-xl}"}';
 
-$large-breakpoint   : $bp-xl;
+$large-breakpoint          : $bp-xl;
 
 // Main breakpoint, usually the point where we change from 'mobile' to 'desktop'
 // (ie. change from collapsible menu to normal menu)
-$main-breakpoint    : $bp-lg;
+$main-breakpoint           : $bp-lg;
 
 // OFF CANVAS
-$off-canvas-width   : 250px;
+$off-canvas-width          : 250px;
 
 /* --------------------------------------- */
 
 // FORMS
-$input-height       : $base-spacing-unit * 2.75;
-$submit-width       : $input-height;
-// $border-width       : 1px;
-// $border-style       : solid;
-// $border-color       : black;
+$input-height              : $base-spacing-unit * 2.75;
+$submit-width              : $input-height;
+// $border-width           : 1px;
+// $border-style           : solid;
+// $border-color           : black;
