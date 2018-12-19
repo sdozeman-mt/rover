@@ -2,27 +2,28 @@
 // Typically '.site-container__outer' is the outer most element and '.site-container__inner' is the inner most.
 // Used to handle off canvas better in mobile environemnt, reduces need to have duplicate elements.
 
+.site-container__outer,
+.site-container__inner {
+    min-height: 100vh;
+    position: relative;
+}
+
 .site-container__outer {
     margin: 0 auto;
     overflow: hidden;
-    min-height: 100vh;
-    position: relative;
     background: $color-primary;
 }
 
 .site-container__inner {
-    min-height: 100vh;
-    position: relative;
     background: white;
+    padding-top: $header-height;
 
     @include breakpoint($main-breakpoint) {
-        left: 0;
         height: 100%;
-        position: relative;
-        transition: left $transition-time-default $transition-timing-default;
+        transition: transform $transition-time-default $transition-timing-default;
 
         .js-off-canvas__toggle--open & {
-            left: -($off-canvas-width);
+            transform: translateX(-($off-canvas-width));
         }
     }
 }

@@ -17,13 +17,15 @@ $.fn.responsiveNav = function( options ) {
 	}, 		options);
 
 	let $this = $(this),
-		    menuOpen = false,
-		    $wrapper = $( options.wrapperSelector ),
+			menuOpen 	= false,
+			$body 		= $('body'),
+		    $wrapper 	= $( options.wrapperSelector ),
 		    $menuButton = $( options.menuButtonSelector);
 
 	const closeNav = () => {
+			$body.removeClass (options.menuOpenClass );
+			$menuButton.removeClass( options.menuOpenClass );
 			$wrapper.removeClass( options.offCanvasOpenClass );
-		    $menuButton.removeClass( options.menuOpenClass );
 		    menuOpen = false;
 	};
 
@@ -43,8 +45,9 @@ $.fn.responsiveNav = function( options ) {
 			if ( menuOpen ) {
 				closeNav();
 			} else {
-				$wrapper.addClass( options.offCanvasOpenClass );
+				$body.addClass (options.menuOpenClass );
 				$menuButton.addClass( options.menuOpenClass );
+				$wrapper.addClass( options.offCanvasOpenClass );
 				$wrapper.bind( 'touchstart, click', bodyClickFn );
 				menuOpen = true;
 			}

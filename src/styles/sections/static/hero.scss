@@ -6,8 +6,6 @@
   align-items: center;
   justify-content: center;
 
-  margin-top: $header-height;
-
   .template-index & {
     @include breakpoint-min($main-breakpoint){
       min-height: calc(100vh - #{$header-height});
