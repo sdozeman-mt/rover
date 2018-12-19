@@ -10,5 +10,11 @@
     
     &.style--dark { background: $theme-dark; }
     &.style--light { background: $theme-light; }
+
+
+
+    @include breakpoint($main-breakpoint) {
+        padding: ($section-spacing-unit / 2) 0;
+    }
 }
 

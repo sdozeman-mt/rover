@@ -79,6 +79,7 @@
 .trailer--single {
   @include margin-trailer(1);
 }
+
 .trailer--double {
   @include margin-trailer(2);
 }
@@ -89,6 +90,22 @@
 
 .trailer--none {
   @include margin-trailer(0);
+}
+
+.leader--single {
+  @include margin-above(1);
+}
+
+.leader--double {
+  @include margin-above(2);
+}
+
+.leader--half {
+  @include margin-above(.5);
+}
+
+.leader--none {
+  @include margin-above(0);
 }
 
 /* -------------------------------------- */
@@ -200,4 +217,8 @@
 // More specific
 .fancy-hover {
   @include fancy-hover(black, .75);
+}
+
+.fancy-block {
+  @include fancy-block($color-tetranary, center);
 }

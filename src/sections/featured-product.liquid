@@ -9,6 +9,19 @@
 
 <div data-section-id="{{ section.id }}" data-section-type="product" class="{{ section.id }}">
 
+  {% if template == "index" %}
+
+    <section class="section featured-product style--{{ section.settings.theme_style }}">
+      <div class="container">
+
+        <h3 class="featured-product__title gamma text--center trailer--double">{{ section.settings.title | escape }}</h3>
+              <a href="{{ product.url }}">Product Link</a>
+        <div class="">
+      </div>
+    </section>
+
+  {% else %}
+
   {% for image in product.images %}
     {% capture wrapper_class %}
       {%- unless featured_image == image -%}
@@ -129,6 +142,7 @@
       {{ product | json }}
     </script>
   {% endunless %}
+  {% endif %}
 </div>
 
 {% schema %}
@@ -139,6 +153,23 @@
         "type": "product",
         "id": "product",
         "label": "Product"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "radio",
+        "id": "theme_style",
+        "label": "Theme Style",
+        "options":[
+          { "value": "light", "label": "Light" },
+          { "value": "dark", "label": "Dark" }
+        ],
+        "default": "light",
+        "info": "Light or Dark background style for this section"
       },
       {
         "type": "checkbox",

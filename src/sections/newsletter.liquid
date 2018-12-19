@@ -6,7 +6,7 @@
   - Heading: title of the newsletter section
   - Subheading: description of the newsletter section
 {%- endcomment -%}
-<section class="section newsletter">
+<section class="section newsletter style--{{ section.settings.theme_style }}">
   <div class="container container--small">
     <div class="newsletter-content">
       {% if section.settings.section_title != blank %}
@@ -20,7 +20,7 @@
         {% form 'customer' %}
           {{ form.errors | default_errors }}
           {% if form.posted_successfully? %}
-            <p class="newsletter-form__message--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+            <p class="newsletter-form__message--success ">{{ 'general.newsletter_form.confirmation' | t }}</p>
           {% else %}
             <input type="hidden" name="contact[tags]" value="newsletter">
             <input type="email"
@@ -56,6 +56,17 @@
         "id": "subheading",
         "label": "Subheading",
         "default": "A short sentence describing what someone will receive by subscribing"
+      },
+      {
+        "type": "radio",
+        "id": "theme_style",
+        "label": "Theme Style",
+        "options":[
+          { "value": "light", "label": "Light" },
+          { "value": "dark", "label": "Dark" }
+        ],
+        "default": "light",
+        "info": "Light or Dark background style for this section"
       },
       {
         "type": "paragraph",

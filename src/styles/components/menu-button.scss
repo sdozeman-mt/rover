@@ -1,12 +1,6 @@
 // Menu Button specific styling
 
-.main-menu__btn {
-  float: right;
-  display: none;
-  cursor: pointer;
-  margin-top: ($base-spacing-unit / 3.2);
-}
-
+// Button Insides
 .main-menu__btn--toggle {
   width: 100%;
   position: relative;
@@ -58,9 +52,16 @@
     }
 }
 
-@include breakpoint($main-breakpoint) {
-  .main-menu__btn {
+// Button Outsides
+.main-menu__btn {
+  float: right;
+  display: none;
+  cursor: pointer;
+  margin-top: ($base-spacing-unit / 3.2);
+
+  @include breakpoint($main-breakpoint) {
     display: block;
   }
+
 }
 

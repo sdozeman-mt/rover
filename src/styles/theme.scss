@@ -19,9 +19,8 @@ Repository: https://github.com/sdozeman-mt/rover
 */
 
 
-/**
- * [replace with theme name] | Built with Slate
- */
+
+/* Rover | Built with Slate */
 @import '~normalize.css/normalize';
 @import '~magnific-popup/dist/magnific-popup';
 
@@ -35,19 +34,19 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './tools/island';
 
 // Core
-@import './core/forms';
-@import './core/helpers';
-@import './core/media';
-@import './core/responsive-tables';
 @import './core/rte';
+@import './core/media';
+@import './core/forms';
 @import './core/typography';
+@import './core/helpers';
 @import './core/flexbox-grid';
+@import './core/responsive-tables';
 
 // Components
+@import './components/icons';
 @import './components/buttons';
 @import './components/containers';
 @import './components/hero-banner';
-@import './components/icons';
 @import './components/placeholders';
 @import './components/responsive-images';
 @import './components/responsive-bg-images';
@@ -62,7 +61,7 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './sections/image-with-text';
 @import './sections/newsletter';
 
-// Static Sections
+// Static sections | Homepage specific
 @import './sections/static/hero';
 @import './sections/static/intro';
 

@@ -1,18 +1,21 @@
-.section.newsletter {
-  background: $color-quinary;
-}
+// Newsletter Section styles
 
 .newsletter-content {
   @include limit-width(580px, auto);
   @include margin-trailer(2);
-  // @include fancy-block($color-tetranary, center);
   text-align: center;
 }
 
 .newsletter-form {}
 
 .newsletter-form__message {}
-.newsletter-form__message--success {}
+.newsletter-form__message--success {
+  outline: none;
+  appearance: none;
+  font-weight: bold;
+  @include padding-trailer(1);
+  padding-left: $submit-width;
+}
 
 .newsletter-form__input {}
 .newsletter-form__submit {}
