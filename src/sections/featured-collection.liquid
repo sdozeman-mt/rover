@@ -13,9 +13,9 @@
 
     {% if section.settings.title != blank %}
       {% if template.name != "index" %} 
-        <h2 class="featured-collection__title beta text--center trailer--double">{{ section.settings.title | escape }}</h2>
+        <h1 class="featured-collection__title alpha text--center trailer--double">{{ section.settings.title | escape }}</h1>
       {% else %}
-        <h3 class="featured-collection__title gamma text--center trailer--double">{{ section.settings.title | escape }}</h3>
+        <h2 class="featured-collection__title beta text--center trailer--double">{{ section.settings.title | escape }}</h2>
       {% endif %}
     {% endif %}
 

@@ -27,10 +27,6 @@ $font-body-weight: var(--font-body-weight);
 $font-body-style: var(--font-body-style);
 $font-body-bold-weight: var(--font-body-bold-weight);
 
-// Transitions
-$transition-duration:   $transition-time-default;
-$transition-timing:     $transition-timing-default;
-
 // // Grid
 // $grid-medium: 46.85em;
 // $grid-large: 61.85em;
@@ -210,3 +206,7 @@ $submit-width              : $input-height;
 // $border-width           : 1px;
 // $border-style           : solid;
 // $border-color           : black;
+
+// Transitions
+$transition-duration:   $transition-time-default;
+$transition-timing:     $transition-timing-default;

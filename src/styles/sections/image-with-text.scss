@@ -1,13 +1,22 @@
 .image-with-text {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
 }
 
 .image-with-text__image {
-  flex: 0 1 50%;
+  // flex: 0 1 50%;
   min-width: 320px;
+
+  .responsive-image__wrapper { 
+    margin: 0; 
+    max-width: 100% !important;
+  }
+  .responsive-image__image {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
 }
 
 .image-with-text__text {
-  flex: 1 1 50%;
+  // flex: 1 1 50%;
 }

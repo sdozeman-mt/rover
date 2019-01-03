@@ -11,9 +11,20 @@
   user-select: none;
   appearance: none;
 
-  background: white;
+  background-color: $color-gray;
   margin: $base-spacing-unit 0;
   font-weight: $font-weight-thick;
   border-radius: $border-radius-base / 2;
   padding: $btn-default-padding ($btn-default-padding * 2);
+
+  transition: color $transition-duration $transition-timing;
+
+  &:hover {
+    color: $link-hovered;
+  }
+
+  &:active,
+  &:focus {
+      outline: none;
+  }
 }

@@ -10,9 +10,9 @@
   <div class="container">
     {% if section.settings.title != blank %}
       {% if template.name != "index" %} 
-        <h2 class="collection-list__title beta text--center trailer--double">{{ section.settings.title | escape }}</h2>
+        <h1 class="collection-list__title alpha text--center trailer--double">{{ section.settings.title | escape }}</h1>
       {% else %}
-        <h3 class="collection-list__title gamma text--center trailer--double">{{ section.settings.title | escape }}</h3>
+        <h2 class="collection-list__title beta text--center trailer--double">{{ section.settings.title | escape }}</h2>
       {% endif %}
     {% endif %}
 
