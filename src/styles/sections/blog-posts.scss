@@ -9,3 +9,14 @@
 .blog-post__item {
   // flex: 1 1 percentage(1 / 3);
 }
+
+// Article
+.article__content {
+  padding-top: $section-spacing-unit;
+  padding-bottom: $section-spacing-unit;
+}
+
+// Post Navigation
+.post-navigation {
+  margin-top: $base-spacing-unit*2;
+}

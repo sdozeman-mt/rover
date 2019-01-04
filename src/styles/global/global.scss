@@ -8,6 +8,11 @@ body {
 
 .site-main {}
 
+.page-content {
+    padding-top: $section-spacing-unit;
+    padding-bottom: $section-spacing-unit;
+}
+
 .shopify-section {}
 
 .section { 
@@ -23,3 +28,9 @@ body {
     }
 }
 
+// Social Sharing
+.social-sharing {
+    margin-top: $base-spacing-unit*2;
+
+    a { margin-right: $base-spacing-unit; }
+}
