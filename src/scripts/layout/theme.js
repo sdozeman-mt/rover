@@ -11,17 +11,64 @@ import '../../styles/theme.scss.liquid';
 import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
 import {cookiesEnabled} from '@shopify/theme-cart';
 
-import '../components/magnific-popup.js';
-import '../components/mobile-navigation';
+import $ from 'jquery';
 
-// Common a11y fixes
-focusHash();
-bindInPageLinks();
+import '../components/magnificPopup.js';
+import ImagesLoaded from '../components/imagesLoaded.js';
+import MobileNav from '..//components/mobileNavigation.js';
 
-// Apply a specific class to the html element for browser support of cookies.
-if (cookiesEnabled()) {
-  document.documentElement.className = document.documentElement.className.replace(
-    'supports-no-cookies',
-    'supports-cookies',
-  );
+const Router = {
+  common: {
+    init() {
+      // Common a11y fixes
+      focusHash();
+      bindInPageLinks();
+
+      // Apply a specific class to the html element for browser support of cookies.
+      if (cookiesEnabled()) {
+        document.documentElement.className = document.documentElement.className.replace(
+          'supports-no-cookies',
+          'supports-cookies',
+        );
+      }
+      
+      MobileNav.init('.js-menu__toggle');
+      ImagesLoaded.init('.js-loaded');
+    },
+    finalize() {}
+  },
+  home: {}
+};
+
+export default Router;
+
+/*
+ * The routing fires all common scripts, followed by the page specific scripts.
+ * Add additional events for more control over timing e.g. a finalize event
+*/
+const UTIL = {
+
+  fire(func, funcname, args) {
+      const namespace = Router;
+      funcname = (funcname === undefined) ? 'init' : funcname;
+      if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
+          namespace[func][funcname](args);
+      }
+  },
+  loadEvents() {
+      UTIL.fire('common');
+
+      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), (i, classnm) => {
+          UTIL.fire(classnm);
+      });
+
+  $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
+    UTIL.fire(classnm);
+  });
+
+  UTIL.fire('common', 'finalize');
 }
+};
+
+$(document).ready(UTIL.loadEvents);
+

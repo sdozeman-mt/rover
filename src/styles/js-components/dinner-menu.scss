@@ -1,0 +1,118 @@
+.dinner-menu {
+    top: $header-height;
+	left: 0;
+    height: 0;
+    width: 100%;
+    opacity: 0;
+    position: fixed;
+    overflow: hidden;
+    background: $theme-light;
+    z-index: 1000;
+	transition: opacity $transition-fast, transform $transition-fast;
+
+}
+
+.dinner-menu__inner {
+
+	min-height:100%;
+	display:inline-block; // Contain any margin
+	width:100%;    		  // on it's children
+
+	.dinner-menu-active--fixed & {}
+
+}
+
+
+body.dinner-menu-active {
+    @include breakpoint($main-breakpoint) {
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+}
+
+.dinner-menu-active--relative body {
+
+	// Lock the body into place is it's not fixed
+	// Not used for fixed menu, cause it'll make the page jump up to the top
+	height:100%;
+	height: 100vh;
+}
+
+.dinner-menu {
+
+	.dinner-menu-transiting & ,
+	.dinner-menu-active & {
+        overflow:auto;
+        height: calc(100% - #{$header-height});
+		-webkit-backface-visibility:hidden;
+		-webkit-overflow-scrolling:touch;
+	}
+}
+
+.dinner-menu-active .dinner-menu {
+	opacity: 1;
+}
+
+
+
+
+     
+
+.mobile-navigation__menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+}
+
+.mobile-navigation__menu-child {
+    position: static;
+    background: none;
+
+    opacity: 1;
+    padding: 0;
+    width: auto;
+    transform: none;
+    box-shadow: none;
+    border-radius: 0;
+    visibility: visible;
+}
+
+.mobile-navigation__list-item {
+    text-align: left;
+    margin-bottom: ($base-spacing-unit / 2);
+}
+
+.list-item--secondary {
+    position: relative;
+
+    // &:before {
+    //     top: ($base-spacing-unit / 1.1);
+    //     left: ($base-spacing-unit / 1.1);
+    //     content: "";
+    //     display: block;
+    //     position: absolute;
+    //     background: $link-hovered;
+    //     width: ($base-spacing-unit / 4);
+    //     height: ($base-spacing-unit / 4);
+    //     border-radius: ($base-spacing-unit / 4);
+    // }
+}
+
+.mobile-navigation__list-link {
+    display: block;
+    padding: ($base-spacing-unit / 2) 0;
+    font-weight: $font-weight-thick;
+    font-size: $base-font-size * $base-line-height;
+
+    @include beautify-link($link-default, $link-hovered);
+    
+
+
+    // TODO?
+    &.current-menu-item {
+        color: $link-hovered;
+    }
+}

@@ -51,7 +51,13 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './components/responsive-images';
 @import './components/responsive-bg-images';
 @import './components/announcement-bar';
-@import './components/menu-button';
+
+@import './js-components/transitions';
+@import './js-components/menu-button';
+@import './js-components/dinner-menu';
+@import './js-components/cart-drawer';
+@import './js-components/search-form.scss';
+
 
 // Sections
 @import './sections/blog-posts';
@@ -76,8 +82,6 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './global/site-container';
 @import './global/magnific.scss';
 
-@import './global/cart-drawer.scss';
-@import './global/search-form.scss';
 
 // Templates
 @import './templates/gift_card';

@@ -13,6 +13,8 @@
     margin-top: $base-spacing-unit * .1;
     // // Ensure element never over/underlaps the logo
     max-width: calc(100% - (#{$base-spacing-unit} * 15));
+
+    @include breakpoint($main-breakpoint) { display: none; }
 }
 
 .main-navigation__menu,
@@ -42,12 +44,6 @@
     border-radius: $border-radius-bottom;
     transform: translateY(-($base-spacing-unit * .1));
     padding: ($base-spacing-unit / 2) $base-spacing-unit;
-
-    @include breakpoint-min($main-breakpoint) {
-        display: block;
-        transition: opacity $transition-duration $transition-timing,
-                    visibility $transition-duration $transition-timing;
-    }
 }
 
 .main-navigation__list-item {
@@ -76,66 +72,3 @@
         padding: ($base-spacing-unit / 2) $base-spacing-unit;
     }
 }
-
- @include breakpoint($main-breakpoint) {
-    //  $link-hovered: $color-secondary;
-     
-    .main-navigation {
-        top: -$base-spacing-unit;
-        left: auto;
-        width: auto;
-        bottom: auto;
-        max-width: 100%;
-        text-align: right;
-        padding-top: 20px;
-        position: absolute;
-        width: $off-canvas-width;
-        right: -($off-canvas-width);
-        padding: $base-spacing-unit;
-    }
-
-    .main-navigation__menu {
-        flex-direction: column;
-    }
-
-    .main-navigation__menu-child {
-        position: static;
-        background: none;
-
-        opacity: 1;
-        padding: 0;
-        width: auto;
-        transform: none;
-        box-shadow: none;
-        border-radius: 0;
-        visibility: visible;
-    }
-
-    .list-item--secondary {
-        position: relative;
-
-        &:before {
-            top: ($base-spacing-unit / 1.1);
-            left: ($base-spacing-unit / 1.1);
-            content: "";
-            display: block;
-            position: absolute;
-            background: $link-hovered;
-            width: ($base-spacing-unit / 4);
-            height: ($base-spacing-unit / 4);
-            border-radius: ($base-spacing-unit / 4);
-        }
-    }
-
-    .main-navigation__list-link {
-        color: white;
-        font-size: $font-size-base;
-        @include beautify-link($link-reversed, $link-hovered);
-
-
-        // TODO?
-        &.current-menu-item {
-            color: $link-hovered;
-        }
-    }
- }

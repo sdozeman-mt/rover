@@ -29,11 +29,14 @@
 }
 
 .main-menu__btn {
+  border: 0;
   float: right;
   display: none;
+  outline: none;
   cursor: pointer;
+  background: transparent;
 
-    &.js-menu__toggle--open {
+    &.dinner-menu-active {
       color: $link-hovered;
       
       .main-menu__btn--toggle {

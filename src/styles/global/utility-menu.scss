@@ -5,8 +5,11 @@
     align-items: center;
     justify-content: flex-end;
 
-    // Ensure element never over/underlaps the logo
-    max-width: calc(100% - (#{$base-spacing-unit} * 15));
+    // Ensure element never over/underlaps the logo on desktop
+    @include breakpoint-min($main-breakpoint) {
+        max-width: calc(100% - (#{$base-spacing-unit} * 15));
+    }
+    
 }
 
 // Cart Link Styles

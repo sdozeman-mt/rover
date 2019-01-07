@@ -208,5 +208,13 @@ $submit-width              : $input-height;
 // $border-color           : black;
 
 // Transitions
-$transition-duration:   $transition-time-default;
-$transition-timing:     $transition-timing-default;
+$transition-time-fast      : .15s;
+$transition-time-default   : .3s ;
+$transition-time-slow      : .6s;
+$transition-timing-default : ease-out;
+$transition-slow           : $transition-time-slow $transition-timing-default;
+$transition-default        : $transition-time-default $transition-timing-default;
+$transition-fast           : $transition-time-fast $transition-timing-default;
+
+$transition-duration       : $transition-time-default;
+$transition-timing         : $transition-timing-default;

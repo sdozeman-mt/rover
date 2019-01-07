@@ -17,13 +17,4 @@
 .site-container__inner {
     background: white;
     padding-top: $header-height;
-
-    @include breakpoint($main-breakpoint) {
-        height: 100%;
-        transition: transform $transition-time-default $transition-timing-default;
-
-        .js-off-canvas__toggle--open & {
-            transform: translateX(-($off-canvas-width));
-        }
-    }
 }

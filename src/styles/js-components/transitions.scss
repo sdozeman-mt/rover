@@ -1,0 +1,51 @@
+/*
+
+  Transitions
+
+  Transitions and animations
+
+*/
+
+%default-transition {
+  transition: all $transition-default;
+}
+
+
+// Graceful element loading
+.js {
+  .js-loaded,
+  .js-slider-img {
+      @extend %default-transition;
+      opacity: 0;
+      &.is-loaded {
+          opacity: 1;
+      }
+  }
+  .js-img-slide-fade {
+      @extend %default-transition;
+      opacity: 0;
+      transform: translateX(-5%);
+      &.is-loaded {
+          opacity: 1;
+          transform: translateX(0%);
+      }
+  }
+  .js-slide-fade-top {
+      @extend %default-transition;
+      opacity: 0;
+      transform: translateY(-5%);
+      &.is-loaded {
+          opacity: 1;
+          transform: translateY(0%);
+      }
+  }
+}
+
+.js-fade-block {
+  opacity: 0;
+  transition: opacity .25s ease-out;
+}
+
+.js-in {
+  opacity: 1;
+}

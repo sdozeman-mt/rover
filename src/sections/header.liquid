@@ -11,7 +11,7 @@
   - Home page only: only shows on the home page
 {%- endcomment -%}
 <section data-section-id="{{ section.id }}" data-section-type="header">
-  <header role="banner" class="site-header">
+  <header role="banner" class="site-header js-dinner-menu-header">
 
     {%- if section.settings.announcement_bar_enabled -%}
     <div class="announcement-bar">
@@ -52,14 +52,14 @@
         </div>
       {% endif %}
 
-      <a class="main-menu__btn js-menu__toggle">
+      <button class="main-menu__btn js-menu__toggle" data-target="#mobile-nav">
         <div class="main-menu__btn--toggle">
           <span class="p1"></span>
           <span class="p2"></span>
           <span class="p3"></span>
         </div>
         <span class="main-menu__btn--text">Menu</span>
-      </a>
+      </button>
 
       <div class="utility">
         <div class="utility__search">
@@ -82,7 +82,7 @@
 
       <nav role="navigation" class="main-navigation js-navigation">
         <ul class="main-navigation__menu">
-          {% for link in linklists[section.settings.menu].links %}
+          {% for link in linklists[section.settings.main_menu].links %}
             {% if link.links != blank %}
               <li class="main-navigation__list-item list-item--primary">
                 <a class="main-navigation__list-link" href="{{ link.url }}">
@@ -140,6 +140,29 @@
 
     </div>
   </header>
+
+  <!-- Repeat of main navigation consider adding 2nd menu for mobile -->
+  <!-- Child menus absent -->
+  <nav id="mobile-nav" class="mobile-navigation js-mobile-navigation dinner-menu element-hidden--desk">
+    <div class="container">
+      <ul class="mobile-navigation__menu" id="mobile-menu">
+        {% for link in linklists[section.settings.main_menu].links %}
+          {% if link.links != blank %}
+            <li class="mobile-navigation__list-item list-item--parent">
+              <a class="mobile-navigation__list-link" href="{{ link.url }}"> {{ link.title }}</a>
+            </li>
+          {% else %}
+            <li class="mobile-navigation__list-item">
+              <a class="mobile-navigation__list-link" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
 </section>
 
 {% if section.settings.logo != blank %}
@@ -204,8 +227,8 @@
       },
       {
         "type": "link_list",
-        "id": "menu",
-        "label": "Menu",
+        "id": "main_menu",
+        "label": "Main menu",
         "default": "main-menu"
       }
     ]
