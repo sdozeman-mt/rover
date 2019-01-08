@@ -41,7 +41,7 @@
                   {% for image in product.images %}
                     <li>
                       <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail>
-                        <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+                        <img class="product-single__thumbnail-image js-loaded" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
                       </a>
                     </li>
                   {% endfor %}
@@ -127,6 +127,10 @@
                     </span>
                 </button>
               </form>
+
+              {% if section.settings.show_share_buttons %}
+                {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+              {% endif %}
             </div>
 
         </div>
