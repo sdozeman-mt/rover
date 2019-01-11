@@ -24,7 +24,7 @@
       {% endfor %}
 
       {% if product.images.size > 1 %}
-        <ul>
+        <ul class="product-single__thumbnails">
           {% for image in product.images %}
             <li>
               <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail>
@@ -60,26 +60,30 @@
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
                   <div class="selector-wrapper js">
+
                     <label for="SingleOptionSelector-{{ forloop.index0 }}">
                       {{ option.name }}
                     </label>
-                
-                    <select
-                      id="SingleOptionSelector-{{ forloop.index0 }}"
-                      data-single-option-selector
-                      data-index="option{{ option.position }}">
-                      {% for value in option.values %}
-                        <option
-                          value="{{ value | escape }}"
-                          {% if option.selected_value == value %}selected="selected"{% endif %}>
-                            {{ value }}
-                        </option>
-                      {% endfor %}
-                    </select>
+
+                    <div class="select-wrapper">
+                      <select
+                        id="SingleOptionSelector-{{ forloop.index0 }}"
+                        data-single-option-selector
+                        data-index="option{{ option.position }}">
+                        {% for value in option.values %}
+                          <option
+                            value="{{ value | escape }}"
+                            {% if option.selected_value == value %}selected="selected"{% endif %}>
+                              {{ value }}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
                   </div>
                 {% endfor %}
               {% endunless %}
-
+              
               <select name="id" class="no-js" data-product-select>
                 {% for variant in product.variants %}
                   <option
