@@ -1,3 +1,6 @@
 // Featured Collection styles
 
-// TODO? Put stuff here!
+.featured-collection {
+    // offset trailer on grid__item
+    padding-bottom: calc(80px - #{$base-spacing-unit}) !important;
+}

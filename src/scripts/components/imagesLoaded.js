@@ -1,18 +1,16 @@
-import $ from "jquery";
 import imagesLoaded from 'imagesloaded';
 
 const ImagesLoaded = {
 
     init(className) {
 
-		$(className).each(function() {
+		const els = document.querySelectorAll(className);
 
-			const self = this;
-
+		[...els].forEach((el) => {
 			imagesLoaded(className, () => {
-				$(self).addClass('is-loaded');
-			})
-        })
+				el.classList.add('is-loaded');
+			});
+        });
     }
 };
 
