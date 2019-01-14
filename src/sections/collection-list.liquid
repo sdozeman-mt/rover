@@ -27,7 +27,7 @@
             {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
 
             {% if template.name == "index" %}
-              <div class="collection-image lazyload responsive-bg-image image" data-bgset="{% include 'responsive-bg-image', image: image_object %}"></div>
+              <div class="collection-image lazyload responsive-bg-image image trailer--single" data-bgset="{% include 'responsive-bg-image', image: image_object %}"></div>
             {% else %} 
               <div class="collection-list__image">
                 {% include 'responsive-image' with

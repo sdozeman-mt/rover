@@ -15,7 +15,7 @@ import $ from 'jquery';
 
 import '../components/magnificPopup.js';
 import ImagesLoaded from '../components/imagesLoaded.js';
-import MobileNav from '..//components/mobileNavigation.js';
+import MobileNav from '../components/mobileNavigation.js';
 
 const Router = {
   common: {

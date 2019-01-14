@@ -24,10 +24,10 @@
     <div class="flex-grid center-sm center-md center-lg">
       {% for product in collection.products limit: 6 %}
 
-      <div class="grid__item sm-12 md-6 lg-4">
+      <div class="grid__item sm-12 md-6 lg-4 trailer--single">
         <a href="{{ product.url | within: collection }}" class="collection-item featured-collection-item">
           {% if product.featured_image != blank %}
-            <div class="featured-collection__image js-loaded">
+            <div class="featured-collection__image trailer--half js-loaded">
               {% include 'responsive-image' with
                 image: product.featured_image,
                 max_width: 480,
