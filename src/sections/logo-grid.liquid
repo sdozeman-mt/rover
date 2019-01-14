@@ -1,0 +1,25 @@
+<section class="section logo-grid">
+  <div class="container">
+    <h2>{{ section.settings.logo_headline }}</h2>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name":           "Logo Grid",
+    "settings": [
+      {
+        "type":       "text",
+        "id":         "logo_headline",
+        "label":      "Logo Grid Heading",
+        "default":    "Lorem Ipsum"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
