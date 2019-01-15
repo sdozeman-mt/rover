@@ -1,6 +1,30 @@
 <section class="section logo-grid">
   <div class="container">
-    <h2>{{ section.settings.logo_headline }}</h2>
+    <h2 class="text--center trailer--double">{{ section.settings.logo_headline }}</h2>
+
+    <div class="flex-grid middle-sm middle-md middle-lg">
+        {% for block in section.blocks %}
+        <div class="grid__item sm-12 md-6 lg-3 trailer--double">
+            {% if block.settings.logo_link != blank %}
+            <a href="">
+            {% endif %}
+
+            {% if block.settings.logo_image != blank %}
+                {% include 'responsive-image' with
+                    image: block.settings.logo_image,
+                    max_width: 200,
+                    max_height: 200
+                %}
+            {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+
+            {% if block.settings.logo_link != blank %}
+            </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
   </div>
 </section>
 
@@ -14,7 +38,31 @@
         "label":      "Logo Grid Heading",
         "default":    "Lorem Ipsum"
       }
-    ]
+    ],
+    "blocks": [
+        {
+        "type": "select",
+        "name": "Logo",
+        "settings": [
+            {
+            "id": "logo_image",
+            "type": "image_picker",
+            "label": "Logo Image"
+            },
+            {
+            "id": "link",
+            "type": "url",
+                "label": "Logo Link"
+            }
+        ]
+        }
+    ],
+    "presets": [
+    {
+      "name": "Logo Grid",
+      "category": "Promotional"
+    }
+  ]
   }
 {% endschema %}
 
