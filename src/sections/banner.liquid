@@ -1,0 +1,88 @@
+<section class="section banner">
+    <div class="hero-content__background" style="background: url({{ section.settings.banner_image | img_url: '1024x800' }}) {{ section.settings.banner_image_position }} no-repeat; background-size: cover;">
+        <span class="hero-content__overlay" style="opacity: {{ section.settings.overlay_range | times: 0.01 }};"></span>
+    </div>
+    
+    <div class="hero-content__foreground">
+        <div class="container container--small">
+            <div class="banner-content text--center">
+                <h2 class="hero-content__heading">{{ section.settings.banner_headline }}</h2>
+                <p class="hero-content__paragraph">{{ section.settings.banner_text }}</p>
+                {% if section.settings.banner_link != blank %}
+                <a href="{{ section.settings.banner_link }}" class="button hero-content__button">{{ section.settings.banner_linktext }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name":           "Banner",
+    "settings": [
+      {
+        "type":       "image_picker",
+        "id":         "banner_image",
+        "label":      "Banner Image"
+      },
+      {
+        "type":       "radio",
+        "id":         "banner_image_position",
+        "options":    [
+          { "value": "center center", "label": "Center Center" },
+          { "value": "top left", "label": "Top Left" },
+          { "value": "top center", "label": "Top Center" },
+          { "value": "top right", "label": "Top Right" },
+          { "value": "bottom left", "label": "Bottom Left" },
+          { "value": "bottom center", "label": "Bottom Center" },
+          { "value": "bottom right", "label": "Bottom Right" }
+        ],
+        "label":      "Banner Image Position"
+      },
+      {
+        "type":       "range",
+        "id":         "overlay_range",
+        "min":        0,
+        "max":        100,
+        "step":       1,
+        "label":      "Overlay Opacity",
+        "default":    20
+      },
+      {
+        "type":       "text",
+        "id":         "banner_headline",
+        "label":      "Banner Heading",
+        "default":    "Lorem Ipsum"
+      },
+      {
+        "type":       "richtext",
+        "id":         "banner_text",
+        "label":      "Banner Paragraph",
+        "default":    "<p>Lorem Ipsum</p>"
+      },
+      {
+        "type":       "url",
+        "id":         "banner_link",
+        "label":      "Button link"
+      },
+      {        
+        "type":       "text",
+        "id":         "banner_linktext",
+        "label":      "Button Text",
+        "default":    "Click Here"
+      }
+    ],
+    "presets": [
+    {
+      "name": "Banner",
+      "category": "Call to Action"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

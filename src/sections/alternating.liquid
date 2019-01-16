@@ -1,0 +1,40 @@
+<section class="section alternating">
+    
+</section>
+
+{% schema %}
+  {
+    "name":           "Alternating",
+    "blocks": [
+    {
+        "type": "select",
+        "name": "Row",
+        "settings": [
+            {
+                "type":       "image_picker",
+                "id":         "alternating_image",
+                "label":      "Image"
+            },
+            {
+                "type":       "richtext",
+                "id":         "alternating_text",
+                "label":      "Content",
+                "default":    "<p>Lorem Ipsum</p>"
+            }
+        ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Alternating",
+      "category": "Content"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
