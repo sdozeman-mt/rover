@@ -1,0 +1,22 @@
+.alternating-row {
+    margin-bottom: $base-spacing-unit;
+    &:last-child {
+		margin-bottom: 0;
+	}
+
+    @include breakpoint-min($bp-lg){
+        margin-bottom: $section-spacing-unit;
+
+        .responsive-image__wrapper { margin-right: auto; }
+
+        &:nth-child(2n){
+            flex-direction: row-reverse;
+
+            .responsive-image__wrapper { 
+                margin-left: auto; 
+                margin-right: 0;
+            }
+        }
+    }
+}
+

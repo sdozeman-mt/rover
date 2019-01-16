@@ -1,5 +1,33 @@
 <section class="section alternating">
+    <div class="container">
     
+        {% for block in section.blocks %}
+            
+            <div class="alternating-row flex-grid middle-lg">
+            
+                <div class="grid__item lg-6 md-12">
+                    {% if block.settings.alternating_image != blank %}
+                        {% include 'responsive-image' with
+                            image: block.settings.alternating_image,
+                            max_width: 700,
+                            max_height: 500
+                        %}
+                    {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                </div>
+
+                <div class="grid__item lg-6 md-12">
+                    <div class="island">
+                        {{ block.settings.alternating_text }}
+                    </div>
+                </div>
+            
+            </div>
+
+        {% endfor %}
+    
+    </div>
 </section>
 
 {% schema %}
