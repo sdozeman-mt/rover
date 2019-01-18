@@ -1,0 +1,113 @@
+<section class="section slider">
+    <div class="container">
+        <div class="slider js-slider swiper-container">
+            <div class="swiper-wrapper">
+
+                {% for block in section.blocks %}
+                    <div class="slide swiper-slide">
+
+                        <div class="hero-content__background" style="background: url({{ block.settings.slide_image | img_url: '1024x800' }}) {{ block.settings.slide_image_position }} no-repeat; background-size: cover;">
+                            <span class="hero-content__overlay" style="opacity: {{ block.settings.overlay_range | times: 0.01 }};"></span>
+                        </div>
+
+                        <div class="hero-content__foreground">
+                            <div class="container container--small">
+                                <div class="banner-content text--center">
+                                    <h2 class="hero-content__heading">{{ block.settings.slide_headline }}</h2>
+                                    <p class="hero-content__paragraph">{{ block.settings.slide_text }}</p>
+                                    {% if block.settings.slide_link != blank %}
+                                    <a href="{{ block.settings.slide_link }}" class="button hero-content__button">{{ block.settings.slide_linktext }}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="js-slider-pagination slider__pagination text--center"></div>
+
+            <div class="slider__prev js-slider-prev"></div>
+            <div class="slider__next js-slider-next"></div>
+        </div><!-- .js-slider -->
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name":           "Slider",
+    "blocks": [
+    {
+        "type": "select",
+        "name": "Slide",
+        "settings": [
+            {
+                "type":       "image_picker",
+                "id":         "slide_image",
+                "label":      "Image"
+            },
+            {
+                "type":       "radio",
+                "id":         "slide_image_position",
+                "options":    [
+                { "value": "center center", "label": "Center Center" },
+                { "value": "top left", "label": "Top Left" },
+                { "value": "top center", "label": "Top Center" },
+                { "value": "top right", "label": "Top Right" },
+                { "value": "bottom left", "label": "Bottom Left" },
+                { "value": "bottom center", "label": "Bottom Center" },
+                { "value": "bottom right", "label": "Bottom Right" }
+                ],
+                "label":      "Slide Image Position"
+            },
+            {
+                "type":       "range",
+                "id":         "overlay_range",
+                "min":        0,
+                "max":        100,
+                "step":       1,
+                "label":      "Overlay Opacity",
+                "default":    20
+            },
+            {
+                "type":       "text",
+                "id":         "slide_headline",
+                "label":      "Slide Heading",
+                "default":    "Lorem Ipsum"
+            },
+            {
+                "type":       "richtext",
+                "id":         "slide_text",
+                "label":      "Content",
+                "default":    "<p>Lorem Ipsum</p>"
+            },
+            {
+                "type":       "url",
+                "id":         "slide_link",
+                "label":      "Button link"
+            },
+            {        
+                "type":       "text",
+                "id":         "slide_linktext",
+                "label":      "Button Text",
+                "default":    "Click Here"
+            }
+        ]
+    }
+    ],
+    "presets": [
+    {
+      "name": "Slider",
+      "category": "Call to Action"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

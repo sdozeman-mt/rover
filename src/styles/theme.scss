@@ -23,6 +23,7 @@ Repository: https://github.com/sdozeman-mt/rover
 /* Rover | Built with Slate */
 @import '~normalize.css/normalize';
 @import '~magnific-popup/dist/magnific-popup';
+@import '~swiper/dist/css/swiper';
 
 // Settings
 @import './variables';
@@ -69,6 +70,7 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './sections/image-with-text';
 @import './sections/newsletter';
 @import './sections/single-product';
+@import './sections/slider';
 
 // Static sections | Homepage specific
 @import './sections/static/hero';

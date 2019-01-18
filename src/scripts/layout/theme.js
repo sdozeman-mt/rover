@@ -17,6 +17,8 @@ import '../components/magnificPopup.js';
 import ImagesLoaded from '../components/imagesLoaded.js';
 import MobileNav from '../components/mobileNavigation.js';
 
+const Swiper = require('swiper/dist/js/swiper');
+
 const Router = {
   common: {
     init() {
@@ -34,6 +36,16 @@ const Router = {
       
       MobileNav.init('.js-menu__toggle');
       ImagesLoaded.init('.js-loaded');
+
+      new Swiper ('.js-slider', {
+				pagination: {
+					el: '.js-slider-pagination',
+				},
+				navigation: {
+					nextEl: '.js-slider-next',
+					prevEl: '.js-slider-prev',
+				},
+			});
     },
     finalize() {}
   },
