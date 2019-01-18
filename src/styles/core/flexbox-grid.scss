@@ -1,432 +1,134 @@
-// Flexbox Grid specific styling
-/* Custom mixins to help reduce code and make file more readable */
-@mixin column-width($width){
-  flex-basis: $width;
-  max-width: $width;
-}
-@mixin offset-width($width){
-  margin-left: $width;
-}
-
-// Gutters
-$default-gutter:        $base-spacing-unit; //40px gutter
-$skinny-gutter:         $base-spacing-unit / 2; //20px gutter
-$fat-gutter:            $base-spacing-unit * 1.5; //60px gutter
-
 /*
-  Grid based on http://flexboxgrid.com/ with customized edits
-   - optional default, skinny and fat gutter options for each breakpoint size
-   - use gutter-lg-skinny or gutter-lg-fat on .flex-grid for default/desktop
-   - use gutter-md-default or gutter-md-skinny or gutter-md-fat on .flex-grid to change for medium etc.
+  Flexbox Grid
+
+  - Grid based off of http://flexboxgrid.com/ with customized edits
+  - Optional default, thin and wide gutter options for each breakpoint size
+  - Use gutter-lg-thin or gutter-lg-wide on the `.flex-grid` element for modified gutter size
+  - Use gutter-md-default, gutter-md-thin, or gutter-md-wide on the `.flex-grid` element to change gutter depending on breakpoints
+
+  - Markup:
+  <div class="grid">
+    <div class="grid__item sm-12 lg-6">
+      <p>Content</p>
+    </div>
+  </div>
+
+  - Considerations:
+    Flexbox doesn't always play nicely in IE11, Edge, 
+    any padding on a flex-element child (e.g. grid__item)
+    will cause the element to display improperly. 
+
+    Make sure to include a wrapper element directly inside
+    of the grid__item element if you want to add padding.
 */
 
-.flex-grid {
+/* ================================================= */
+/* Helpers - Variables, Mixins, Extenders, Functions */
+// Variables
+$grid-columns: 12;
+$gutter-norm: $base-spacing-unit; //40px gutter - assuming base unit is 20px
+$gutter-thin: $base-spacing-unit / 2; //20px gutter - assuming base unit is 20px
+$gutter-wide: $base-spacing-unit * 1.5; //60px gutter - assuming base unit is 20px
+$breakpoints: ( md: $bp-lg, xm: $bp-md, sm: $bp-sm, xs: $bp-xs );
+
+
+// Extenders
+// - Base Styles
+%flex-grid {
   display: flex;
   flex: 0 1 auto;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: row;
+}
 
-  margin-right: -($default-gutter);
-  margin-left: -($default-gutter);
-
+// Mixins
+// - Gutters
+@mixin define-gutters($spacing) {
+  margin-left: -$spacing;
+  margin-right: -$spacing;
   .grid__item {
-    padding-right: $default-gutter;
-    padding-left: $default-gutter;
-  }
-
-  //skinny gutter
-  &.gutter-lg-skinny {
-    margin-left: -($skinny-gutter);
-    margin-right: -($skinny-gutter);
-
-    .grid__item {
-      padding-left: $skinny-gutter;
-      padding-right: $skinny-gutter;
-    }
-
-  }
-  //fat gutter
-  &.gutter-lg-fat {
-    margin-left: -($fat-gutter);
-    margin-right: -($fat-gutter);
-
-    .grid__item {
-      padding-left: $fat-gutter;
-      padding-right: $fat-gutter;
-    }
-
-  }
-  &.reverse { flex-direction: row-reverse; }
-
-  // Scoping flex position classes to breakpoints
-  // Default, no BP specified
-    &.start-lg { justify-content: flex-start; }
-    &.center-lg { justify-content: center; }
-    &.end-lg { justify-content: flex-end; }
-    &.around-lg { justify-content: space-around; }
-    &.between-lg { justify-content: space-between; }
-
-    &.top-lg { align-items: flex-start; }
-    &.middle-lg { align-items: center; }
-    &.bottom-lg { align-items: flex-end; }
-
-  @include breakpoint($bp-lg) {
-    &.start-md { justify-content: flex-start; }
-    &.center-md { justify-content: center; }
-    &.end-md { justify-content: flex-end; }
-    &.around-md { justify-content: space-around; }
-    &.between-md { justify-content: space-between; }
-
-    &.top-md { align-items: flex-start; }
-    &.middle-md { align-items: center; }
-    &.bottom-md { align-items: flex-end; }
-  }
-
-  @include breakpoint($bp-md) {
-    &.start-xm { justify-content: flex-start; }
-    &.center-xm { justify-content: center; }
-    &.end-xm { justify-content: flex-end; }
-    &.around-xm { justify-content: space-around; }
-    &.between-xm { justify-content: space-between; }
-
-    &.top-xm { align-items: flex-start; }
-    &.middle-xm { align-items: center; }
-    &.bottom-xm { align-items: flex-end; }
-  }
-
-  @include  breakpoint($bp-sm) {
-    &.start-sm { justify-content: flex-start; }
-    &.center-sm { justify-content: center; }
-    &.end-sm { justify-content: flex-end; }
-    &.around-sm { justify-content: space-around; }
-    &.between-sm { justify-content: space-between; }
-
-    &.top-sm { align-items: flex-start; }
-    &.middle-sm { align-items: center; }
-    &.bottom-sm { align-items: flex-end; }
-  }
-
-  @include breakpoint($bp-xs) {
-    &.start-xs { justify-content: flex-start; }
-    &.center-xs { justify-content: center; }
-    &.end-xs { justify-content: flex-end; }
-    &.around-xs { justify-content: space-around; }
-    &.between-xs { justify-content: space-between; }
-
-    &.top-xs { align-items: flex-start; }
-    &.middle-xs { align-items: center; }
-    &.bottom-xs { align-items: flex-end; }
+    padding-left: $spacing;
+    padding-right: $spacing;
   }
 }
 
-
-/* DEFAULT COLUMNS */
-  .grid__item {
-    flex: 0 0 auto;
-  }
-
-  .lg-1 { @include column-width(8.333%); }
-  .lg-2 { @include column-width(16.666%); }
-  .lg-3 { @include column-width(25%); }
-  .lg-4 { @include column-width(33.333%); }
-  .lg-5 { @include column-width(41.666%); }
-  .lg-6 { @include column-width(50%); }
-  .lg-7 { @include column-width(58.333%); }
-  .lg-8 { @include column-width(66.666%); }
-  .lg-9 { @include column-width(75%); }
-  .lg-10 { @include column-width(83.333%); }
-  .lg-11 { @include column-width(91.666%); }
-  .lg-12 { @include column-width(100%); }
-
-  .lg-offset-0 { @include offset-width(0); }
-  .lg-offset-1 { @include offset-width(8.333%); }
-  .lg-offset-2 { @include offset-width(16.666%); }
-  .lg-offset-3 { @include offset-width(25%); }
-  .lg-offset-4 { @include offset-width(33.333%); }
-  .lg-offset-5 { @include offset-width(41.666%); }
-  .lg-offset-6 { @include offset-width(50%); }
-  .lg-offset-7 { @include offset-width(58.333%); }
-  .lg-offset-8 { @include offset-width(66.666%); }
-  .lg-offset-9 { @include offset-width(75%); }
-  .lg-offset-10 { @include offset-width(83.333%); }
-  .lg-offset-11 { @include offset-width(91.666%); }
-
-  .first-lg { order: -1; }
-  .last-lg { order: 1; }
-
-/* TABLET COLUMNS */
-@include breakpoint($bp-lg) {
-
-  .flex-grid {
-    //default gutter
-    &.gutter-md-default {
-      margin-left: -($default-gutter);
-      margin-right: -($default-gutter);
-
-      .grid__item {
-        padding-left: $default-gutter;
-        padding-right: $default-gutter;
-      }
-
-    }
-    //skinny gutter
-    &.gutter-md-skinny {
-      margin-left: -($skinny-gutter);
-      margin-right: -($skinny-gutter);
-
-      .grid__item {
-        padding-left: $skinny-gutter;
-        padding-right: $skinny-gutter;
-      }
-
-    }
-    //fat gutter
-    &.gutter-md-fat {
-      margin-left: -($fat-gutter);
-      margin-right: -($fat-gutter);
-
-      .grid__item {
-        padding-left: $fat-gutter;
-        padding-right: $fat-gutter;
-      }
-    }
-  }//end .flex-grid
-
-  .md-1 { @include column-width(8.333%); }
-  .md-2 { @include column-width(16.666%); }
-  .md-3 { @include column-width(25%); }
-  .md-4 { @include column-width(33.333%); }
-  .md-5 { @include column-width(41.666%); }
-  .md-6 { @include column-width(50%); }
-  .md-7 { @include column-width(58.333%); }
-  .md-8 { @include column-width(66.666%); }
-  .md-9 { @include column-width(75%); }
-  .md-10 { @include column-width(83.333%); }
-  .md-11 { @include column-width(91.666%); }
-  .md-12 { @include column-width(100%); }
-
-  .md-offset-0 { @include offset-width(0); }
-  .md-offset-1 { @include offset-width(8.333%); }
-  .md-offset-2 { @include offset-width(16.666%); }
-  .md-offset-3 { @include offset-width(25%); }
-  .md-offset-4 { @include offset-width(33.333%); }
-  .md-offset-5 { @include offset-width(41.666); }
-  .md-offset-6 { @include offset-width(50%); }
-  .md-offset-7 { @include offset-width(58.333%); }
-  .md-offset-8 { @include offset-width(66.666); }
-  .md-offset-9 { @include offset-width(75%); }
-  .md-offset-10 { @include offset-width(83.333%); }
-  .md-offset-11 { @include offset-width(91.666%); }
-
-  .first-md { order: -1; }
-  .last-md { order: 1; }
+@mixin define-gutter-bpclasses($key) {
+  &.gutter-#{$key}-default { @include define-gutters($gutter-norm); }
+  &.gutter-#{$key}-thin    { @include define-gutters($gutter-thin); }
+  &.gutter-#{$key}-wide    { @include define-gutters($gutter-wide); }
 }
 
-/* TABLET SMALL COLUMNS */
-@include breakpoint($bp-md) {
+@mixin define-justify($key) {
+  &.start-#{$key}   { justify-content: flex-start; }
+  &.end-#{$key}     { justify-content: flex-end; }
+  &.center-#{$key}  { justify-content: center; }
+  &.around-#{$key}  { justify-content: space-around; }
+  &.between-#{$key} { justify-content: space-between; }
+}
 
-  .flex-grid {
-    //default gutter
-    &.gutter-xm-default {
-      margin-left: -($default-gutter);
-      margin-right: -($default-gutter);
+@mixin define-alignment($key) {
+  &.top-#{$key}     { align-items: flex-start; }
+  &.middle-#{$key}  { align-items: center; }
+  &.bottom-#{$key}  { align-items: flex-end; }
+}
 
-      .grid__item {
-        padding-left: $default-gutter;
-        padding-right: $default-gutter;
+@mixin define-order($key) {
+  &.first-#{$key}    { order: 1; }
+  &.last-#{$key}     { order: 2; }
+}
+
+
+/* ================================================= */
+/* Base grid styles */
+.flex-grid {
+  // Base styles, used for all breakpoints
+  // NOTE: IE will not honor a flex items 100% width without declaring it.
+  @extend %flex-grid;
+  @include define-justify('lg');
+  @include define-alignment('lg');
+  @include define-gutters($gutter-norm);
+  @include define-gutter-bpclasses('lg'); 
+
+  &.grid--reverse { flex-direction: row-reverse; }
+  &.grid--flush { @include define-gutters(0); }
+
+  .grid__item { 
+    flex: 0 0 auto; 
+    @include define-order('lg');
+  }
+}
+
+// Functions
+// - Generate default (desktop) columns
+.grid__item {
+  @for $i from 1 through $grid-columns {
+    &.lg-#{$i} { width: percentage($i / $grid-columns); };
+  };
+  @for $i from 0 through $grid-columns {
+    &.lg-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
+  };
+}
+
+
+// - Generate scoped columns for other breakpoints
+@each $key, $value in $breakpoints {
+  @if $value {
+    @include breakpoint(#{$value}) {
+      .flex-grid {  
+        @include define-justify(#{$key}); 
+        @include define-alignment(#{$key});
+        @include define-gutter-bpclasses(#{$key}); 
       }
-
-    }
-    //skinny gutter
-    &.gutter-xm-skinny {
-      margin-left: -($skinny-gutter);
-      margin-right: -($skinny-gutter);
-
-      .grid__item {
-        padding-left: $skinny-gutter;
-        padding-right: $skinny-gutter;
-      }
-
-    }
-    //fat gutter
-    &.gutter-xm-fat {
-      margin-left: -($fat-gutter);
-      margin-right: -($fat-gutter);
 
       .grid__item { 
-        padding-left: $fat-gutter;
-        padding-right: $fat-gutter;
+        @include define-order(#{$key});
+        @for $i from 1 through $grid-columns {
+          &.#{$key}-#{$i} { width: percentage($i / $grid-columns); };
+        };
+        @for $i from 0 through $grid-columns {
+          &.#{$key}-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
+        };
       }
     }
-  }//end .flex-grid
-
-  .xm-1 { @include column-width(8.333%); }
-  .xm-2 { @include column-width(16.666%); }
-  .xm-3 { @include column-width(25%); }
-  .xm-4 { @include column-width(33.333%); }
-  .xm-5 { @include column-width(41.666%); }
-  .xm-6 { @include column-width(50%); }
-  .xm-7 { @include column-width(58.333%); }
-  .xm-8 { @include column-width(66.666%); }
-  .xm-9 { @include column-width(75%); }
-  .xm-10 { @include column-width(83.333%); }
-  .xm-11 { @include column-width(91.666%); }
-  .xm-12 { @include column-width(100%); }
-
-  .xm-offset-0 { @include offset-width(0); }
-  .xm-offset-1 { @include offset-width(8.333%); }
-  .xm-offset-2 { @include offset-width(16.666%); }
-  .xm-offset-3 { @include offset-width(25%); }
-  .xm-offset-4 { @include offset-width(33.333%); }
-  .xm-offset-5 { @include offset-width(41.666); }
-  .xm-offset-6 { @include offset-width(50%); }
-  .xm-offset-7 { @include offset-width(58.333%); }
-  .xm-offset-8 { @include offset-width(66.666); }
-  .xm-offset-9 { @include offset-width(75%); }
-  .xm-offset-10 { @include offset-width(83.333%); }
-  .xm-offset-11 { @include offset-width(91.666%); }
-
-  .first-xm { order: -1; }
-  .last-xm { order: 1; }
-}
-
-
-/* MOBILE COLUMNS */
-@include  breakpoint($bp-sm) {
-
-  .flex-grid {
-    //default gutter
-    &.gutter-sm-default{
-      margin-left: -($default-gutter);
-      margin-right: -($default-gutter);
-
-      .grid__item {
-        padding-left: $default-gutter;
-        padding-right: $default-gutter;
-      }
-
-    }
-    //skinny gutter
-    &.gutter-sm-skinny {
-      margin-left: -($skinny-gutter);
-      margin-right: -($skinny-gutter);
-
-      .grid__item {
-        padding-left: $skinny-gutter;
-        padding-right: $skinny-gutter;
-      }
-
-    }
-    //fat gutter
-    &.gutter-sm-fat {
-      margin-left: -($fat-gutter);
-      margin-right: -($fat-gutter);
-
-      .grid__item {
-        padding-left: $fat-gutter;
-        padding-right: $fat-gutter;
-      }
-
-    }
-
-  }//end .flex-grid
-
-  .sm-1 { @include column-width(8.333%); }
-  .sm-2 { @include column-width(16.666%); }
-  .sm-3 { @include column-width(25%); }
-  .sm-4 { @include column-width(33.333%); }
-  .sm-5 { @include column-width(41.666%); }
-  .sm-6 { @include column-width(50%); }
-  .sm-7 { @include column-width(58.333%); }
-  .sm-8 { @include column-width(66.666%); }
-  .sm-9 { @include column-width(75%); }
-  .sm-10 { @include column-width(83.333%); }
-  .sm-11 { @include column-width(91.666%); }
-  .sm-12 { @include column-width(100%); }
-
-  .sm-offset-0 { @include offset-width(0); }
-  .sm-offset-1 { @include offset-width(8.333%); }
-  .sm-offset-2 { @include offset-width(16.666%); }
-  .sm-offset-3 { @include offset-width(25%); }
-  .sm-offset-4 { @include offset-width(33.333%); }
-  .sm-offset-5 { @include offset-width(41.666%); }
-  .sm-offset-6 { @include offset-width(50%); }
-  .sm-offset-7 { @include offset-width(58.333%); }
-  .sm-offset-8 { @include offset-width(66.666%); }
-  .sm-offset-9 { @include offset-width(75%); }
-  .sm-offset-10 { @include offset-width(83.333%); }
-  .sm-offset-11 { @include offset-width(91.666%); }
-
-  .first-sm { order: -1; }
-  .last-sm { order: 1; }
-}
-
-
-/* MOBILE SMALL COLUMNS */
-@include breakpoint($bp-xs) {
-
-  .flex-grid {
-    //default gutter
-    &.gutter-xs-default {
-      margin-left: -($default-gutter);
-      margin-right: -($default-gutter);
-
-      .grid__item {
-        padding-left: $default-gutter;
-        padding-right: $default-gutter;
-      }
-
-    }
-
-    //skinny gutter
-    &.gutter-xs-skinny {
-      margin-left: -($skinny-gutter);
-      margin-right: -($skinny-gutter);
-
-      .grid__item {
-        padding-left: $skinny-gutter;
-        padding-right: $skinny-gutter;
-      }
-
-    }
-    //fat gutter
-    &.gutter-xs-fat {
-      margin-left: -($fat-gutter);
-      margin-right: -($fat-gutter);
-
-      .grid__item {
-        padding-left: $fat-gutter;
-        padding-right: $fat-gutter;
-      }
-    }
-  }//end .flex-grid
-
-  .xs-1 { @include column-width(8.333%); }
-  .xs-2 { @include column-width(16.666%); }
-  .xs-3 { @include column-width(25%); }
-  .xs-4 { @include column-width(33.333%); }
-  .xs-5 { @include column-width(41.666%); }
-  .xs-6 { @include column-width(50%); }
-  .xs-7 { @include column-width(58.333%); }
-  .xs-8 { @include column-width(66.666%); }
-  .xs-9 { @include column-width(75%); }
-  .xs-10 { @include column-width(83.333%); }
-  .xs-11 { @include column-width(91.666%); }
-  .xs-12 { @include column-width(100%); }
-
-  .xs-offset-0 { @include offset-width(0); }
-  .xs-offset-1 { @include offset-width(8.333%); }
-  .xs-offset-2 { @include offset-width(16.666%); }
-  .xs-offset-3 { @include offset-width(25%); }
-  .xs-offset-4 { @include offset-width(33.333%); }
-  .xs-offset-5 { @include offset-width(41.666%); }
-  .xs-offset-6 { @include offset-width(50%); }
-  .xs-offset-7 { @include offset-width(58.333%); }
-  .xs-offset-8 { @include offset-width(66.666%); }
-  .xs-offset-9 { @include offset-width(75%); }
-  .xs-offset-10 { @include offset-width(83.333%); }
-  .xs-offset-11 { @include offset-width(91.666%); }
-
-  .first-xs { order: -1; }
-  .last-xs { order: 1; }
+  }
 }

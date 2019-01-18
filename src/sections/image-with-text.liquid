@@ -12,7 +12,7 @@
   - Button link: link of the button
 {%- endcomment -%}
 
-<section class="section image-with-text">
+<section class="section image-with-text style--{{ section.settings.theme_style }}">
   <div class="container">
     <div class="flex-grid middle-md middle-lg">
       {% capture image_layout %}
@@ -58,6 +58,17 @@
   {
     "name": "Image with text",
     "settings": [
+      {
+        "type": "radio",
+        "id": "theme_style",
+        "label": "Theme Style",
+        "options":[
+          { "value": "light", "label": "Light" },
+          { "value": "dark", "label": "Dark" }
+        ],
+        "default": "light",
+        "info": "Light or Dark background style for this section"
+      },
       {
         "type": "image_picker",
         "id": "image",

@@ -35,7 +35,7 @@
     visibility: hidden;
 
     width: 250px;
-    display: none;
+    // display: none;
     position: absolute;
     background: white;
     left: -$base-spacing-unit;
@@ -50,10 +50,9 @@
     position: relative;
 
     &:hover {
-       > .main-navigation__menu-child {
+       .main-navigation__menu-child {
            opacity: 1;
            visibility: visible;
-        //    transition-delay: $transition-duration * 2;
        }
     }
 }

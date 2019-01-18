@@ -79,7 +79,7 @@
               </ul>
             {% endif %}
 
-            <a href="{{ article.url }}" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}"><strong>{{ 'blogs.article.read_more' | t }}</strong></a>
+            <a href="{{ article.url }}" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}" class="btn"><strong>{{ 'blogs.article.read_more' | t }}</strong></a>
           </div>
         </li>
       {% else %}
@@ -95,7 +95,7 @@
 
             <div class="trailer--single">{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
 
-            <a href="#"><strong>{{ 'blogs.article.read_more' | t }}</strong></a>
+            <a href="#" class="btn"><strong>{{ 'blogs.article.read_more' | t }}</strong></a>
           </li>
         {% endfor %}
       {% endfor %}
