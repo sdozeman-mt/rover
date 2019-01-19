@@ -1,0 +1,45 @@
+{% comment %}
+
+  TODO? Add more documentation about this module.
+  Requirements: Trigger element, Target element (this) - cartDrawer.js
+
+{% endcomment %}
+
+<section class="section drawer off-canvas js-off-canvas">
+  <div class="drawer-content">
+      {% comment %}
+      {% if cart.item_count > 0 %}
+        <h2 class="drawer-content__heading beta">{{{ 'cart.general.title' | t }}</h2>
+
+
+      {% else %}
+        <h2 class="drawer-content__heading beta">{{ 'cart.general.title' | t }}</h2>
+
+        {% comment %}
+        Cart empty state
+        {% endcomment %}
+
+        {% comment %}
+        <div class="supports-cookies">
+          <p class="drawer-content__paragraph">{{ 'cart.general.empty' | t }}</p>
+          <p class="drawer-content__paragraph">{{ 'cart.general.continue_browsing_html' | t }}</p>
+        </div>
+
+        {% comment %}
+        Cart no cookies state
+        ---------------------
+        Browser cookies are required to use the cart. If cookies aren't enabled in the
+        browser a message is displayed prompting the user to enable them.
+        {% endcomment %}
+
+        {% comment %}
+        <div class="supports-no-cookies">
+          <p>{{ 'cart.general.cookies_required' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% endcomment %}
+
+      TEST
+  </div>
+</section>

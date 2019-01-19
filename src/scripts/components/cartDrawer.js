@@ -5,56 +5,46 @@
  *
  */
 
-// import $ from 'jquery';
+const CartDrawer = {
 
-// $.fn.responsiveNav = function( options ) {
+    init(triggerEl, targetEl) {
 
-// 	options = $.extend({}, {
-// 		    wrapperSelector:        '.js-page__outer',
-// 		    menuButtonSelector:     '.js-menu__toggle',
-// 		    menuOpenClass:          ' js-menu__toggle--menu-open'
-// 	}, 		options);
+      // Trigger and Target
+      const trigEl  = document.querySelector(triggerEl),
+            targEl  = document.querySelector(targetEl),
+            main    = document.querySelector('.site-main');
 
-// 	let $this = $(this),
-// 		    menuOpen = false,
-// 		    $wrapper = $( options.wrapperSelector ),
-// 		    $menuButton = $( options.menuButtonSelector);
+      const closingElements = [trigEl, main],
+            toggleElements  = [targEl, main];
 
-// 	const closeNav = () => {
-// 			$wrapper.removeClass( options.menuOpenClass );
-// 		    $menuButton.removeClass( options.menuOpenClass );
-// 		    menuOpen = false;
-// 	};
+      // Add click listener for Trigger and Body (outside of canvas drawer)
+      trigEl.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        openElements(...toggleElements);
+      });
 
-// 	const bodyClickFn = (event) => {
-//         if( !$this.is(event.target) && $this.has(event.target).length === 0 ) {
-//             closeNav();
-//             $wrapper.unbind( 'touchstart, click', bodyClickFn );
-//         }
-// 	};
+      // 
+      closingElements.forEach(closingElem => {
+        closingElem.addEventListener('click', e => {
+          e.preventDefault();
 
-// 	const menuBtnFn = () => {
+          if ( main.classList.contains('drawer-open') && !(e.target).classList.contains('drawer-open') ) {
+            closeElements(...toggleElements);
+          }
+        })
+      });
 
-// 			$menuButton.bind( 'touchstart, click', function(event) {
-// 			event.stopPropagation();
-// 			event.preventDefault();
+      function openElements(...elements) {
+        const elementsToOpen = [...elements];
+        elementsToOpen.forEach(elementToOpen => elementToOpen.classList.toggle('drawer-open'));
+      }
 
-// 			if ( menuOpen ) {
-// 				closeNav();
-// 			} else {
-// 				$wrapper.addClass( options.menuOpenClass );
-// 				$menuButton.addClass( options.menuOpenClass );
-// 				$wrapper.bind( 'touchstart, click', bodyClickFn );
-// 				menuOpen = true;
-// 			}
-// 		});
-// 	};
+      function closeElements(...elements) {
+        const elementsToClose = [...elements];
+        elementsToClose.forEach(elementToClose => elementToClose.classList.remove('drawer-open'));
+      }
+    }
+};
 
-//   menuBtnFn();
-
-// 	return this;
-// };
-
-
-// // Make navigation responsive
-// $('.js-navigation').responsiveNav();
+export default CartDrawer;

@@ -1,0 +1,20 @@
+.drawer {
+    position: fixed;
+    top: $header-height;
+    right: -$off-canvas-width;
+   
+    width: $off-canvas-width;
+    height: calc(100vh - #{$header-height});
+
+    background: white;
+    box-shadow: $box-shadow-default;
+
+    transition: transform $transition-default;
+    z-index: ($z-index-base * 1.5);
+
+    &.drawer-open { transform: translateX(-#{$off-canvas-width}); }
+}
+
+.drawer-content {
+    padding: 0 $base-spacing-unit;
+}

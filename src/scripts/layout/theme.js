@@ -16,6 +16,7 @@ import $ from 'jquery';
 import '../components/magnificPopup.js';
 import ImagesLoaded from '../components/imagesLoaded.js';
 import MobileNav from '../components/mobileNavigation.js';
+import CartDrawer from '../components/cartDrawer.js';
 
 const Router = {
   common: {
@@ -34,6 +35,7 @@ const Router = {
       
       MobileNav.init('.js-menu__toggle');
       ImagesLoaded.init('.js-loaded');
+      CartDrawer.init('.js-cart__toggle', '.js-off-canvas');
     },
     finalize() {}
   },
