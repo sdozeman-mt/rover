@@ -8,7 +8,8 @@
     position: fixed;
     overflow: hidden;
     background: $theme-light;
-    transition: opacity $transition-fast, transform $transition-fast;
+    transition: opacity $transition-fast, height 0s $transition-time-default;
+    ;
     //TODO? add delay so that menu doesn't disappear so fast on close
 }
 
@@ -46,12 +47,13 @@ body.dinner-menu-active {
         overflow:auto;
         height: calc(100% - #{$header-height});
 		-webkit-backface-visibility:hidden;
-		-webkit-overflow-scrolling:touch;
+        -webkit-overflow-scrolling:touch;
 	}
 }
 
 .dinner-menu-active .dinner-menu {
-	opacity: 1;
+    opacity: 1;
+    transition: opacity $transition-fast, height 0s 0s;
 }
 
 

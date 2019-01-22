@@ -12,10 +12,11 @@ const CartDrawer = {
       // Trigger and Target
       const trigEl  = document.querySelector(triggerEl),
             targEl  = document.querySelector(targetEl),
-            main    = document.querySelector('.site-main');
+            main    = document.querySelector('.site-main'),
+            page    = document.body;
 
       const closingElements = [trigEl, main],
-            toggleElements  = [targEl, main];
+            toggleElements  = [trigEl, targEl, main, page];
 
       // Add click listener for Trigger and Body (outside of canvas drawer)
       trigEl.addEventListener('click', e => {

@@ -20,6 +20,12 @@
     padding: ($base-spacing-unit / 2);
     font-weight: $font-weight-thick;
     @include beautify-link($link-default, $link-hovered);
+
+    &.drawer-open {
+        svg path {
+            fill: $link-hovered;
+        }
+    }
 }
 .utility__cart-text {
     @include hide-text();
