@@ -1,11 +1,11 @@
-<section class="section banner">
+<section class="section hero hero--banner">
     <div class="hero-content__background" style="background: url({{ section.settings.banner_image | img_url: '1024x800' }}) {{ section.settings.banner_image_position }} no-repeat; background-size: cover;">
         <span class="hero-content__overlay" style="opacity: {{ section.settings.overlay_range | times: 0.01 }};"></span>
     </div>
     
     <div class="hero-content__foreground">
         <div class="container container--small">
-            <div class="banner-content text--center">
+            <div class="hero-content text--center">
                 <h2 class="hero-content__heading">{{ section.settings.banner_headline }}</h2>
                 <p class="hero-content__paragraph">{{ section.settings.banner_text }}</p>
                 {% if section.settings.banner_link != blank %}

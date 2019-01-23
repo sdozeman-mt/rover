@@ -6,7 +6,11 @@
     justify-content: center;
 
     min-height: 400px;
-    padding: 0 $section-spacing-unit;
+    padding: $base-spacing-unit $section-spacing-unit;
+
+    @include breakpoint($bp-md){
+        padding: $base-spacing-unit;
+    }
 }
 
 .slider__pagination {
@@ -29,7 +33,13 @@
 	color: white;
 	&.swiper-button-disabled {
 		display: none;
-	}
+    }
+    
+    @include breakpoint($bp-md){
+        font-size: 20px;
+        width: 3rem;
+        height: 3.25rem;
+    }
 }
 .slider__prev {
 	left: 0;

@@ -38,6 +38,7 @@ const Router = {
       ImagesLoaded.init('.js-loaded');
 
       new Swiper ('.js-slider', {
+        autoHeight: true,
 				pagination: {
 					el: '.js-slider-pagination',
 				},

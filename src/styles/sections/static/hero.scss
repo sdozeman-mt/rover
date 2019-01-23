@@ -5,12 +5,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
 
+.section.hero--static {
   .template-index & {
     @include breakpoint-min($main-breakpoint){
       min-height: calc(100vh - #{$header-height});
     }
   }
+}
+.section.hero--banner {
+  min-height: 400px;
 }
 
 .hero-content__background,
@@ -35,10 +41,13 @@
 
 .hero-content {
   @include limit-width(580px, auto);
-  @include margin-trailer(2);
   
   color: white;
   text-align: center;
+
+  .hero--static & {
+    @include margin-trailer(2);
+  }
 }
 
 .hero-content__button {
