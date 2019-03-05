@@ -5,13 +5,13 @@
 
 {% endcomment %}
 
-<script>
-  var drawer = {{ cart | json }};
-  CartJS.init(drawer);
-</script>
-
 <section class="section drawer off-canvas js-off-canvas">
   <div class="drawer-content">
-      <h3>Cart</h3>
+
+    {% comment %}
+      TODO? currently re-using cart.liquid as it's own snippet,
+      not sure how to do this better, working for now.    
+    {% endcomment %}
+    {% include 'module-cart' %}
   </div>
 </section>

@@ -28,9 +28,8 @@ const CartDrawer = {
       // 
       closingElements.forEach(closingElem => {
         closingElem.addEventListener('click', e => {
-          e.preventDefault();
-
           if ( main.classList.contains('drawer-open') && !(e.target).classList.contains('drawer-open') ) {
+            e.preventDefault();
             closeElements(...toggleElements);
           }
         })

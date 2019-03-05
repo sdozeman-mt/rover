@@ -14,7 +14,24 @@
 }
 
 // Cart Link Styles
-.utility__cart {}
+.utility__cart { position: relative; }
+.utility__cart-icon {
+    i {
+        top: 5px;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        background: $color-tetranary;
+        text-align: center;
+        font-style: normal;
+        font-size: 12px;
+        color: white;
+    }
+}
+
 .utility__cart-link {
     display: block;
     padding: ($base-spacing-unit / 2);

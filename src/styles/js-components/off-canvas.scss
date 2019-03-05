@@ -38,16 +38,16 @@
 }
 
 .drawer-content {
-    padding: 0 $base-spacing-unit;
+    padding: 0 ($base-spacing-unit * 2);
 }
 
 // Adding corresponding `<main>` styles here, 
 // these should only be related to the component. 
-.site-main {
+.site-main, .site-footer {
     backface-visibility: hidden;
     transition: transform $transition-default, opacity $transition-fast;
 
-    &.drawer-open {
+    .drawer-open & {
         opacity: .5;
         transform: translateX(-$off-canvas-half);
     }
