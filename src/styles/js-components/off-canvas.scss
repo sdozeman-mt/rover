@@ -1,15 +1,20 @@
-// Global Cart Drawer styles
-
-/* TODO?
- * 1. Add Cart markup and data to drawer
- * 2. Add indicators that cart has items?
- * 3. How should this drawer be styled?
- * 4. Should it be consistent with mobile nav and search?
+/* 
+ * Global Cart Drawer styles
+ *
+ * JS Component located under:
+ * /scripts/components/cartDrawer.js
+ *
+ * TODO?
+ * 1. DONE - Add Cart markup and data to drawer
+ * 2. AJAX the drawer and adding product process? How will this impact user experience? How will this impact user routing and cart page?
+ * 3. DONE - Add indicators that cart has items?
+ * 4. DONE - How should this drawer be styled?
+ * 5. DONE - Should it be consistent with mobile nav and search? 
+ *
  */
 
 
  // Trigger | Icon Styling
- .site-header__cart {}
  .site-header__cart-link {
      display: block;
      padding: ($base-spacing-unit / 4);
@@ -21,6 +26,7 @@
 
 // Target | Drawer Styling
 .drawer {
+    overflow-y: scroll;
     position: fixed;
     top: $header-height;
     right: -$off-canvas-width;
@@ -39,6 +45,16 @@
 
 .drawer-content {
     padding: 0 ($base-spacing-unit * 2);
+
+    .grid__item {
+        margin-bottom: ($base-spacing-unit / 2);
+
+        &:nth-of-type(odd) { font-style: italic; }
+        &:nth-of-type(even) { text-align: right; }
+        &.col-12 { text-align: left; }
+    }
+
+    textarea { width: 100%; }
 }
 
 // Adding corresponding `<main>` styles here, 

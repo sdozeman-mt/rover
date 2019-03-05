@@ -3,8 +3,8 @@
 
   - Grid based off of http://flexboxgrid.com/ with customized edits
   - Optional default, thin and wide gutter options for each breakpoint size
-  - Use gutter-lg-thin or gutter-lg-wide on the `.flex-grid` element for modified gutter size
-  - Use gutter-md-default, gutter-md-thin, or gutter-md-wide on the `.flex-grid` element to change gutter depending on breakpoints
+  - Use gutter-lg-thin or gutter-lg-wide on the `.grid` element for modified gutter size
+  - Use gutter-md-default, gutter-md-thin, or gutter-md-wide on the `.grid` element to change gutter depending on breakpoints
 
   - Markup:
   <div class="grid">
@@ -25,16 +25,23 @@
 /* ================================================= */
 /* Helpers - Variables, Mixins, Extenders, Functions */
 // Variables
-$grid-columns: 12;
-$gutter-norm: $base-spacing-unit; //40px gutter - assuming base unit is 20px
-$gutter-thin: $base-spacing-unit / 2; //20px gutter - assuming base unit is 20px
-$gutter-wide: $base-spacing-unit * 1.5; //60px gutter - assuming base unit is 20px
-$breakpoints: ( md: $bp-lg, xm: $bp-md, sm: $bp-sm, xs: $bp-xs );
+$grid-columns   : 12;
+$base-class     : 'col';
+$gutter-thin    : $base-spacing-unit * .4;  // 20px gutter
+$gutter-medium  : $base-spacing-unit * .6;  // 30px gutter
+$gutter-norm    : $base-spacing-unit * .8;  // 40px gutter
+$gutter-wide    : $base-spacing-unit * 1;   // 50px gutter
+
+// Breakpoint order is important, originally these were reversed
+// and since we're taking a mobile-first approach, the breakpoints
+// were not cascading correctly. E.g. smaller sized breakpoint styles
+// were overriting the larger breakpoints, etc.
+$breakpoints    : (sm: $bp-sm, xm: $bp-md, md: $bp-lg, lg: $bp-xl);
 
 
 // Extenders
 // - Base Styles
-%flex-grid {
+%grid {
   display: flex;
   flex: 0 1 auto;
   flex-wrap: wrap;
@@ -53,28 +60,29 @@ $breakpoints: ( md: $bp-lg, xm: $bp-md, sm: $bp-sm, xs: $bp-xs );
 }
 
 @mixin define-gutter-bpclasses($key) {
-  &.gutter-#{$key}-default { @include define-gutters($gutter-norm); }
-  &.gutter-#{$key}-thin    { @include define-gutters($gutter-thin); }
-  &.gutter-#{$key}-wide    { @include define-gutters($gutter-wide); }
+    &.#{$key}-gutter--thin      { @include define-gutters($gutter-thin); }
+    &.#{$key}-gutter--medium   { @include define-gutters($gutter-medium); }
+    &.#{$key}-gutter--default   { @include define-gutters($gutter-norm); }
+    &.#{$key}-gutter--wide      { @include define-gutters($gutter-wide); }
 }
 
 @mixin define-justify($key) {
-  &.start-#{$key}   { justify-content: flex-start; }
-  &.end-#{$key}     { justify-content: flex-end; }
-  &.center-#{$key}  { justify-content: center; }
-  &.around-#{$key}  { justify-content: space-around; }
-  &.between-#{$key} { justify-content: space-between; }
+    &.#{$key}-just--start       { justify-content: flex-start; }
+    &.#{$key}-just--end         { justify-content: flex-end; }
+    &.#{$key}-just--center      { justify-content: center; }
+    &.#{$key}-just--around      { justify-content: space-around; }
+    &.#{$key}-just--between     { justify-content: space-between; }
 }
 
 @mixin define-alignment($key) {
-  &.top-#{$key}     { align-items: flex-start; }
-  &.middle-#{$key}  { align-items: center; }
-  &.bottom-#{$key}  { align-items: flex-end; }
+    &.#{$key}-align--top        { align-items: flex-start; }
+    &.#{$key}-align--middle     { align-items: center; }
+    &.#{$key}-align--bottom     { align-items: flex-end; }
 }
 
 @mixin define-order($key) {
-  &.first-#{$key}    { order: 1; }
-  &.last-#{$key}     { order: 2; }
+    &.#{$key}-first             { order: 1; }
+    &.#{$key}-last              { order: 2; }
 }
 
 
@@ -82,53 +90,57 @@ $breakpoints: ( md: $bp-lg, xm: $bp-md, sm: $bp-sm, xs: $bp-xs );
 /* Base grid styles */
 .flex-grid {
   // Base styles, used for all breakpoints
-  // NOTE: IE will not honor a flex items 100% width without declaring it.
-  @extend %flex-grid;
-  @include define-justify('lg');
-  @include define-alignment('lg');
+  @extend %grid;
+  
+  // Using `--base-` as the mobile-first class
+  // Define justification, alignment, and breakpoint classes
+  @include define-justify($base-class);
+  @include define-alignment($base-class);
+  @include define-gutter-bpclasses($base-class); 
+  
+  // Define gutters
   @include define-gutters($gutter-norm);
-  @include define-gutter-bpclasses('lg'); 
 
   &.grid--reverse { flex-direction: row-reverse; }
   &.grid--flush { @include define-gutters(0); }
 
   .grid__item { 
     flex: 0 0 auto; 
-    @include define-order('lg');
+    @include define-order($base-class);
   }
 }
 
 // Functions
-// - Generate default (desktop) columns
+// - Generate default (mobile) columns
 .grid__item {
-  @for $i from 1 through $grid-columns {
-    &.lg-#{$i} { width: percentage($i / $grid-columns); };
-  };
-  @for $i from 0 through $grid-columns {
-    &.lg-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
-  };
+@for $i from 1 through $grid-columns {
+    &.#{$base-class}-#{$i} { width: percentage($i / $grid-columns); };
+};
+@for $i from 0 through $grid-columns {
+    &.#{$base-class}-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
+};
 }
 
 
 // - Generate scoped columns for other breakpoints
 @each $key, $value in $breakpoints {
-  @if $value {
-    @include breakpoint(#{$value}) {
-      .flex-grid {  
-        @include define-justify(#{$key}); 
-        @include define-alignment(#{$key});
-        @include define-gutter-bpclasses(#{$key}); 
-      }
+    @if $value {
+        @media only screen and (min-width: #{$value + 1px}) {
+            .grid {  
+                @include define-justify(#{$key}); 
+                @include define-alignment(#{$key});
+                @include define-gutter-bpclasses(#{$key}); 
+            }
 
-      .grid__item { 
-        @include define-order(#{$key});
-        @for $i from 1 through $grid-columns {
-          &.#{$key}-#{$i} { width: percentage($i / $grid-columns); };
-        };
-        @for $i from 0 through $grid-columns {
-          &.#{$key}-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
-        };
-      }
+            .grid__item { 
+                @include define-order(#{$key});
+                @for $i from 1 through $grid-columns {
+                    &.#{$key}-#{$i} { width: percentage($i / $grid-columns); };
+                };
+                @for $i from 0 through $grid-columns {
+                    &.#{$key}-offset-#{$i} { margin-left: percentage($i / $grid-columns); };
+                };
+            }
+        }
     }
-  }
 }

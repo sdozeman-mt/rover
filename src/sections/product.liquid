@@ -56,7 +56,7 @@
         <div class="flex-grid">
 
           <div class="grid__item sm-12 lg-6">
-            <form action="/cart/add" method="post" enctype="multipart/form-data">
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart">
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
                   <div class="selector-wrapper js">
@@ -117,7 +117,8 @@
                 type="submit"
                 name="add"
                 class="btn"
-                data-add-to-cart
+                data-add-to-cart 
+                onClick="addItem('add-to-cart'); return false;"
                 {% unless current_variant.available %}disabled="disabled"{% endunless %}>
                   <span data-add-to-cart-text>
                     {% if current_variant.available %}
