@@ -16,6 +16,7 @@ import $ from 'jquery';
 import '../components/magnificPopup.js';
 import ImagesLoaded from '../components/imagesLoaded.js';
 import MobileNav from '../components/mobileNavigation.js';
+import MobileDropdowns from '../components/mobileDropdowns.js';
 import CartDrawer from '../components/cartDrawer.js';
 
 const Router = {
@@ -32,9 +33,9 @@ const Router = {
           'supports-cookies',
         );
       }
-      
-      MobileNav.init('.js-menu__toggle');
       ImagesLoaded.init('.js-loaded');
+      MobileNav.init('.js-menu__toggle');
+      MobileDropdowns.init('.js-dropper');
       CartDrawer.init('.js-cart__toggle', '.js-off-canvas');
     },
     finalize() {}

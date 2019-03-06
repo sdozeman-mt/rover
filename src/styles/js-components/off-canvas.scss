@@ -26,8 +26,8 @@
 
 // Target | Drawer Styling
 .drawer {
-    overflow-y: scroll;
     position: fixed;
+    overflow-y: scroll;
     top: $header-height;
     right: -$off-canvas-width;
    

@@ -49,6 +49,9 @@
 .main-navigation__list-item {
     position: relative;
 
+    &.current-menu-item > .main-navigation__list-link { color: $color-tetranary; }
+
+
     &:hover {
        .main-navigation__menu-child {
            opacity: 1;

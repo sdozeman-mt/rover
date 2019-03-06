@@ -67,40 +67,72 @@ body.dinner-menu-active {
     display: flex;
     list-style: none;
     flex-direction: column;
+
+    li.current-menu-item > a { color: $color-tetranary; }
 }
 
 .mobile-navigation__menu-child {
+    list-style: none;
     position: static;
     background: none;
 
-    opacity: 1;
+    opacity: 0;
     padding: 0;
     width: auto;
+    max-height: 0;
     transform: none;
     box-shadow: none;
     border-radius: 0;
     visibility: visible;
+    transition: opacity $transition-default .0s, max-height $transition-default;
+
+    margin-left: $base-spacing-unit;
+    padding-left: $base-spacing-unit;
+    border-left: 1px solid $color-senary;
+
+
+        li:last-of-type { @include margin-trailer(0); }
+
+    &.active {
+        opacity: 1;
+        max-height: 1000px;
+        transition: opacity $transition-default .15s, max-height $transition-default;
+    }
 }
 
 .mobile-navigation__list-item {
     text-align: left;
     margin-bottom: ($base-spacing-unit / 2);
+
+    &.list-item--parent {
+        position: relative;
+        padding-right: $base-spacing-unit * 2;
+
+        span.dropper {
+            right: 0;
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+            text-align: center;
+            top: $base-spacing-unit / 2;
+            background: $color-tetranary;
+            width: $base-spacing-unit * 1.5;
+            height: $base-spacing-unit * 1.5;
+            line-height: ($base-spacing-unit * 1.5) + 2;
+            transition: transform $transition-default;
+
+            svg path { fill: white; }
+
+            &.active {
+                transform: rotate(180deg);
+            }
+        }
+    }
 }
 
 .list-item--secondary {
+ // necessary for dropper
     position: relative;
-
-    // &:before {
-    //     top: ($base-spacing-unit / 1.1);
-    //     left: ($base-spacing-unit / 1.1);
-    //     content: "";
-    //     display: block;
-    //     position: absolute;
-    //     background: $link-hovered;
-    //     width: ($base-spacing-unit / 4);
-    //     height: ($base-spacing-unit / 4);
-    //     border-radius: ($base-spacing-unit / 4);
-    // }
 }
 
 .mobile-navigation__list-link {
@@ -111,6 +143,7 @@ body.dinner-menu-active {
 
     @include beautify-link($link-default, $link-hovered);
     
+    .mobile-navigation__menu-child & { font-size: ($base-font-size - 3) * $base-line-height; }
 
 
     // TODO?

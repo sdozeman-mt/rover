@@ -35,7 +35,7 @@
 
     <div class="blog-post flex-grid top-sm top-md top-lg">
       {% for article in blog.articles %}
-      <div class="blog-post__item grid__item sm-12 lg-6 article">
+      <div class="blog-post__item grid__item sm-12 md-6 lg-4 article">
         {% if article.image %}
           <a href="{{ article.url }}">
             {% include 'responsive-image' with

@@ -80,18 +80,19 @@
         </div>
       </div>
 
+      <!-- Main Menu -->
       <nav role="navigation" class="main-navigation js-navigation">
         <ul class="main-navigation__menu">
           {% for link in linklists[section.settings.main_menu].links %}
             {% if link.links != blank %}
-              <li class="main-navigation__list-item list-item--primary">
+              <li class="main-navigation__list-item list-item--primary {% if link.active %}current-menu-item{% endif %}">
                 <a class="main-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                   {% include 'icon-arrow-down' %}
                 </a>
                 <ul class="main-navigation__menu-child">
                   {% for childlink in link.links %}
-                    <li class="main-navigation__list-item list-item--secondary">
+                    <li class="main-navigation__list-item list-item--secondary {% if childlink.active %}current-menu-item{% endif %}">
                       <a class="main-navigation__list-link" href="{{ childlink.url }}">
                         {{ childlink.title }}
                       </a>
@@ -100,7 +101,7 @@
                 </ul>
               </li>
             {% else %}
-              <li class="main-navigation__list-item">
+              <li class="main-navigation__list-item {% if link.active %} current-menu-item{% endif %}">
                 <a class="main-navigation__list-link" href="{{ link.url }}">
                   {{ link.title }}
                 </a>
@@ -141,27 +142,70 @@
     </div>
   </header>
 
-  <!-- Repeat of main navigation consider adding 2nd menu for mobile -->
-  <!-- Child menus absent -->
-  <nav id="mobile-nav" class="mobile-navigation js-mobile-navigation dinner-menu element-hidden--desk">
-    <div class="container">
-      <ul class="mobile-navigation__menu" id="mobile-menu">
-        {% for link in linklists[section.settings.main_menu].links %}
-          {% if link.links != blank %}
-            <li class="mobile-navigation__list-item list-item--parent">
-              <a class="mobile-navigation__list-link" href="{{ link.url }}"> {{ link.title }}</a>
-            </li>
-          {% else %}
-            <li class="mobile-navigation__list-item">
-              <a class="mobile-navigation__list-link" href="{{ link.url }}">
-                {{ link.title }}
-              </a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>
+  <!-- Mobile Menu -->
+  {% if linklists[section.settings.mobile_menu].links %}
+    <nav id="mobile-nav" class="mobile-navigation js-mobile-navigation dinner-menu element-hidden--desk">
+      <div class="container">
+        <ul class="mobile-navigation__menu" id="mobile-menu">
+          {% for link in linklists[section.settings.mobile_menu].links %}
+            {% if link.links != blank %}
+              <li class="mobile-navigation__list-item list-item--parent {% if link.active %}current-menu-item{% endif %}">
+                <a class="mobile-navigation__list-link" href="{{ link.url }}">{{ link.title }}</a>
+                <span class="js-dropper dropper">{% include 'icon-arrow-down' %}</span>
+
+                <ul class="mobile-navigation__menu-child">
+                  {% for childlink in link.links %}
+                    <li class="mobile-navigation__list-item list-item--secondary {% if childlink.active %}current-menu-item{% endif %}">
+                      <a class="mobile-navigation__list-link" href="{{ childlink.url }}">
+                        {{ childlink.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                
+              </li>
+            {% else %}
+              <li class="mobile-navigation__list-item {% if link.active %} current-menu-item{% endif %}">
+                <a class="mobile-navigation__list-link" href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  {% else %}
+    <nav id="mobile-nav" class="mobile-navigation js-mobile-navigation dinner-menu element-hidden--desk">
+      <div class="container">
+        <ul class="mobile-navigation__menu" id="mobile-menu">
+          {% for link in linklists[section.settings.main_menu].links %}
+            {% if link.links != blank %}
+              <li class="mobile-navigation__list-item list-item--parent {% if link.active %} current-menu-item{% endif %}">
+                <a class="mobile-navigation__list-link" href="{{ link.url }}"> {{ link.title }}</a>
+
+                <ul class="mobile-navigation__menu-child">
+                  {% for childlink in link.links %}
+                    <li class="mobile-navigation__list-item list-item--secondary {% if childlink.active %} current-menu-item{% endif %}">
+                      <a class="mobile-navigation__list-link" href="{{ childlink.url }}">
+                        {{ childlink.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li class="mobile-navigation__list-item {% if link.active %} current-menu-item{% endif %}">
+                <a class="mobile-navigation__list-link" href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  {% endif %}
 
 </section>
 
@@ -230,6 +274,11 @@
         "id": "main_menu",
         "label": "Main menu",
         "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "mobile_menu",
+        "label": "Mobile menu"
       }
     ]
   }
