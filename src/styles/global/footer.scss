@@ -22,7 +22,7 @@
         margin-right: 0;
     }
 
-    p { margin: ($base-spacing-unit / 2); }
+    p { margin: ($base-spacing-unit / 2) 0; }
 }
 
 .site-footer__headline {}
@@ -43,7 +43,8 @@
 .footer-menu__link {}
 
 
-// Legal Stuffs
+.social-media,
+.payment-icons,
 .site-legal {
     text-align: center;
 }

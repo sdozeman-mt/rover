@@ -11,7 +11,7 @@
       {% for collection in collections %}
         {% unless collection.handle == 'frontpage' %}
           
-          <div class="grid__item sm-12 md-6 lg-4">
+          <div class="grid__item col-12 md-6 lg-4">
             <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
               {% if collection.image != blank or collection.products.first != blank %}
                 {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}

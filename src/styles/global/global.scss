@@ -1,6 +1,6 @@
 // Global Layout Styles
-// body {}
-// etc.
+// Things that can appear on all pages:
+// *, body, section, etc.
 
 * { box-sizing: border-box; }
 
@@ -12,8 +12,6 @@
 .site-main {
     background: white;
 }
-
-.shopify-section {}
 
 .section { 
     padding: $section-spacing-unit 0;

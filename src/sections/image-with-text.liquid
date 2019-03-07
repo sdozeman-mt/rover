@@ -16,7 +16,7 @@
   <div class="container">
     <div class="flex-grid middle-md middle-lg">
       {% capture image_layout %}
-        <div class="image-with-text__image grid__item sm-12 lg-6">
+        <div class="image-with-text__image grid__item col-12 lg-6">
           {% if section.settings.image != blank %}
             {% include 'responsive-image' with
               image: section.settings.image,
@@ -33,7 +33,7 @@
         {{ image_layout }}
       {% endif %}
 
-      <div class="image-with-text__text grid__item sm-12 lg-6">
+      <div class="image-with-text__text grid__item col-12 lg-6">
         {% if section.settings.title != blank %}
           <h2>{{ section.settings.title | escape }}</h2>
         {% endif %}

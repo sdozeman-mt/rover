@@ -20,7 +20,7 @@
     {% for block in section.blocks %}
       {%- assign collection = collections[block.settings.collection] -%}
       
-      <div class="grid__item sm-12 md-6 lg-4">
+      <div class="grid__item col-12 md-6 lg-4">
 
         <a href="{{ collection.url | default: "#" }}" class="collection-item collection-list-item" {{ block.shopify_attributes }}>
           {% if collection.image != blank or collection.products.first != blank %}

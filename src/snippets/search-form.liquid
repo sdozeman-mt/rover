@@ -1,11 +1,23 @@
+{% comment %} 
+  To prevent issues with having multiple search bars with the
+  same ID (header, footer, search template, etc) we can set a
+  unique ID based off of the section or page where it's included.
+{% endcomment %}
+
+{% if section.id %}
+  {% assign location = section.id %}
+{% else %}
+  {% assign location = 'template' %}
+{% endif %}
+
 <form action="/search" method="get" role="search" class="search-form input-group">
-  <label for="Search-{{ section.id }}" class="label-hidden search-form__label input-group__label">
+  <label for="search-{{ location }}" class="label-hidden search-form__label input-group__label">
     {{ 'general.search.placeholder' | t }}
   </label>
 
   <input type="search"
     name="q"
-    id="Search-{{ section.id }}"
+    id="search-{{ location }}"
     class="search-form__input input-group__input"
     value="{{ search.terms | escape }}"
     placeholder="{{ 'general.search.placeholder' | t }}">

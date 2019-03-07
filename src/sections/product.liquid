@@ -55,7 +55,7 @@
 
         <div class="flex-grid">
 
-          <div class="grid__item sm-12 lg-6">
+          <div class="grid__item col-12 lg-6">
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart">
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
@@ -131,7 +131,7 @@
             </form>
           </div><!-- /.grid__item -->
 
-          <div class="grid__item sm-12 lg-6">
+          <div class="grid__item col-12 lg-6">
             {% comment %} <p>{{ product.vendor }}</p> {% endcomment %}
             <div class="rte">
               {{ product.description }}

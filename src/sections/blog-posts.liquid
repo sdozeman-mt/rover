@@ -30,7 +30,7 @@
     {%- endcomment -%}
     <ul class="blog-post flex-grid">
       {% for article in blog.articles limit: section.settings.post_limit %}
-        <li class="blog-post__item grid__item sm-12 md-6 lg-4">
+        <li class="blog-post__item grid__item col-12 md-6 lg-4">
           {%- comment -%}
             Due to accessibility requirements, we are regrouping all logical elements into the <a> element.
             If a screen reader user is tabbing through the page, or browsing by links on the page with duplicated links,
@@ -84,7 +84,7 @@
         </li>
       {% else %}
         {% for i in (1..section.settings.post_limit) %}
-          <li class="blog-post__item grid__item sm-12 md-6 lg-4">
+          <li class="blog-post__item grid__item col-12 md-6 lg-4">
             <h3 class="delta">
               <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
             </h3>

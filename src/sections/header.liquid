@@ -68,6 +68,35 @@
             <span class="utility__search-icon">{% include 'icon-search' %}</span>
           </a>
         </div>
+
+        <div class="utility__account">
+           <!-- TODO? Style this? Enable this? Do something with this. -->
+          {% if shop.customer_accounts_enabled %}
+            <ul>
+              {% if customer %}
+                <li>
+                  {% if customer.first_name != blank %}
+                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                  {% else %}
+                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                  {% endif %}
+                </li>
+                <li>
+                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                </li>
+              {% else %}
+                <li>
+                  {{ 'layout.customer.log_in' | t | customer_login_link }}
+                </li>
+                <li>
+                  {{ 'layout.customer.create_account' | t | customer_register_link }}
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+          <!-- END TODO? -->
+        </div>
         <div class="utility__cart">
           {% comment %} <a class="utility__cart-link" href="/cart"> {% endcomment %}
           <a class="utility__cart-link js-cart__toggle drawer-toggle" href="#">
@@ -110,34 +139,6 @@
           {% endfor %}
         </ul>
       </nav>
-
-
-      <!-- TODO? Style this? Enable this? Do something with this. -->
-      {% if shop.customer_accounts_enabled %}
-        <ul>
-          {% if customer %}
-            <li>
-              {% if customer.first_name != blank %}
-                {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-              {% else %}
-                <a href="/account">{{ 'layout.customer.account' | t }}</a>
-              {% endif %}
-            </li>
-            <li>
-              {{ 'layout.customer.log_out' | t | customer_logout_link }}
-            </li>
-          {% else %}
-            <li>
-              {{ 'layout.customer.log_in' | t | customer_login_link }}
-            </li>
-            <li>
-              {{ 'layout.customer.create_account' | t | customer_register_link }}
-            </li>
-          {% endif %}
-        </ul>
-      {% endif %}
-      <!-- END TODO? -->
 
     </div>
   </header>

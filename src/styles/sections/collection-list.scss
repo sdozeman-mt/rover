@@ -19,10 +19,14 @@
 }
 
 
-.collection--item {}
+.collection-item { text-align: center; }
+
 .collection-item--title {
   font-size: $font-size-base * 1.25;
   font-weight: $font-weight-thick;
 }
-.collection-item--price {}
 
+.collection-item--price {
+  display: block;
+  margin: -($base-spacing-unit / 2) 0 $base-spacing-unit;
+}

@@ -1,6 +1,8 @@
 // Featured Product specific styles
 .featured-product {
-  .template-index & {
+  @include breakpoint($bp-xl) {
+    text-align: center;
 
+    .responsive-image__wrapper { margin-bottom: $base-spacing-unit; }
   }
 }

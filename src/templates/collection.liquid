@@ -30,7 +30,7 @@
   <div class="container">
     <div class="flex-grid center-sm center-md center-lg">
       {% for product in collection.products %}
-        <div class="grid__item sm-12 md-6 lg-4">
+        <div class="grid__item col-12 md-6 lg-4">
           {% if product.featured_image != blank %}
             <a href="{{ product.url | within: collection }}">
               <div class="trailer--half">

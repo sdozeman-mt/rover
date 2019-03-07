@@ -1,119 +1,30 @@
-// Global Navigation styles
+// Search Results Styles
 
-/* TODO?
- * 1. Add responsive styles to same menu,
- * 2. Add conditional styles for last-item dropdown
- * 3. Add active class styles to elements in menu
- * 4. Add drop-down functionality to mobile menu
- * 5. ...
- */
-
-
-.site-navigation {
-    float: right;
-    clear: right;
-    margin-bottom: -($base-spacing-unit / 2);
-    // Ensure element never over/underlaps the logo
-    width: calc(100% - (#{$base-spacing-unit} * 13));
-}
-
-.site-navigation__menu,
-.site-navigation__menu-child  {
+.search-result__list {
     margin: 0;
+    padding: 0;
     list-style: none;
 }
 
-.site-navigation__menu {
-    padding: 0;
+.search-result__item {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-}
+    flex-direction: row;
+    margin-bottom: $base-spacing-unit * 2;
 
-.site-navigation__menu-child {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity $transition-duration $transition-timing,
-                visibility $transition-duration $transition-timing;
-
-    width: 250px;
-    position: absolute;
-    background: white;
-    left: -$base-spacing-unit;
-    z-index: $z-index-base * 4;
-    box-shadow: $box-shadow-default;
-    border-radius: $border-radius-bottom;
-    transform: translateY(-$base-spacing-unit);
-    padding: ($base-spacing-unit / 2) $base-spacing-unit;
-}
-
-.site-navigation__list-item {
-    position: relative;
-
-    &:hover {
-       > .site-navigation__menu-child {
-           opacity: 1;
-           visibility: visible;
-        //    transition-delay: $transition-duration * 2;
-       }
-    }
-}
-
-.site-navigation__list-link {
-    display: block;
-    padding: $base-spacing-unit;
-    font-weight: $font-weight-thick;
-
-    @include beautify-link($link-default, $link-hovered);
-
-    svg { margin-left: $base-spacing-unit / 2; }
-
-    .list-item--secondary & {
-        font-size: ($font-size-base * .9);
-        padding: ($base-spacing-unit / 2) $base-spacing-unit;
-    }
-}
-
- @include breakpoint($main-breakpoint) {
-    .site-navigation {
-        top: -$base-spacing-unit;
-        left: auto;
-        width: auto;
-        bottom: auto;
-        text-align: right;
-        padding-top: 20px;
-        position: absolute;
-        width: $off-canvas-width;
-        right: -($off-canvas-width);
-        padding: $base-spacing-unit;
-    }
-
-    .site-navigation__menu {
+    @include breakpoint($bp-sm) {
+        text-align: center;
         flex-direction: column;
     }
+}
 
-    .site-navigation__menu-child {
-        position: static;
-        background: none;
+.search-result__item-image {
+    margin-right: $base-spacing-unit * 2;
 
-        opacity: 1;
-        padding: 0;
-        width: auto;
-        transform: none;
-        box-shadow: none;
-        border-radius: none;
-        visibility: visible;
+    @include breakpoint($bp-sm) {
+        margin: 0 auto $base-spacing-unit;
     }
 
-    .site-navigation__list-link {
-        color: white;
-        font-size: $font-size-base;
-        @include beautify-link($link-reversed, $link-hovered);
+    img { min-width: 240px; }
+}
 
-
-        // TODO?
-        &.current-menu-item {
-            color: $link-hovered;
-        }
-    }
- }
+.search-result__item-content {}
