@@ -69,10 +69,14 @@
           </a>
         </div>
 
-        <div class="utility__account">
-           <!-- TODO? Style this? Enable this? Do something with this. -->
-          {% if shop.customer_accounts_enabled %}
-            <ul>
+        {% if shop.customer_accounts_enabled %}
+          <div class="utility__account">
+            {% comment %} <a class="utility__account-link js-account__toggle"> {% endcomment %}
+              <span class="utility__account-icon">{% include 'icon-user' %}</span>
+              <span class="utility__account-text visually-hidden">Account</span>
+            {% comment %} </a> {% endcomment %}
+            <!-- TODO? Unhide and style this thang -->
+            <ul class="utility__account-list visually-hidden">
               {% if customer %}
                 <li>
                   {% if customer.first_name != blank %}
@@ -94,9 +98,10 @@
                 </li>
               {% endif %}
             </ul>
-          {% endif %}
-          <!-- END TODO? -->
-        </div>
+            <!-- END TODO -->
+          </div>
+        {% endif %}
+
         <div class="utility__cart">
           {% comment %} <a class="utility__cart-link" href="/cart"> {% endcomment %}
           <a class="utility__cart-link js-cart__toggle drawer-toggle" href="#">
