@@ -9,18 +9,12 @@
     overflow: hidden;
     background: $theme-light;
     transition: opacity $transition-fast, height 0s $transition-time-default;
-    ;
-    //TODO? add delay so that menu doesn't disappear so fast on close
-}
+   }
 
 .dinner-menu__inner {
-
 	min-height:100%;
 	display:inline-block; // Contain any margin
 	width:100%;    		  // on it's children
-
-	.dinner-menu-active--fixed & {}
-
 }
 
 
@@ -33,7 +27,6 @@ body.dinner-menu-active {
 }
 
 .dinner-menu-active--relative body {
-
 	// Lock the body into place is it's not fixed
 	// Not used for fixed menu, cause it'll make the page jump up to the top
 	height:100%;

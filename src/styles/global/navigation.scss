@@ -49,7 +49,7 @@
 .main-navigation__list-item {
     position: relative;
 
-    &.current-menu-item > .main-navigation__list-link { color: $color-tetranary; }
+    &.current-menu-item > a { color: $color-tetranary; }
 
 
     &:hover {
@@ -60,6 +60,7 @@
     }
 }
 
+.main-navigation__menu-child a,
 .main-navigation__list-link {
     display: block;
     padding: ($base-spacing-unit / 2) $base-spacing-unit;

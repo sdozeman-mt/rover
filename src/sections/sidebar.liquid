@@ -1,0 +1,41 @@
+<div data-section-id="sidebar" data-section-type="sidebar-section">
+  <nav role="navigation">
+    <div class="side-nav" role="menu">
+      <ul>
+        {% for link in menus[section.settings.sidebar_linklist].links %}
+          {% assign child_list_handle = link.title | handleize %}
+          {% if menus[child_list_handle].links != blank %}
+            <li>
+              <span>{{ link.title }}</span>
+              <ul>
+                {% for childlink in menus[child_list_handle].links %}
+                  <li class="{% if childlink.active or collection.current_type == childlink.title or collection.current_vendor == childlink.title %}{% unless forloop.first and childlink.title contains 'All' and current_tags.size > 0 %} site-nav--active {% endunless %}{% endif %}">
+                    <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                  </li>
+                {% endfor %}
+              </ul> 
+            </li>
+          {% else %}
+            <li class="{% if link.active %}active{% endif %}">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+    </div>
+  </nav>
+</div>
+
+{% schema %} 
+  {
+    "name": "Sidebar",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "sidebar_linklist",
+        "label": "Sidebar menu"
+      }
+    ]
+  }
+{% endschema %}

@@ -5,6 +5,8 @@
 
 .blog-post__item {
   .responsive-image__wrapper { margin-bottom: $base-spacing-unit; }
+
+  @include breakpoint($main-breakpoint) { text-align: center; }
 }
 
 // Article

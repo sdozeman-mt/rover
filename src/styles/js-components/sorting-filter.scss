@@ -1,0 +1,20 @@
+.sort-by-container {
+  text-align: right;
+  padding-top: $base-spacing-unit;
+  padding-bottom: $base-spacing-unit;
+
+  label {
+    display: inline-block;
+    margin-right: $base-spacing-unit/2;
+  }
+
+  .select-wrapper {
+    width: auto;
+    display: inline-block;
+
+    select {
+      font-size: $small-font-size;
+      padding-right: $base-spacing-unit*2;
+    }
+  }
+}

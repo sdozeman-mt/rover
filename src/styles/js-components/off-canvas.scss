@@ -40,7 +40,7 @@
     transition: transform $transition-default;
     z-index: ($z-index-base * 1.5);
 
-    &.drawer-open { transform: translateX(-#{$off-canvas-width}); }
+    .drawer-open & { transform: translateX(-#{$off-canvas-width}); }
 }
 
 .drawer-content {

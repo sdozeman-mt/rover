@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 /*!
+
         ,
        .'.
        |o|
@@ -16,6 +17,7 @@ Author:     Sean Dozeman
 Company:    Major Tom
 Website:    www.majortom.com
 Repository: https://github.com/sdozeman-mt/rover
+
 */
 
 
@@ -46,6 +48,7 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './components/icons';
 @import './components/buttons';
 @import './components/containers';
+@import './components/breadcrumbs';
 @import './components/hero-banner';
 @import './components/placeholders';
 @import './components/responsive-images';
@@ -56,7 +59,8 @@ Repository: https://github.com/sdozeman-mt/rover
 @import './js-components/menu-button';
 @import './js-components/dinner-menu';
 @import './js-components/off-canvas';
-@import './js-components/search-form.scss';
+@import './js-components/search-form';
+@import './js-components/sorting-filter';
 
 
 // Sections

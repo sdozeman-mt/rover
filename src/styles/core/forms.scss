@@ -1,3 +1,19 @@
+%input-base {
+  border: 0;
+  width: 100%;
+  outline: none;
+  background: white;
+  height: $input-height;
+  vertical-align: middle;
+  padding: ($base-spacing-unit / 2) $base-spacing-unit;
+}
+
+%input-extra {
+  background: white;
+  box-shadow: $box-shadow-default;
+  margin-bottom: $base-spacing-unit;
+}
+
 form {
   margin: 0;
 }
@@ -38,10 +54,31 @@ select {
   }
 }
 
+input[type="tel"],
+input[type="date"],
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="number"],
+input[type="password"] {
+  @extend %input-base;
+
+  &:not(.input-group__input) {
+    @extend %input-extra;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  background: #fefefe;
+}
+
 .selector-wrapper {
   @include margin-trailer(1);
 }
-// For custom arrow, removing border-radius + default browser styles
+
 .select-wrapper {
   position: relative;
   width: 100%;
@@ -54,9 +91,10 @@ select {
     content: "▾";
     display: inline-block;
     position: absolute;
-    right: 1px;
-    padding-right: 15px;
     top: 50%;
+    right: 1px;
+    min-height: 25px;
+    padding-right: 15px;
     transform: translateY(-50%);
 }
 }
@@ -98,18 +136,11 @@ option {
   position: relative;
   padding-right: $submit-width;
   box-shadow: $box-shadow-default;
-
-  // border: $border-width $border-style $border-color;
 }
 
 .input-group__input, 
 .input-group__btn {
-  border: 0;
-  width: 100%;
-  outline: none;
-  height: $input-height;
-  vertical-align: middle;
-  padding: ($base-spacing-unit / 2) $base-spacing-unit;
+  @extend %input-base;
 }
 
 .input-group__btn {

@@ -69,43 +69,10 @@
           </a>
         </div>
 
-        {% if shop.customer_accounts_enabled %}
-          <div class="utility__account">
-            {% comment %} <a class="utility__account-link js-account__toggle"> {% endcomment %}
-              <span class="utility__account-icon">{% include 'icon-user' %}</span>
-              <span class="utility__account-text visually-hidden">Account</span>
-            {% comment %} </a> {% endcomment %}
-            <!-- TODO? Unhide and style this thang -->
-            <ul class="utility__account-list visually-hidden">
-              {% if customer %}
-                <li>
-                  {% if customer.first_name != blank %}
-                    {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-                  {% else %}
-                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
-                  {% endif %}
-                </li>
-                <li>
-                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
-                </li>
-              {% else %}
-                <li>
-                  {{ 'layout.customer.log_in' | t | customer_login_link }}
-                </li>
-                <li>
-                  {{ 'layout.customer.create_account' | t | customer_register_link }}
-                </li>
-              {% endif %}
-            </ul>
-            <!-- END TODO -->
-          </div>
-        {% endif %}
-
         <div class="utility__cart">
           {% comment %} <a class="utility__cart-link" href="/cart"> {% endcomment %}
           <a class="utility__cart-link js-cart__toggle drawer-toggle" href="#">
-            <span class="utility__cart-icon">{% include 'icon-cart' %} {% if cart.item_count > 0 %}<i>{{ cart.item_count }}</i>{% endif %}</span>
+            <span class="utility__cart-icon">{% include 'icon-cart' %} {% if cart.item_count > -1 %}<i>{{ cart.item_count }}</i>{% endif %}</span>
             <span class="utility__cart-text">
               {{ 'layout.cart.title' | t }}
               ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
@@ -142,6 +109,39 @@
               </li>
             {% endif %}
           {% endfor %}
+
+          {% if shop.customer_accounts_enabled %}
+            <li class="main-navigation__list-item list-item--primary">
+              <span class="main-navigation__list-link">
+                Account 
+                {% include 'icon-arrow-down' %}
+              </span>
+
+              <ul class="main-navigation__menu-child">
+                {% if customer %}
+                  <li class="main-navigation__list-item list-item--secondary">
+                    {% if customer.first_name != blank %}
+                      {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+                      {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                    {% else %}
+                      <a class="main-navigation__list-link" href="/account">{{ 'layout.customer.account' | t }}</a>
+                    {% endif %}
+                  </li>
+                  <li class="main-navigation__list-item list-item--secondary">
+                    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                  </li>
+                {% else %}
+                  <li class="main-navigation__list-item list-item--secondary">
+                    {{ 'layout.customer.log_in' | t | customer_login_link }}
+                  </li>
+                  <li class="main-navigation__list-item list-item--secondary">
+                    {{ 'layout.customer.create_account' | t | customer_register_link }}
+                  </li>
+                {% endif %}
+              </ul>
+            </li>
+          {% endif %}
+
         </ul>
       </nav>
 
